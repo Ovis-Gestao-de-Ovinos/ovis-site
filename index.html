@@ -11,15 +11,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="enhancements.css">
+  <script type="module" src="script.js"></script>
 </head>
 <body>
   <a class="skip" href="#conteudo">Pular para o conteúdo</a>
   <header class="site-header">
     <div class="wrap header-inner">
       <a class="brand" href="#inicio" aria-label="Ovis — início"><span class="brand-icon"><img src="assets/icon.png" alt=""></span><span>ovis<span class="brand-period">.</span></span></a>
-      <nav aria-label="Navegação principal" class="desktop-nav"><a href="#produto">O produto</a><a href="#rotina">Como funciona</a><a href="#estado">Nossa fase</a></nav>
-      <a class="header-cta" href="#produto">Explorar o produto <span aria-hidden="true">↗</span></a>
+      <nav aria-label="Navegação principal" class="desktop-nav"><a href="#produto">O produto</a><a href="#rotina">Como funciona</a><a href="#precos">Planos</a></nav>
+      <a class="header-cta" href="#precos">Simular valores <span aria-hidden="true">↗</span></a>
     </div>
   </header>
   <main id="conteudo">
@@ -27,12 +28,13 @@
       <div class="wrap hero-grid">
         <div class="hero-copy">
           <span class="eyebrow"><span class="eyebrow-dot"></span> GESTÃO DE OVINOS, DO SEU JEITO</span>
-          <h1 id="hero-title">Mais tempo no campo.<br><em>Mais clareza</em> na gestão.</h1>
+          <h1 id="hero-title"><span>O campo não</span><br><span>para. A gestão</span><br><em>acompanha.</em></h1>
           <p>Do histórico de cada animal ao próximo manejo: o Ovis aproxima as informações que importam de quem cuida do rebanho todos os dias.</p>
-          <div class="hero-actions"><a class="button button-light" href="#produto">Conhecer o Ovis <span aria-hidden="true">↗</span></a><a class="text-link" href="#estado">Conheça a fase atual <span aria-hidden="true">↓</span></a></div>
+          <div class="hero-actions"><a class="button button-light" href="#produto">Conhecer o Ovis <span aria-hidden="true">↗</span></a><a class="text-link" href="#precos">Ver planos e valores <span aria-hidden="true">↓</span></a></div>
           <div class="hero-note"><span class="note-rule"></span> Um produto pensado para a rotina real da fazenda.</div>
         </div>
         <div class="hero-art" aria-label="Prévia ilustrativa do painel Ovis com dados de demonstração">
+          <span class="hero-watermark" aria-hidden="true">OVIS</span>
           <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
           <div class="float-label label-top"><span class="pulse"></span> Tudo em um só lugar</div>
           <div class="phone" aria-hidden="true"><div class="phone-screen"><div class="phone-status">9:41 <span>●●● ▰</span></div><div class="app-top"><span class="app-brand"><img src="assets/icon.png" alt=""> Ovis</span><span class="app-menu">☰</span></div><div class="app-hero"><small>Total de ovinos</small><div class="app-number">1.248 <span>+34 no mês</span></div><svg viewBox="0 0 290 57" preserveAspectRatio="none"><path d="M0 42 C24 35 27 46 53 28 S93 32 115 25 S160 29 180 17 S219 28 242 12 S270 21 290 6" fill="none" stroke="#a7e1ac" stroke-width="3" stroke-linecap="round"/></svg><div class="app-metrics"><span><b>87%</b><small>taxa de prenhez</small></span><span><b>215 g/d</b><small>ganho médio diário</small></span></div></div><div class="app-row-head">Manejos pendentes <span>Ver todos ↗</span></div><div class="app-task"><i class="task-dot orange"></i><span><b>Pesagem do lote</b><small>Lote Aurora · Hoje</small></span><span class="task-arrow">↗</span></div><div class="app-task"><i class="task-dot green"></i><span><b>Revisão sanitária</b><small>Lote Horizonte · Esta semana</small></span><span class="task-arrow">↗</span></div><div class="app-row-head">Ações rápidas</div><div class="app-quick"><span>＋<small>Animal</small></span><span>♧<small>Parto</small></span><span>↗<small>Manejo</small></span></div><div class="app-bottom">⌂ <span>♧</span> <span>▤</span> <span>◯</span></div></div></div>
@@ -51,7 +53,31 @@
     </section>
     <section id="rotina" class="routine section-pad" aria-labelledby="routine-title"><div class="wrap"><div class="routine-header"><span class="kicker">PENSADO PARA O DIA A DIA</span><h2 id="routine-title">Menos dispersão.<br><em>Mais presença.</em></h2></div><div class="routine-grid"><article><span class="routine-no">01 — IDENTIFIQUE</span><h3>Comece pelo animal.</h3><p>Busque pelo nome, brinco, raça ou lote. Encontre peso, genealogia, reprodução e histórico sanitário na ficha certa.</p></article><article><span class="routine-no">02 — REGISTRE</span><h3>O cuidado vira histórico.</h3><p>Partos, tratamentos, pesagens e movimentações entram na rotina sem separar o trabalho do registro.</p></article><article><span class="routine-no">03 — ACOMPANHE</span><h3>Veja o que vem depois.</h3><p>Manejos pendentes e indicadores do rebanho ajudam a transformar registros em próximos passos.</p></article></div></div></section>
     <section class="quote-section"><div class="wrap quote-layout"><div class="quote-mark">“</div><blockquote>Uma visão melhor do rebanho começa por respeitar a rotina de quem está com ele.</blockquote><span>O PRINCÍPIO POR TRÁS DO OVIS</span></div></section>
-    <section id="estado" class="state-section section-pad"><div class="wrap state-grid"><div><span class="kicker">TRANSPARÊNCIA, DESDE O COMEÇO</span><h2>Estamos construindo<br>o próximo capítulo.</h2></div><div><p>O app Ovis disponível no código hoje é um <strong>protótipo demonstrativo</strong> com dados simulados. Ele permite explorar fluxos da fazenda e do rebanho, mas não oferece uma conta real, sincronização com servidor ou assinatura ativa nesta versão.</p><p>Este site apresenta a direção do produto, sem prometer recursos comerciais ainda não lançados.</p><a href="#produto" class="inline-link">Voltar à prévia do produto <span aria-hidden="true">↗</span></a></div></div></section>
+    <section id="precos" class="pricing-section section-pad" aria-labelledby="pricing-title">
+      <div class="wrap">
+        <div class="pricing-intro"><span class="kicker">PLANOS / SIMULADOR</span><h2 id="pricing-title">O tamanho do rebanho muda.<br><em>O valor também.</em></h2><p>Informe quantos ovinos você tem para ver a faixa de preço. Compare Basic, Plus e Pro no pagamento mensal ou anual.</p></div>
+        <div class="calculator">
+          <div class="calculator-control">
+            <div class="calc-index">01 — SEU REBANHO</div>
+            <label for="herd-size" class="calc-label">Quantos ovinos você tem?</label>
+            <div class="count-control"><button type="button" id="herd-minus" aria-label="Diminuir quantidade de ovinos">−</button><input id="herd-size" name="herd-size" type="number" min="1" step="1" inputmode="numeric" value="30"><button type="button" id="herd-plus" aria-label="Aumentar quantidade de ovinos">+</button></div>
+            <input id="herd-range" type="range" min="1" max="500" value="30" aria-label="Quantidade de ovinos, de 1 a 500">
+            <div class="range-ends"><span>1 ovino</span><span>500 ovinos</span></div>
+            <div class="tier-caption" id="tier-caption">Faixa: até 30 ovinos</div>
+            <div class="calc-index billing-index">02 — FORMA DE PAGAMENTO</div>
+            <fieldset class="billing-switch"><legend class="sr-only">Forma de pagamento</legend><label><input type="radio" name="billing" value="monthly" checked><span>Mensal</span></label><label><input type="radio" name="billing" value="annual"><span>Anual <strong>−15%</strong></span></label></fieldset>
+            <p class="calc-context">Valores informados na tabela enviada pela equipe Ovis. Simulação de preço, não contratação.</p>
+          </div>
+          <div class="calculator-results" aria-live="polite" aria-atomic="true">
+            <div class="result-heading"><span>VALORES PARA O SEU REBANHO</span><span id="result-range">ATÉ 30 OVINOS</span></div>
+            <div id="price-results" class="price-results"></div>
+            <p class="pricing-smallprint" id="price-note">No anual, o valor principal é o total pago por ano; mostramos também o equivalente mensal para comparar.</p>
+          </div>
+        </div>
+        <p class="pricing-footnote">As faixas de 250 e 500 aparecem com asterisco na tabela original, sem explicação das condições. Aqui são interpretadas como até 250 e até 500 ovinos; confirme a regra comercial antes de contratar. Acima de 500 ovinos, não há preço informado. As diferenças de recursos entre Basic, Plus e Pro ainda não foram fornecidas.</p>
+      </div>
+    </section>
+    <section id="estado" class="state-section section-pad"><div class="wrap state-grid"><div><span class="kicker">TRANSPARÊNCIA, DESDE O COMEÇO</span><h2>Estamos construindo<br>o próximo capítulo.</h2></div><div><p>O app Ovis disponível no código hoje é um <strong>protótipo demonstrativo</strong> com dados simulados. Ele permite explorar fluxos da fazenda e do rebanho, mas não oferece uma conta real, sincronização com servidor ou assinatura ativa nesta versão.</p><p>Os preços acima são uma referência da tabela fornecida pela equipe. Este site não processa pagamentos nem ativa planos.</p><a href="#produto" class="inline-link">Voltar à prévia do produto <span aria-hidden="true">↗</span></a></div></div></section>
   </main>
   <footer class="footer"><div class="wrap footer-top"><div><a class="brand footer-brand" href="#inicio"><span class="brand-icon"><img src="assets/icon.png" alt=""></span><span>ovis<span class="brand-period">.</span></span></a><p>Cuidar do rebanho também é ter clareza para decidir.</p></div><a href="#inicio">Voltar ao topo ↑</a></div><div class="wrap footer-bottom"><span>© <span id="year"></span> Ovis</span><span>Feito para a ovinocultura.</span></div></footer>
 </body>
