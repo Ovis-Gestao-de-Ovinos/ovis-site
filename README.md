@@ -12,7 +12,7 @@ Abra `http://localhost:8765`. Também funciona abrindo `index.html` diretamente.
 
 ## Conteúdo e origem
 
-A paleta (`#1E4D2B`, `#4CAF50`), marca e direção de tipografia vêm de `ovis-front-mob/src/theme/` e `context.md`. O ícone e favicon foram copiados de `ovis-front-mob/assets/`. A ficha da Estrela e os indicadores do painel usam **dados simulados** de `src/mocks/data.ts`. A prévia do produto é uma interpretação HTML das telas, não uma captura nem acesso ao aplicativo.
+A paleta (`#1E4D2B`, `#4CAF50`) e a direção de tipografia vêm de `ovis-front-mob/src/theme/` e `context.md`. A marca verde com ovelha branca foi fornecida pela equipe Ovis e recortada apenas para retirar a margem externa e um artefato da imagem; `assets/icon.png` aparece no cabeçalho, rodapé e prévia do app, e `assets/favicon.png` é a versão reduzida. A ficha da Estrela e os indicadores do painel usam **dados simulados** de `src/mocks/data.ts`. A prévia do produto é uma interpretação HTML das telas, não uma captura nem acesso ao aplicativo.
 
 ## Preços e simulador
 
