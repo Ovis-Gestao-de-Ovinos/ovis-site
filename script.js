@@ -57,6 +57,9 @@ function renderPrices() {
     return;
   }
   note.hidden = false;
+  note.textContent = annual
+    ? 'O valor principal é o total pago por ano; mostramos também o equivalente mensal para comparar.'
+    : 'No pagamento anual, o total dos 12 meses tem 15% de desconto.';
   tierCaption.textContent = `Faixa: ${tier.label}`;
   rangeLabel.textContent = tier.label.toLocaleUpperCase('pt-BR');
   results.replaceChildren(...tier.plans.map(([monthly, yearly, yearlyEquivalent], index) => {
