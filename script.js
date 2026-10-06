@@ -103,9 +103,9 @@ renderPrices();
 // Motion is progressive enhancement: everything remains visible without JS or animation.
 if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   animate('.hero-copy .eyebrow, .hero-copy h1, .hero-copy > p, .hero-actions', {
-    opacity: [0, 1], y: [20, 0], delay: stagger(100), duration: 750, ease: 'outCubic',
+    opacity: [0.82, 1], y: [9, 0], delay: stagger(65), duration: 420, ease: 'outCubic',
   });
-  animate('.phone', { opacity: [0, 1], y: [28, 0], duration: 1000, ease: 'outCubic' });
+  animate('.product-shot', { opacity: [0.85, 1], y: [12, 0], duration: 520, ease: 'outCubic' });
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries, current) => {
       entries.forEach((entry) => {
@@ -114,6 +114,6 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         current.unobserve(entry.target);
       });
     }, { threshold: 0.12 });
-    document.querySelectorAll('.section-intro, .showcase, .routine-grid article, .pricing-intro, .calculator, .state-grid').forEach((element) => observer.observe(element));
+    document.querySelectorAll('.section-intro, .showcase, .routine-steps article, .field-note-inner, .pricing-intro, .calculator, .state-grid').forEach((element) => observer.observe(element));
   }
 }

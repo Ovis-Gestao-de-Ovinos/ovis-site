@@ -12,7 +12,7 @@ Abra `http://localhost:8765`. Também funciona abrindo `index.html` diretamente.
 
 ## Conteúdo e origem
 
-A paleta (`#1E4D2B`, `#4CAF50`) e a direção de tipografia vêm de `ovis-front-mob/src/theme/` e `context.md`. A marca verde com ovelha branca foi fornecida pela equipe Ovis e recortada apenas para retirar a margem externa e um artefato da imagem; `assets/icon.png` aparece no cabeçalho, rodapé e prévia do app, e `assets/favicon.png` é a versão reduzida. A ficha da Estrela e os indicadores do painel usam **dados simulados** de `src/mocks/data.ts`. A prévia do produto é uma interpretação HTML das telas, não uma captura nem acesso ao aplicativo.
+A paleta (`#1E4D2B`, `#4CAF50`) e a tipografia vêm de `ovis-front-mob/src/theme/`. A marca foi fornecida pela equipe Ovis. A imagem `assets/desktop-map.webp` é uma captura da demonstração desktop publicada em `/desktop/`, recortada para mostrar o produto; a prévia com abas abaixo é uma interpretação HTML das telas mobile. A ficha da Estrela e os indicadores usam **dados simulados**. O mapa é esquemático, não georreferenciado.
 
 ## Preços e simulador
 
@@ -22,7 +22,7 @@ As linhas `250*` e `500*` não trazem a explicação do asterisco. O site **assu
 
 ## Estado do produto
 
-O app original continua sendo um protótipo demonstrativo sem autenticação, servidor ou assinatura ativa. A calculadora é informativa; o site não processa pagamentos.
+O app original continua sendo um protótipo demonstrativo sem autenticação, servidor ou assinatura ativa. O CTA "Abrir demonstração" leva ao front desktop em `/desktop/`; as movimentações são salvas somente no navegador do visitante, sem sincronização com o app mobile. A calculadora é informativa; o site não processa pagamentos.
 
 ## Referências e animação
 
@@ -39,5 +39,5 @@ node --check script.js
 
 - Confirmar asteriscos e diferenças de recursos entre Basic, Plus e Pro.
 - Definir canal de contato/contratação real para o CTA.
-- Substituir a prévia ilustrativa por capturas aprovadas do app, se desejado.
+- Atualizar a captura do mapa quando o front desktop mudar.
 - Conectar domínio próprio, se disponível.
