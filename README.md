@@ -12,7 +12,7 @@ Abra `http://localhost:8765`. Também funciona abrindo `index.html` diretamente.
 
 ## Conteúdo e origem
 
-A paleta (`#1E4D2B`, `#4CAF50`) e a tipografia vêm de `ovis-front-mob/src/theme/`. A marca foi fornecida pela equipe Ovis. A imagem `assets/desktop-map.webp` é uma captura da demonstração desktop publicada em `/desktop/`, recortada para mostrar o produto; a prévia com abas abaixo é uma interpretação HTML das telas mobile. A ficha da Estrela e os indicadores usam **dados simulados**. O mapa é esquemático, não georreferenciado.
+A paleta e a tipografia vêm do app em `ovis-front-mob/src/theme/`. A marca foi fornecida pela equipe Ovis. `assets/ovis-mobile.webp` e `assets/ovis-ficha.webp` são capturas do protótipo mobile executado no navegador; ambas exibem dados simulados. A prévia desktop em `/desktop/` é separada e usa um mapa esquemático, sem localização real.
 
 ## Preços e simulador
 
@@ -22,16 +22,16 @@ As linhas `250*` e `500*` não trazem a explicação do asterisco. O site **assu
 
 ## Estado do produto
 
-O app original continua sendo um protótipo demonstrativo sem autenticação, servidor ou assinatura ativa. O CTA "Abrir demonstração" leva ao front desktop em `/desktop/`; as movimentações são salvas somente no navegador do visitante, sem sincronização com o app mobile. A calculadora é informativa; o site não processa pagamentos.
+O app mobile continua sendo um protótipo demonstrativo sem conta, servidor ou assinatura ativa nesta versão. O link para `/desktop/` é secundário; as movimentações no mapa ficam somente no navegador do visitante, sem sincronização com o app mobile. A calculadora é informativa; o site não processa pagamentos.
 
-## Referências e animação
+## Animação
 
-Direção editorial, não cópia: [Encyclopedia of the Farm](https://www.awwwards.com/sites/encyclopedia-of-the-farm) (ritmo editorial), [Farm Minerals](https://www.awwwards.com/sites/farm-minerals) (narrativa agrícola e interação) e [Diesel Farm](https://www.awwwards.com/sites/diesel-farm) (contraste verde/creme). Anime.js 4.5.0 está em `vendor/` com licença MIT; é usado em entrada e transições com respeito a `prefers-reduced-motion`. A interface funciona sem movimento.
+Anime.js 4.5.0 está em `vendor/` com licença MIT. O cálculo de preços usa uma transição discreta quando a pessoa muda a faixa; com `prefers-reduced-motion`, não há animação. O conteúdo permanece disponível sem movimento.
 
 ## Verificação
 
 ```bash
-node --test tests/pricing.test.mjs
+node --test tests/*.test.mjs
 node --check script.js
 ```
 
@@ -39,5 +39,5 @@ node --check script.js
 
 - Confirmar asteriscos e diferenças de recursos entre Basic, Plus e Pro.
 - Definir canal de contato/contratação real para o CTA.
-- Atualizar a captura do mapa quando o front desktop mudar.
+- Atualizar as capturas do app mobile quando suas telas mudarem.
 - Conectar domínio próprio, se disponível.

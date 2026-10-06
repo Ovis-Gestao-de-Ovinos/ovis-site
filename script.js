@@ -1,31 +1,6 @@
 import { animate, stagger } from './vendor/anime.esm.min.js';
 import { money, PLAN_NAMES, tierFor } from './pricing.js';
 
-const tabs = Array.from(document.querySelectorAll('.product-tab'));
-const panels = Array.from(document.querySelectorAll('.preview-panel'));
-
-function selectTab(tab, focus = false) {
-  tabs.forEach((item) => {
-    const selected = item === tab;
-    item.classList.toggle('active', selected);
-    item.setAttribute('aria-selected', String(selected));
-    item.tabIndex = selected ? 0 : -1;
-  });
-  panels.forEach((panel) => { panel.hidden = panel.id !== `panel-${tab.dataset.tab}`; });
-  if (focus) tab.focus();
-}
-
-tabs.forEach((tab, index) => {
-  tab.addEventListener('click', () => selectTab(tab));
-  tab.addEventListener('keydown', (event) => {
-    if (!['ArrowDown', 'ArrowRight', 'ArrowUp', 'ArrowLeft', 'Home', 'End'].includes(event.key)) return;
-    event.preventDefault();
-    const next = event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 :
-      (index + (['ArrowDown', 'ArrowRight'].includes(event.key) ? 1 : -1) + tabs.length) % tabs.length;
-    selectTab(tabs[next], true);
-  });
-});
-
 document.getElementById('year').textContent = new Date().getFullYear();
 
 const herdInput = document.getElementById('herd-size');
@@ -99,21 +74,3 @@ document.getElementById('herd-minus').addEventListener('click', () => { herdInpu
 document.getElementById('herd-plus').addEventListener('click', () => { herdInput.value = String(Math.max(1, (Number(herdInput.value) || 0) + 1)); renderPrices(); });
 document.querySelectorAll('input[name="billing"]').forEach((radio) => radio.addEventListener('change', renderPrices));
 renderPrices();
-
-// Motion is progressive enhancement: everything remains visible without JS or animation.
-if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  animate('.hero-copy .eyebrow, .hero-copy h1, .hero-copy > p, .hero-actions', {
-    opacity: [0.82, 1], y: [9, 0], delay: stagger(65), duration: 420, ease: 'outCubic',
-  });
-  animate('.product-shot', { opacity: [0.85, 1], y: [12, 0], duration: 520, ease: 'outCubic' });
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries, current) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        animate(entry.target, { opacity: [0.65, 1], y: [16, 0], duration: 700, ease: 'outCubic' });
-        current.unobserve(entry.target);
-      });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.section-intro, .showcase, .routine-steps article, .field-note-inner, .pricing-intro, .calculator, .state-grid').forEach((element) => observer.observe(element));
-  }
-}
