@@ -1,6 +1,6 @@
 # Ovis — site do produto
 
-Landing page estática em português para apresentar o protótipo Ovis. A estrutura é: introdução, capturas reais do mobile, rotina, prévia desktop secundária, calculadora e limitações. Implementada com HTML, CSS e JavaScript sem etapa de build. A hierarquia editorial e o uso de respiro foram inspirados pela Abacate Pay, sem reproduzir sua identidade visual ou conteúdo.
+Landing page estática em português para apresentar o Ovis. Direção editorial fotográfica: hero no campo, manifesto, respiro entre seções, captura real do app, calculadora e limites da demonstração. Implementada com HTML, CSS e JavaScript sem etapa de build. A hierarquia da Abacate Pay e o ritmo visual das referências agro foram usados como inspiração, sem reproduzir sua identidade ou conteúdo.
 
 ## Executar
 
@@ -8,13 +8,13 @@ Landing page estática em português para apresentar o protótipo Ovis. A estrut
 python3 -m http.server 8765
 ```
 
-Abra `http://localhost:8765`. Também funciona abrindo `index.html` diretamente.
+Abra `http://localhost:8765`. Use um servidor local: o script usa módulos JavaScript e pode ser bloqueado pelo navegador quando aberto por `file://`.
 
 ## Conteúdo e origem
 
-A paleta e a tipografia vêm do app em `ovis-front-mob/src/theme/`. A marca foi fornecida pela equipe Ovis. `assets/ovis-mobile.webp` e `assets/ovis-ficha.webp` são capturas do protótipo mobile executado no navegador; ambas exibem dados simulados. A prévia desktop em `/desktop/` é separada e usa um mapa esquemático, sem localização real.
+A marca foi fornecida pela equipe Ovis. `assets/ovis-ficha.webp` é uma captura do protótipo mobile em execução, com dados simulados; `assets/ovis-mobile.webp` permanece disponível, mas não aparece nesta composição. As fotografias do campo são do Unsplash, creditadas no rodapé: Nick Cozier, Clovis Wood e Jiang Xiaopei. A prévia desktop em `/desktop/` é separada e usa um mapa esquemático, sem localização real.
 
-A página usa `styles.css` e `enhancements.css` para a calculadora e `site-v2.css` para a composição atual. O arquivo antigo de direção visual foi removido.
+A página usa `styles.css` e `enhancements.css` para a calculadora e `field-notes.css` para a nova composição. Animações editoriais usam CSS e IntersectionObserver; sem JavaScript o conteúdo permanece visível.
 
 ## Preços e simulador
 

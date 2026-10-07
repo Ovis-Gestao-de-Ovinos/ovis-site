@@ -77,3 +77,18 @@ document.getElementById('herd-minus').addEventListener('click', () => { herdInpu
 document.getElementById('herd-plus').addEventListener('click', () => { herdInput.value = String(Math.max(1, (Number(herdInput.value) || 0) + 1)); renderPrices(); });
 document.querySelectorAll('input[name="billing"]').forEach((radio) => radio.addEventListener('change', renderPrices));
 renderPrices();
+
+// Reveal only when motion is welcome; static content remains readable without JavaScript.
+if (window.IntersectionObserver && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const revealItems = [...document.querySelectorAll('[data-reveal]')];
+  const observer = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        observer.unobserve(entry.target);
+      }
+    }
+  }, { threshold: 0.08, rootMargin: '0px 0px 40px 0px' });
+  revealItems.forEach((item) => observer.observe(item));
+  document.documentElement.classList.add('has-motion');
+}
