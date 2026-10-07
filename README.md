@@ -30,6 +30,12 @@ O app mobile continua sendo um protótipo demonstrativo sem conta, servidor ou a
 
 Anime.js 4.5.0 está em `vendor/` com licença MIT. O cálculo de preços usa uma transição discreta quando a pessoa muda a faixa; com `prefers-reduced-motion`, não há animação. O conteúdo permanece disponível sem movimento.
 
+## SEO e descoberta por buscadores
+
+A página usa título e descrição descritivos, canonical absoluto para `/ovis-site/`, metadados Open Graph/Twitter, imagem social própria, linguagem `pt-BR`, conteúdo principal em HTML, JSON-LD `WebSite` e `sitemap.xml` com a home. O texto identifica o público (produtores de ovinos e equipes de fazenda) e deixa claro que o aplicativo exibido é um protótipo com dados simulados. Não publicamos marcação `SoftwareApplication` para rich results porque faltam avaliações e uma oferta comercial validada; não inventar esses campos.
+
+A documentação do Google não exige marcação especial para AI Overviews/AI Mode: indexação, snippet elegível e boas práticas de SEO continuam sendo o caminho. O sitemap está disponível em `https://ovis-gestao-de-ovinos.github.io/ovis-site/sitemap.xml`; para solicitar indexação, a equipe precisa verificar a propriedade no Search Console e enviá-lo. `robots.txt` em um subdiretório do GitHub Pages não controlaria o host `github.io`, por isso não foi criado. Quando houver domínio próprio, atualizar canonical, URL social, JSON-LD e sitemap em conjunto. Não confundir site tecnicamente indexável com ranqueamento garantido.
+
 ## Verificação
 
 ```bash
