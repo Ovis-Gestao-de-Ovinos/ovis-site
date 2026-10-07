@@ -2,6 +2,9 @@ import { animate, stagger } from './vendor/anime.esm.min.js';
 import { money, PLAN_NAMES, tierFor } from './pricing.js';
 
 document.getElementById('year').textContent = new Date().getFullYear();
+document.querySelectorAll('.mobile-nav nav a').forEach((link) => link.addEventListener('click', () => {
+  document.querySelector('.mobile-nav').open = false;
+}));
 
 const herdInput = document.getElementById('herd-size');
 const herdRange = document.getElementById('herd-range');

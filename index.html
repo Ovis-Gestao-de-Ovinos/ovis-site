@@ -3,46 +3,52 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#1e4d2b">
-  <meta name="description" content="Conheça o aplicativo Ovis para rebanhos ovinos: animais por lote, fichas, pesagens e manejos. Veja capturas do protótipo mobile e compare valores.">
-  <title>Ovis — Gestão de rebanhos ovinos no celular</title>
+  <meta name="theme-color" content="#f8f9f4">
+  <meta name="description" content="Conheça o Ovis: rebanho por lote, ficha de cada animal e manejos no celular. Veja o protótipo e compare os valores de referência.">
+  <title>Ovis — Gestão de rebanhos ovinos</title>
   <link rel="icon" href="assets/favicon.png?v=logo2" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="enhancements.css">
-  <link rel="stylesheet" href="art-direction.css">
+  <link rel="stylesheet" href="site-v2.css">
   <script type="module" src="script.js"></script>
 </head>
 <body>
   <a class="skip" href="#conteudo">Pular para o conteúdo</a>
-  <header class="site-header">
-    <div class="wrap header-inner">
-      <a class="brand" href="#inicio" aria-label="Ovis — início"><span class="brand-icon"><img src="assets/icon.png?v=logo2" alt=""></span><span>ovis<span class="brand-period">.</span></span></a>
-      <nav aria-label="Navegação principal" class="desktop-nav"><a href="#produto">O aplicativo</a><a href="#rotina">Como funciona</a><a href="#precos">Valores</a></nav>
-      <a class="header-cta" href="#precos">Ver valores <span aria-hidden="true">↗</span></a>
-    </div>
-  </header>
-  <main id="conteudo">
-    <section class="hero" id="inicio" aria-labelledby="hero-title">
-      <div class="wrap hero-inner">
-        <div class="hero-copy">
-          <span class="eyebrow">OVIS · GESTÃO DE OVINOS</span>
-          <h1 id="hero-title">Antes da próxima pesagem, consulte a última.</h1>
-          <p>Encontre a ovelha pelo lote e abra a ficha no celular. Pesagens, sanidade e reprodução ficam junto do animal. Esta prévia usa dados de demonstração.</p>
-          <div class="hero-actions"><a class="button button-light" href="#produto">Conhecer o aplicativo <span aria-hidden="true">↓</span></a><a class="text-link" href="#precos">Ver valores</a></div>
+  <div class="site-shell">
+    <header class="site-header" id="inicio">
+      <div class="wrap header-inner">
+        <a class="brand" href="#inicio" aria-label="Ovis, voltar ao início"><img src="assets/icon.png?v=logo2" width="36" height="36" alt=""><span>ovis<span class="brand-period">.</span></span></a>
+        <nav aria-label="Navegação principal" class="desktop-nav"><a href="#produto">O aplicativo</a><a href="#rotina">Na rotina</a><a href="#precos">Valores</a></nav>
+        <a class="header-cta" href="#precos">Simular valores <span aria-hidden="true">↗</span></a>
+        <details class="mobile-nav"><summary aria-label="Abrir navegação"><span></span><span></span><span></span></summary><nav aria-label="Navegação mobile"><a href="#produto">O aplicativo</a><a href="#rotina">Na rotina</a><a href="#precos">Valores</a></nav></details>
+      </div>
+    </header>
+    <main id="conteudo">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="wrap hero-copy">
+          <span class="eyebrow">GESTÃO DE REBANHOS OVINOS</span>
+          <h1 id="hero-title">A última pesagem está na ficha.</h1>
+          <p>Encontre cada animal por lote e consulte seus registros no celular. Veja o protótipo do Ovis em uso.</p>
+          <div class="hero-actions"><a class="button button-primary" href="#produto">Ver aplicativo <span aria-hidden="true">↗</span></a><a class="text-link" href="#precos">Valores <span aria-hidden="true">↓</span></a></div>
         </div>
-        <figure class="hero-stage"><div class="stage-label">O aplicativo / início</div><img src="assets/ovis-mobile.webp" width="780" height="1688" alt="Tela inicial do aplicativo Ovis: resumo do rebanho, manejos pendentes e ações rápidas" fetchpriority="high"><figcaption>Captura do protótipo mobile · dados simulados</figcaption></figure>
-      </div>
-    </section>
-    <section id="produto" class="app-story section-pad" aria-labelledby="product-title">
-      <div class="wrap app-story-inner">
-        <div class="story-copy"><span class="kicker">NA FICHA DO ANIMAL</span><h2 id="product-title">Estrela, OV-1048.<br>Lote Aurora.</h2><p>Na lista do rebanho, a Estrela aparece ao lado dos outros animais do lote. Ao abrir a ficha, você encontra a pesagem, o ganho médio diário e os registros de manejo dela.</p><p class="story-note">Captura do protótipo mobile com dados simulados.</p></div>
-        <figure class="profile-stage"><img src="assets/ovis-ficha.webp" width="780" height="1688" loading="lazy" alt="Ficha da ovelha Estrela no aplicativo Ovis, com peso de 78,4 kg e curva de peso"><figcaption>Ficha da Estrela / visão geral</figcaption></figure>
-      </div>
-    </section>
-    <section id="rotina" class="how-section section-pad" aria-labelledby="how-title"><div class="wrap how-layout"><div><span class="kicker">UMA VOLTA PELO APLICATIVO</span><h2 id="how-title">Antes do manejo, abra a ficha.</h2></div><div class="how-content"><p>Abra a lista de animais, escolha um lote e consulte a ficha. Na demonstração mobile, você pode explorar pesagens, manejos e reprodução com os animais de exemplo.</p><p>Para visualizar movimentações entre lotes, existe também uma <a href="desktop/">prévia separada para desktop ↗</a>. O mapa é esquemático; as alterações ficam neste navegador e não são enviadas ao aplicativo.</p></div></div></section>
+        <div class="product-scene" aria-label="Captura do protótipo mobile Ovis, com dados de demonstração">
+          <div class="scene-heading"><span>OVIS / APLICATIVO</span><span>DADOS DE DEMONSTRAÇÃO</span></div>
+          <div class="scene-body"><div class="scene-note"><span class="scene-rule"></span><p>O rebanho por lote.<br>A rotina na tela.</p><small>Captura do protótipo. Dados simulados.</small></div><img class="scene-phone" src="assets/ovis-mobile.webp" width="780" height="1688" alt="Tela inicial do Ovis com resumo do rebanho, manejos pendentes e ações rápidas" fetchpriority="high"></div>
+        </div>
+        <div class="scene-foot"><span>Uma ficha para cada animal</span><span>Pesagens, sanidade e reprodução</span><a href="#produto" aria-label="Ir para a seção do aplicativo">Explore o produto ↓</a></div>
+      </section>
+      <section id="produto" class="product-section" aria-labelledby="product-title">
+        <div class="wrap section-heading"><div><span class="eyebrow">DENTRO DO APLICATIVO</span><h2 id="product-title">Cada animal tem uma ficha.<br>Esta é a da Estrela.</h2></div><p>A Estrela aparece no Lote Aurora. Abra a ficha para conferir a última pesagem e os outros registros disponíveis no protótipo.</p></div>
+        <div class="product-detail">
+          <div class="detail-screen"><span class="screen-label">FICHA / OV-1048</span><img src="assets/ovis-ficha.webp" width="780" height="1688" loading="lazy" alt="Ficha demonstrativa da ovelha Estrela, com peso e curva de pesagens"></div>
+          <div class="detail-copy"><span class="eyebrow">REGISTRO POR ANIMAL</span><h3>Estrela <span>OV-1048</span></h3><p>Na prévia, a ficha mostra as pesagens da Estrela, sua curva de peso e informações de reprodução. O lote aparece junto da identificação.</p><div class="detail-facts"><div><span>LOTE</span><strong>Aurora</strong></div><div><span>PESO NA PRÉVIA</span><strong>78,4 kg</strong></div></div><small>Captura do aplicativo em execução, com dados simulados.</small></div>
+        </div>
+      </section>
+      <section id="rotina" class="routine-section" aria-labelledby="routine-title"><div class="wrap routine-inner"><div class="routine-lead"><span class="eyebrow">NA ROTINA</span><h2 id="routine-title">O que você encontra no Ovis.</h2><p>As capturas mostram partes da rotina no protótipo mobile. Os exemplos de animais e manejos são simulados.</p></div><div class="routine-list"><article><span>01</span><div><h3>Rebanho por lote</h3><p>Abra a lista e encontre um animal pelo nome, brinco ou lote.</p></div></article><article><span>02</span><div><h3>Ficha individual</h3><p>Consulte pesagens, sanidade e reprodução na ficha daquele animal.</p></div></article><article><span>03</span><div><h3>Manejos pendentes</h3><p>Veja os cuidados previstos e os registros da demonstração.</p></div></article></div></div></section>
+      <section class="desktop-note"><div class="wrap desktop-note-inner"><div><span class="eyebrow">TAMBÉM NO DESKTOP</span><h2>Uma outra forma de olhar os lotes.</h2><p>A prévia desktop mostra os animais em um mapa esquemático. Você pode mover uma ovelha de lote e abrir sua ficha; as mudanças ficam só neste navegador e não sincronizam com o app mobile.</p></div><a class="button button-outline" href="desktop/">Explorar o mapa demonstrativo <span aria-hidden="true">↗</span></a></div></section>
     <section id="precos" class="pricing-section section-pad" aria-labelledby="pricing-title">
       <div class="wrap">
         <div class="pricing-intro"><span class="kicker">VALORES DE REFERÊNCIA</span><h2 id="pricing-title">Quantos ovinos estão no seu rebanho?</h2><p>Digite a quantidade e compare os preços da tabela enviada pela equipe para Basic, Plus e Pro. Esta simulação não indica um plano ideal nem inicia uma assinatura.</p></div>
@@ -68,8 +74,9 @@
         <p class="pricing-footnote">As faixas de 250 e 500 aparecem com asterisco na tabela original, sem explicação das condições. Aqui são interpretadas como até 250 e até 500 ovinos; confirme a regra comercial antes de contratar. Acima de 500 ovinos, não há preço informado. As diferenças de recursos entre Basic, Plus e Pro ainda não foram fornecidas.</p>
       </div>
     </section>
-    <section id="estado" class="state-section"><div class="wrap state-inner"><span class="kicker">SOBRE A PRÉVIA</span><p>O aplicativo e o mapa usam dados simulados. Não há conta, sincronização entre as prévias ou assinatura ativa neste site. A calculadora acima compara os valores informados pela equipe; não processa pagamentos.</p></div></section>
-  </main>
-  <footer class="footer"><div class="wrap footer-top"><div><a class="brand footer-brand" href="#inicio"><span class="brand-icon"><img src="assets/icon.png?v=logo2" alt=""></span><span>ovis<span class="brand-period">.</span></span></a><p>Rebanho, manejo e histórico de cada animal.</p></div><a href="#inicio">Voltar ao topo ↑</a></div><div class="wrap footer-bottom"><span>© <span id="year"></span> Ovis</span><span>Feito para a ovinocultura.</span></div></footer>
+      <div id="estado" class="disclosure"><div class="wrap"><strong>Sobre a demonstração</strong><p>As capturas do app e o mapa usam dados simulados. Não há conta, sincronização entre as prévias ou assinatura ativa neste site. A calculadora compara os valores informados pela equipe; não processa pagamentos.</p></div></div>
+    </main>
+    <footer class="footer"><div class="wrap footer-main"><div><a class="brand footer-brand" href="#inicio"><img src="assets/icon.png?v=logo2" width="36" height="36" alt=""><span>ovis<span class="brand-period">.</span></span></a><p>Gestão de rebanhos ovinos.</p></div><nav aria-label="Links do rodapé"><a href="#produto">O aplicativo</a><a href="#precos">Valores</a><a href="desktop/">Prévia desktop</a></nav></div><div class="wrap footer-bottom"><span>© <span id="year"></span> Ovis</span><a href="#inicio">Voltar ao topo ↑</a></div></footer>
+  </div>
 </body>
 </html>
