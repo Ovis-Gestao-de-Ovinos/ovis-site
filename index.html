@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#183729">
-  <meta name="description" content="Conheça o Ovis, aplicativo de gestão de rebanhos ovinos pensado para produtores e equipes. Veja a prévia da ficha por animal e compare valores de referência.">
+  <meta name="description" content="Ovis: gestão de rebanhos ovinos para produtores e equipes. Conheça o aplicativo e os planos: 14 dias grátis, Plus a partir de R$ 309,90 e Pro a partir de R$ 359,90.">
   <title>Ovis | Gestão de rebanhos ovinos no celular</title>
   <link rel="canonical" href="https://ovis-gestao-de-ovinos.github.io/ovis-site/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:site_name" content="Ovis">
   <meta property="og:title" content="Ovis | Gestão de rebanhos ovinos no celular">
-  <meta property="og:description" content="Um aplicativo pensado para quem cria ovinos. Conheça a prévia do Ovis e compare os valores para o seu rebanho.">
+  <meta property="og:description" content="Seu rebanho ovino, animal por animal. Conheça a prévia e os planos Ovis.">
   <meta property="og:url" content="https://ovis-gestao-de-ovinos.github.io/ovis-site/">
   <meta property="og:image" content="https://ovis-gestao-de-ovinos.github.io/ovis-site/assets/ovis-social.jpg">
   <meta property="og:image:width" content="1200">
@@ -26,6 +26,7 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="enhancements.css">
   <link rel="stylesheet" href="field-notes.css">
+  <link rel="stylesheet" href="landing.css">
   <script type="module" src="script.js"></script>
 </head>
 <body>
@@ -34,9 +35,9 @@
     <header class="site-header" id="inicio">
       <div class="wrap header-inner">
         <a class="brand" href="#inicio" aria-label="Ovis, voltar ao início"><img src="assets/icon.png?v=logo2" width="36" height="36" alt=""><span>ovis<span class="brand-period">.</span></span></a>
-        <nav aria-label="Navegação principal" class="desktop-nav"><a href="#visao">Nossa visão</a><a href="#produto">O aplicativo</a><a href="#precos">Valores</a></nav>
-        <a class="header-cta" href="#produto">Conheça o Ovis <span aria-hidden="true">↗</span></a>
-        <details class="mobile-nav"><summary aria-label="Abrir navegação"><span></span><span></span><span></span></summary><nav aria-label="Navegação mobile"><a href="#visao">Nossa visão</a><a href="#produto">O aplicativo</a><a href="#precos">Valores</a></nav></details>
+        <nav aria-label="Navegação principal" class="desktop-nav"><a href="#visao">Nossa visão</a><a href="#produto">O aplicativo</a><a href="#rotina">Na rotina</a><a href="#precos">Planos</a><a href="#perguntas">Dúvidas</a></nav>
+        <a class="header-cta" href="#precos">Conheça os planos <span aria-hidden="true">↗</span></a>
+        <details class="mobile-nav"><summary aria-label="Abrir navegação"><span></span><span></span><span></span></summary><nav aria-label="Navegação mobile"><a href="#visao">Nossa visão</a><a href="#produto">O aplicativo</a><a href="#rotina">Na rotina</a><a href="#precos">Planos</a><a href="#perguntas">Dúvidas</a></nav></details>
       </div>
     </header>
     <main id="conteudo">
@@ -46,8 +47,8 @@
         <div class="wrap field-hero-content">
           <span class="field-label light">OVIS &nbsp; / &nbsp; GESTÃO DE REBANHOS OVINOS</span>
           <h1 id="hero-title">Seu rebanho ovino,<br><em>animal por animal.</em></h1>
-          <p>Conheça o protótipo do Ovis, pensado para produtores de ovinos e equipes de fazenda. Veja os lotes e a ficha de cada animal no celular.</p>
-          <div class="field-actions"><a class="field-button light-button" href="#produto">Ver a prévia do app <span aria-hidden="true">↗</span></a><a class="field-text-link" href="#precos">Comparar valores ↓</a></div>
+          <p>Identificação, lotes e histórico em uma visão feita para produtores de ovinos e equipes de fazenda. Do campo à palma da mão.</p>
+          <div class="field-actions"><a class="field-button light-button" href="#produto">Conheça o aplicativo <span aria-hidden="true">↗</span></a><a class="field-text-link" href="#precos">Ver planos ↓</a></div>
         </div>
         <div class="field-hero-bottom"><span>PARA QUEM CRIA OVINOS</span><span>ROLE PARA EXPLORAR ↓</span></div>
       </section>
@@ -70,34 +71,22 @@
         </div>
         <div class="wrap product-outro"><p>Encontre a Estrela pelo lote. Consulte a ficha no celular.</p><span>Captura do protótipo em execução. Dados simulados.</span></div>
       </section>
-      <section class="field-manifesto" aria-labelledby="manifesto-title"><div class="wrap manifesto-grid"><span class="field-label light">03 / O QUE NOS MOVE</span><div data-reveal><h2 id="manifesto-title">Na lida, saber o que aconteceu com cada animal faz diferença.</h2><p>Conheça a prévia e compare valores de referência para o tamanho do seu rebanho.</p><a class="field-button outline-light" href="#precos">Comparar valores <span aria-hidden="true">↗</span></a></div><span class="manifesto-mark" aria-hidden="true">o.</span></div></section>
+      <section id="rotina" class="field-manifesto routine-section" aria-labelledby="routine-title"><div class="wrap manifesto-grid"><span class="field-label light">03 / NA ROTINA</span><div data-reveal><h2 id="routine-title">Do cadastro ao próximo manejo.</h2><p>A prévia reúne a ficha de cada animal e uma agenda para visualizar as tarefas do rebanho.</p><ol class="routine-list"><li><strong>01 / Identifique</strong><span>Encontre o animal pelo brinco e pelo lote.</span></li><li><strong>02 / Acompanhe</strong><span>Consulte pesagens e históricos demonstrativos.</span></li><li><strong>03 / Organize</strong><span>Explore os manejos e a rotina da fazenda.</span></li></ol></div><span class="manifesto-mark" aria-hidden="true">o.</span></div></section>
       <section class="field-desktop"><div class="wrap desktop-strip"><span class="field-label">TAMBÉM NO DESKTOP</span><p>Explore os lotes em uma demonstração para computador.</p><a class="inline-arrow" href="desktop/">Abrir prévia demonstrativa ↗</a></div></section>
     <section id="precos" class="pricing-section section-pad" aria-labelledby="pricing-title">
       <div class="wrap">
-        <div class="pricing-intro"><span class="kicker">VALORES DE REFERÊNCIA</span><h2 id="pricing-title">Compare os valores para o seu rebanho.</h2><p>Informe quantos ovinos você tem para ver os valores de referência de Basic, Plus e Pro. A simulação não recomenda um plano nem inicia uma assinatura.</p></div>
-        <div class="calculator">
-          <div class="calculator-control">
-            <div class="calc-index">01 — SEU REBANHO</div>
-            <label for="herd-size" class="calc-label">Quantos ovinos você tem?</label>
-            <div class="count-control"><button type="button" id="herd-minus" aria-label="Diminuir quantidade de ovinos">−</button><input id="herd-size" name="herd-size" type="number" min="1" step="1" inputmode="numeric" value="30"><button type="button" id="herd-plus" aria-label="Aumentar quantidade de ovinos">+</button></div>
-            <input id="herd-range" type="range" min="1" max="500" value="30" aria-label="Quantidade de ovinos, de 1 a 500">
-            <div class="range-ends"><span>1 ovino</span><span>500 ovinos</span></div>
-            <div class="tier-caption" id="tier-caption">Faixa: até 30 ovinos</div>
-            <div class="calc-index billing-index">02 — FORMA DE PAGAMENTO</div>
-            <fieldset class="billing-switch"><legend class="sr-only">Forma de pagamento</legend><label><input type="radio" name="billing" value="monthly" checked><span>Mensal</span></label><label><input type="radio" name="billing" value="annual"><span>Anual <strong>−15%</strong></span></label></fieldset>
-            <p class="calc-context">Valores informados na tabela enviada pela equipe Ovis. Simulação de preço, não contratação.</p>
-          </div>
-          <div class="calculator-results" aria-live="polite" aria-atomic="true">
-            <div class="result-heading"><span>VALORES PARA O SEU REBANHO</span><span id="result-range">ATÉ 30 OVINOS</span></div>
-            <div id="price-results" class="price-results"><article class="price-row"><div class="price-name"><strong>Basic</strong><small>Plano Basic</small></div><div class="price-value"><strong>R$ 259,90</strong><small>/ mês</small></div></article><article class="price-row"><div class="price-name"><strong>Plus</strong><small>Plano Plus</small></div><div class="price-value"><strong>R$ 309,90</strong><small>/ mês</small></div></article><article class="price-row"><div class="price-name"><strong>Pro</strong><small>Plano Pro</small></div><div class="price-value"><strong>R$ 359,90</strong><small>/ mês</small></div></article></div>
-            <noscript><p class="pricing-smallprint">Esses valores são para até 30 ovinos no pagamento mensal. Ative o JavaScript para simular outras faixas e o pagamento anual.</p></noscript>
-            <p class="pricing-smallprint" id="price-note">No pagamento anual, o total dos 12 meses tem 15% de desconto.</p>
-          </div>
+        <div class="pricing-intro"><span class="kicker">04 / PLANOS</span><h2 id="pricing-title">Comece a conhecer.<br><em>Escolha como crescer.</em></h2><p>Uma entrada simples para explorar o Ovis e duas opções para sua operação. Os preços abaixo são valores iniciais, sujeitos às condições de cada plano.</p><fieldset class="billing-switch"><legend>Escolha o período</legend><label><input type="radio" name="billing" value="monthly" checked><span>Mensal</span></label><label><input type="radio" name="billing" value="annual"><span>Anual <strong>15% de desconto</strong></span></label></fieldset></div>
+        <div class="plan-grid">
+          <article class="plan-card trial" data-reveal><div class="plan-top"><span class="plan-number">01 / EXPERIMENTE</span><h3>Teste grátis</h3><p class="plan-price">14 <span>dias grátis</span></p></div><p>Conheça o Ovis antes de escolher um plano.</p><a class="plan-action" href="#estado">Conhecer o teste <span aria-hidden="true">↗</span></a></article>
+          <article class="plan-card plus" data-reveal><div class="plan-top"><span class="plan-number">02 / PLANO</span><h3>Plus</h3><p class="price-prefix">a partir de</p><p class="plan-price" data-plan-price="Plus">R$ 309,90 <span>/ mês</span></p><p class="annual-equivalent" data-plan-equivalent="Plus" hidden></p></div><p>Para levar a organização do rebanho à rotina da fazenda.</p><a class="plan-action" href="#perguntas">Conhecer o Plus <span aria-hidden="true">↗</span></a></article>
+          <article class="plan-card pro" data-reveal><div class="plan-top"><span class="plan-number">03 / PLANO</span><h3>Pro</h3><p class="price-prefix">a partir de</p><p class="plan-price" data-plan-price="Pro">R$ 359,90 <span>/ mês</span></p><p class="annual-equivalent" data-plan-equivalent="Pro" hidden></p></div><p>Uma opção para evoluir o acompanhamento da operação.</p><a class="plan-action" href="#perguntas">Conhecer o Pro <span aria-hidden="true">↗</span></a></article>
         </div>
-        <p class="pricing-footnote">As faixas de 250 e 500 aparecem com asterisco na tabela original, sem explicação das condições. Aqui são interpretadas como até 250 e até 500 ovinos; confirme a regra comercial antes de contratar. Acima de 500 ovinos, não há preço informado. As diferenças de recursos entre Basic, Plus e Pro ainda não foram fornecidas.</p>
+        <p class="pricing-footnote">No anual, o total equivale a 12 mensalidades do preço inicial com 15% de desconto. “A partir de” indica o valor de entrada; limites por rebanho e diferenças de recursos serão confirmados antes de contratar. Este site não inicia assinaturas.</p>
       </div>
     </section>
-      <div id="estado" class="disclosure"><div class="wrap"><strong>Sobre a demonstração</strong><p>As capturas do app e o mapa usam dados simulados. Não há conta, sincronização entre as prévias ou assinatura ativa neste site. A calculadora compara os valores informados pela equipe; não processa pagamentos.</p></div></div>
+      <section id="perguntas" class="faq-section" aria-labelledby="faq-title"><div class="wrap faq-grid"><div><span class="field-label">05 / PERGUNTAS FREQUENTES</span><h2 id="faq-title">Boas perguntas<br><em>merecem clareza.</em></h2></div><div class="faq-list"><details><summary>Como funcionam os 14 dias grátis?</summary><p>O teste é a oferta de entrada apresentada pela Ovis. A ativação do teste e a contratação não acontecem neste site; o canal de acesso será informado antes de começar.</p></details><details><summary>Como funciona o desconto anual?</summary><p>O preço anual inicial equivale a 12 mensalidades com 15% de desconto. As demais condições serão confirmadas antes de contratar.</p></details><details><summary>O que muda entre Plus e Pro?</summary><p>A composição detalhada dos planos ainda não foi publicada. Não atribuímos recursos ou limites a um plano sem confirmação.</p></details><details><summary>O aplicativo e o desktop já compartilham dados?</summary><p>Não. As capturas do aplicativo usam dados simulados e a prévia desktop é separada. Não há sincronização entre elas nesta demonstração.</p></details></div></div></section>
+      <section class="closing-section" aria-labelledby="closing-title"><div class="wrap"><span class="field-label light">OVIS / REBANHO EM FOCO</span><h2 id="closing-title">A informação certa<br>começa em cada animal.</h2><a class="field-button light-button" href="#produto">Conhecer o aplicativo <span aria-hidden="true">↗</span></a></div></section>
+      <div id="estado" class="disclosure"><div class="wrap"><strong>Sobre esta prévia</strong><p>As imagens do aplicativo e o mapa usam dados simulados. A ativação do teste e a contratação não acontecem neste site. Não há conta ou sincronização entre as prévias, e o site não processa pagamentos.</p></div></div>
     </main>
     <footer class="footer"><div class="wrap footer-main"><div><a class="brand footer-brand" href="#inicio"><img src="assets/icon.png?v=logo2" width="36" height="36" alt=""><span>ovis<span class="brand-period">.</span></span></a><p>Gestão de rebanhos ovinos.</p></div><nav aria-label="Links do rodapé"><a href="#visao">Nossa visão</a><a href="#produto">O aplicativo</a><a href="#precos">Valores</a><a href="desktop/">Prévia desktop</a></nav></div><div class="wrap footer-bottom"><span>© <span id="year"></span> Ovis</span><span>Fotografia: <a href="https://unsplash.com/photos/close-up-photography-of-sheep-in-grass-field-zv9yI6jh00Q" rel="noopener noreferrer">Nick Cozier</a> · <a href="https://unsplash.com/photos/sheep-grazing-in-a-lush-green-pasture-with-rolling-hills-Rtr1WwcwkoU" rel="noopener noreferrer">Clovis Wood</a> · <a href="https://unsplash.com/photos/flock-of-sheep-grazing-in-a-green-grassy-field-1n4-qp6aYvw" rel="noopener noreferrer">Jiang Xiaopei</a></span><a href="#inicio">Voltar ao topo ↑</a></div></footer>
   </div>

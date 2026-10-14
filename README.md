@@ -1,6 +1,6 @@
 # Ovis — site do produto
 
-Landing page estática em português para apresentar o Ovis. Direção editorial fotográfica: hero no campo, manifesto, respiro entre seções, captura real do app, calculadora e limites da demonstração. Implementada com HTML, CSS e JavaScript sem etapa de build. A hierarquia da Abacate Pay e o ritmo visual das referências agro foram usados como inspiração, sem reproduzir sua identidade ou conteúdo.
+Landing page estática em português para apresentar o Ovis. A sequência editorial (abertura, capítulos do produto, planos e FAQ) se inspira na estrutura do subscrr.app, com conteúdo, fotografia e identidade visual próprios da Ovis. Implementada com HTML, CSS e JavaScript sem etapa de build.
 
 ## Executar
 
@@ -14,21 +14,21 @@ Abra `http://localhost:8765`. Use um servidor local: o script usa módulos JavaS
 
 A marca foi fornecida pela equipe Ovis. `assets/ovis-ficha.webp` é uma captura do protótipo mobile em execução, com dados simulados; `assets/ovis-mobile.webp` permanece disponível, mas não aparece nesta composição. As fotografias do campo são do Unsplash, creditadas no rodapé: Nick Cozier, Clovis Wood e Jiang Xiaopei. A prévia desktop em `/desktop/` é separada e usa um mapa esquemático, sem localização real.
 
-A página usa `styles.css` e `enhancements.css` para a calculadora e `field-notes.css` para a nova composição. Animações editoriais usam CSS e IntersectionObserver; sem JavaScript o conteúdo permanece visível.
+A página usa `styles.css`, `enhancements.css`, `field-notes.css` e `landing.css` para os novos capítulos e planos. Animações editoriais usam CSS e IntersectionObserver; sem JavaScript o conteúdo permanece visível e os valores mensais aparecem no HTML.
 
 ## Preços e simulador
 
-A calculadora exibe as 15 combinações da tabela fornecida pela equipe Ovis: 5 faixas de rebanho × Basic/Plus/Pro, com alternância mensal/anual. O valor anual é o total de 12 meses com 15% de desconto; o equivalente mensal é o valor da coluna enviada, arredondado a centavos.
+A página apresenta 14 dias grátis, Plus a partir de R$ 309,90/mês e Pro a partir de R$ 359,90/mês. A alternância anual mostra o total de 12 mensalidades com 15% de desconto: R$ 3.160,98/ano e R$ 3.670,98/ano, respectivamente. O equivalente mensal do anual é informativo.
 
-As linhas `250*` e `500*` não trazem a explicação do asterisco. O site **assume provisoriamente** 101–250 e 251–500 ovinos; acima de 500 não apresenta preço. O mensal Pro/500 está parcialmente coberto na imagem, mas o valor R$ 1.099,90 é confirmado pela coluna anual (R$ 11.218,98 ÷ 10,2). Diferenças de recursos entre os planos não foram informadas: não afirmar que um é ideal, nem inventar funcionalidades. Validar as condições comerciais antes de contratação.
+Não usamos a tabela antiga por faixa nem presumimos os recursos e limites de cada plano. As condições comerciais ainda precisam ser confirmadas antes da contratação.
 
 ## Estado do produto
 
-O app mobile continua sendo um protótipo demonstrativo sem conta, servidor ou assinatura ativa nesta versão. O link para `/desktop/` é secundário; as movimentações no mapa ficam somente no navegador do visitante, sem sincronização com o app mobile. A calculadora é informativa; o site não processa pagamentos.
+O app mobile continua sendo um protótipo demonstrativo sem conta, servidor ou assinatura ativa nesta versão. O link para `/desktop/` é secundário; as movimentações no mapa ficam somente no navegador do visitante, sem sincronização com o app mobile. O site apresenta os preços, mas não ativa o teste nem processa pagamentos. Os CTAs levam a seções informativas até existir um destino real de cadastro/contratação.
 
 ## Animação
 
-Anime.js 4.5.0 está em `vendor/` com licença MIT. O cálculo de preços usa uma transição discreta quando a pessoa muda a faixa; com `prefers-reduced-motion`, não há animação. O conteúdo permanece disponível sem movimento.
+Os capítulos usam CSS e IntersectionObserver; com `prefers-reduced-motion`, não há animação. O conteúdo permanece disponível sem movimento. O código de Anime.js legado permanece em `vendor/`, mas não é carregado pela página.
 
 ## SEO e descoberta por buscadores
 
@@ -45,7 +45,7 @@ node --check script.js
 
 ## Próximos passos antes de contratar
 
-- Confirmar asteriscos e diferenças de recursos entre Basic, Plus e Pro.
-- Definir canal de contato/contratação real para o CTA.
+- Confirmar diferenças de recursos, limites de rebanho e regras dos 14 dias entre Plus e Pro.
+- Definir um destino real de cadastro/contratação para os CTAs antes de prometer ativação automática.
 - Atualizar as capturas do app mobile quando suas telas mudarem.
 - Conectar domínio próprio, se disponível.
