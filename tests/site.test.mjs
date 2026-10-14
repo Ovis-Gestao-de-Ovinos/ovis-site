@@ -19,6 +19,18 @@ test('página usa identidade Ovis e ativos próprios', () => {
   assert.doesNotMatch(page, /Subscrr|Apple Watch|subscriptions/);
 });
 
+test('nova composição visual rompe com hero fotográfico de tela cheia e grade uniforme de planos', () => {
+  const redesign = readFileSync(new URL('../redesign.css', import.meta.url), 'utf8');
+  assert.match(page, /href="redesign\.css"/);
+  assert.match(page, /class="hero-app-preview"/);
+  assert.match(page, /class="hero-photo-label"/);
+  assert.match(redesign, /\.field-hero\s*\{/);
+  assert.match(redesign, /\.field-hero-photo\s*\{/);
+  assert.match(redesign, /\.pricing-section\s*>\s*\.wrap\s*\{/);
+  assert.match(redesign, /\.plan-card\.trial\s*\{/);
+  assert.match(redesign, /@media\s*\(max-width:\s*760px\)/);
+});
+
 test('planos novos substituem tabela antiga sem promessa de compra ou desconto', () => {
   assert.match(page, /14 dias grátis/);
   assert.match(page, /R\$ 309,90/);
