@@ -14,7 +14,7 @@ Abra `http://localhost:8765`. Use um servidor local: o script usa módulos JavaS
 
 A marca foi fornecida pela equipe Ovis. `assets/ovis-ficha.webp` é uma captura do protótipo mobile em execução, com dados simulados; `assets/ovis-mobile.webp` permanece disponível, mas não aparece nesta composição. As fotografias do campo são do Unsplash, creditadas no rodapé: Nick Cozier, Clovis Wood e Jiang Xiaopei. A prévia desktop em `/desktop/` é separada e usa um mapa esquemático, sem localização real.
 
-A página usa `styles.css`, `enhancements.css`, `field-notes.css` e `landing.css` para os novos capítulos e planos. Animações editoriais usam CSS e IntersectionObserver; sem JavaScript o conteúdo permanece visível e os valores mensais aparecem no HTML.
+A página usa `styles.css`, `enhancements.css`, `field-notes.css`, `landing.css` e `redesign.css`. A última camada recompõe o hero claro com fotografia recortada e captura do app, transforma a ponte fotográfica em capítulo dividido, amplia a prévia do produto e coloca os planos em uma comparação lateral com o teste gratuito em destaque. Animações editoriais usam CSS e IntersectionObserver; sem JavaScript o conteúdo permanece visível e os valores mensais aparecem no HTML.
 
 ## Preços e simulador
 
