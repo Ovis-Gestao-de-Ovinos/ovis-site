@@ -12,7 +12,7 @@ Abra `http://localhost:8765`. Use um servidor local: o script usa módulos JavaS
 
 ## Conteúdo e origem
 
-A marca foi fornecida pela equipe Ovis. `assets/ovis-ficha.webp` é uma captura do protótipo mobile em execução, com dados simulados; `assets/ovis-mobile.webp` permanece disponível, mas não aparece nesta composição. As fotografias do campo são do Unsplash, creditadas no rodapé: Nick Cozier, Clovis Wood e Jiang Xiaopei. A prévia desktop em `/desktop/` é separada e usa um mapa esquemático, sem localização real.
+A marca foi fornecida pela equipe Ovis. `assets/ovis-ficha.webp` é uma captura do protótipo mobile em execução, com dados simulados; `assets/ovis-mobile.webp` permanece disponível, mas não aparece nesta composição. As fotografias do campo são do Unsplash, creditadas no rodapé: Clovis Wood e Jiang Xiaopei. O vídeo do hero (`assets/video/`) foi fornecido pela equipe Ovis e convertido para web sem áudio: `hero.mp4` em 1080p (CRF 22) para telas grandes, `hero-mobile.mp4` em 720p para telas até 760px e `hero.jpg` como poster; com `prefers-reduced-motion` o vídeo não carrega. A prévia desktop em `/desktop/` é separada e usa um mapa esquemático, sem localização real.
 
 A página usa uma única folha, `site.css`: tema escuro, títulos em Bebas Neue, texto em Inter e verde Ovis como cor de destaque. A composição segue o ritmo do subscrr.app — hero fotográfico, frase que acende com o scroll, celular com a tela rolando, ficha do animal, manejos interativos, trilho de recursos, ponte fotográfica, planos, FAQ e encerramento.
 

@@ -14,6 +14,9 @@ test('página usa identidade Ovis e ativos próprios', () => {
   assert.match(page, /produtores de ovinos e equipes de fazenda/);
   assert.match(page, /assets\/ovis-ficha\.webp/);
   assert.match(page, /assets\/sheep-flock\.webp/);
+  assert.match(page, /<video poster="assets\/video\/hero\.jpg[^"]*" autoplay muted loop playsinline/);
+  assert.match(page, /data-src="assets\/video\/hero\.mp4[^"]*" data-src-mobile="assets\/video\/hero-mobile\.mp4/);
+  for (const f of ['hero.mp4', 'hero-mobile.mp4', 'hero.jpg']) assert.ok(existsSync(new URL(`../assets/video/${f}`, import.meta.url)));
   assert.match(css, /--accent:/);
   assert.ok(existsSync(new URL('../assets/ovis-ficha.webp', import.meta.url)));
   assert.doesNotMatch(page, /Subscrr|Apple Watch|subscriptions/);

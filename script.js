@@ -61,6 +61,20 @@ renderPrices();
 window.addEventListener('resize', movePill);
 document.fonts?.ready.then(movePill);
 
+// Vídeo do hero: versão Full HD no computador e 720p em telas pequenas.
+// Com menos movimento, o vídeo não carrega e fica só o poster.
+const heroVideo = $('[data-hero-video]');
+if (heroVideo && motion) {
+  const small = window.matchMedia('(max-width: 760px)').matches;
+  heroVideo.preload = 'auto';
+  heroVideo.src = small ? heroVideo.dataset.srcMobile : heroVideo.dataset.src;
+  heroVideo.play().catch(() => {});
+  // Navegadores adiam o autoplay em abas ocultas; retoma quando a aba aparece.
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible' && heroVideo.paused) heroVideo.play().catch(() => {});
+  });
+}
+
 // Manejos de demonstração: concluir/desfazer.
 $$('.task-done').forEach((button) => button.addEventListener('click', () => {
   const done = button.getAttribute('aria-pressed') !== 'true';
