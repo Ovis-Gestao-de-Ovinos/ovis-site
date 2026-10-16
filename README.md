@@ -28,7 +28,7 @@ O app mobile continua sendo um protótipo demonstrativo sem conta, servidor ou a
 
 ## Animação
 
-Tudo em JavaScript puro (`script.js`), sem biblioteca: títulos sobem de uma máscara linha a linha, blocos entram com desfoque, a frase da segunda seção acende palavra por palavra, a tela do celular rola junto com a página, os números contam, a foto da ponte tem parallax, o toggle de preços desliza e o FAQ abre suavemente. Sem JavaScript ou com `prefers-reduced-motion`, todo o conteúdo aparece estático. Ao mudar `site.css`, incremente o `?v=` no `<link>` para evitar cache.
+Tudo em JavaScript puro (`script.js`), sem biblioteca: títulos sobem de uma máscara linha a linha, blocos entram com desfoque, a frase da segunda seção acende palavra por palavra, a tela do celular rola junto com a página, os números contam, a foto da ponte tem parallax, o toggle de preços desliza e o FAQ abre suavemente. Sem JavaScript ou com `prefers-reduced-motion`, todo o conteúdo aparece estático. Ao mudar `site.css`, incremente o `?v=` no `<link>` e no `<script>` para evitar cache. A classe que esconde os elementos antes da animação (`motion-on`) só é aplicada pelo script atual, então um script antigo em cache nunca deixa a página sem texto.
 
 ## SEO e descoberta por buscadores
 

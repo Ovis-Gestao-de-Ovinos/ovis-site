@@ -260,11 +260,11 @@ html:not(.js) .billing input:checked + span { background: var(--accent); }
 .to-top.show { opacity: 1; transform: none; pointer-events: auto; }
 
 /* Animações de entrada (só com JS e movimento permitido) */
-.has-motion [data-lines] .line { display: block; overflow: hidden; padding: .16em 0 .1em; margin: -.16em 0 -.1em; }
-.has-motion [data-lines] .line > span { display: inline-block; transform: translateY(105%); filter: blur(8px); transition: transform 1.1s var(--ease), filter 1.1s var(--ease); transition-delay: calc(var(--i, 0) * 110ms); }
-.has-motion [data-lines].in-view .line > span { transform: none; filter: none; }
-.has-motion [data-rise] { opacity: 0; transform: translateY(28px); filter: blur(10px); transition: opacity .9s var(--ease), transform 1s var(--ease), filter 1s var(--ease); transition-delay: calc(var(--d, 0) * 1ms); }
-.has-motion [data-rise].in-view { opacity: 1; transform: none; filter: none; }
+.motion-on [data-lines] .line { display: block; overflow: hidden; padding: .16em 0 .1em; margin: -.16em 0 -.1em; }
+.motion-on [data-lines] .line > span { display: inline-block; transform: translateY(105%); filter: blur(8px); transition: transform 1.1s var(--ease), filter 1.1s var(--ease); transition-delay: calc(var(--i, 0) * 110ms); }
+.motion-on [data-lines].in-view .line > span { transform: none; filter: none; }
+.motion-on [data-rise] { opacity: 0; transform: translateY(28px); filter: blur(10px); transition: opacity .9s var(--ease), transform 1s var(--ease), filter 1s var(--ease); transition-delay: calc(var(--d, 0) * 1ms); }
+.motion-on [data-rise].in-view { opacity: 1; transform: none; filter: none; }
 [data-lines] .line { display: block; }
 
 /* Responsivo */

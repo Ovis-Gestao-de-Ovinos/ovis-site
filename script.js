@@ -70,7 +70,7 @@ const toTop = $('.to-top');
 
 // Daqui em diante, só movimento. Sem JS ou com menos movimento, tudo já está visível.
 if (motion && 'IntersectionObserver' in window) {
-  document.documentElement.classList.add('has-motion');
+  document.documentElement.classList.add('motion-on');
 
   // Escalonamento: linhas de um título e elementos irmãos entram em sequência.
   $$('[data-lines]').forEach((title) => $$('.line > span', title).forEach((span, i) => span.style.setProperty('--i', i)));
