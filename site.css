@@ -323,3 +323,10 @@ html:not(.js) .billing input:checked + span { background: var(--accent); }
 .thanks li { counter-increment: step; display: flex; gap: 14px; padding: 16px 18px; border-radius: 18px; background: var(--surface); border: 1px solid var(--line); color: var(--text-2); }
 .thanks li::before { content: counter(step, decimal-leading-zero); font: 400 22px/1.2 var(--display); color: var(--accent); }
 .thanks li strong { color: var(--text); }
+
+/* Contato */
+.inline-link { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.inline-link:hover { text-decoration-thickness: 2px; }
+.footer-contact .footer-tag { margin-top: 8px; text-align: left; }
+.thanks-actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.thanks .thanks-contact { font-size: 14px; color: var(--text-3); margin-top: 28px; }
