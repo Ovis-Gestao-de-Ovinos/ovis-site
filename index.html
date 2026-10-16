@@ -3,95 +3,251 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#183729">
-  <meta name="description" content="Ovis: gestão de rebanhos ovinos para produtores e equipes. Conheça o aplicativo e os planos: 14 dias grátis, Plus a partir de R$ 309,90 e Pro a partir de R$ 359,90.">
+  <meta name="theme-color" content="#0a0e0b">
+  <meta name="description" content="Ovis: gestão de rebanhos ovinos para produtores e equipes de fazenda. Ficha por animal, pesagens, manejos e lotes no celular. 14 dias grátis, Plus a partir de R$ 309,90 e Pro a partir de R$ 359,90.">
   <title>Ovis | Gestão de rebanhos ovinos no celular</title>
   <link rel="canonical" href="https://ovis-gestao-de-ovinos.github.io/ovis-site/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:site_name" content="Ovis">
   <meta property="og:title" content="Ovis | Gestão de rebanhos ovinos no celular">
-  <meta property="og:description" content="Seu rebanho ovino, animal por animal. Conheça a prévia e os planos Ovis.">
+  <meta property="og:description" content="Seu rebanho ovino, animal por animal. Conheça o Ovis e os planos.">
   <meta property="og:url" content="https://ovis-gestao-de-ovinos.github.io/ovis-site/">
   <meta property="og:image" content="https://ovis-gestao-de-ovinos.github.io/ovis-site/assets/ovis-social.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Ovis: seu rebanho ovino, animal por animal, sobre fotografia de ovelha no campo">
   <meta name="twitter:card" content="summary_large_image">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Ovis","url":"https://ovis-gestao-de-ovinos.github.io/ovis-site/","inLanguage":"pt-BR","description":"Prévia do aplicativo de gestão de rebanhos ovinos Ovis."}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Ovis","url":"https://ovis-gestao-de-ovinos.github.io/ovis-site/","inLanguage":"pt-BR","description":"Ovis, aplicativo de gestão de rebanhos ovinos para produtores e equipes de fazenda."}</script>
   <link rel="icon" href="assets/favicon.png?v=logo2" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="enhancements.css">
-  <link rel="stylesheet" href="field-notes.css">
-  <link rel="stylesheet" href="landing.css">
-  <link rel="stylesheet" href="redesign.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="site.css?v=4">
+  <script>document.documentElement.classList.add('js')</script>
   <script type="module" src="script.js"></script>
 </head>
 <body>
   <a class="skip" href="#conteudo">Pular para o conteúdo</a>
-  <div class="site-shell">
-    <header class="site-header" id="inicio">
-      <div class="wrap header-inner">
-        <a class="brand" href="#inicio" aria-label="Ovis, voltar ao início"><img src="assets/icon.png?v=logo2" width="36" height="36" alt=""><span>ovis<span class="brand-period">.</span></span></a>
-        <nav aria-label="Navegação principal" class="desktop-nav"><a href="#visao">Nossa visão</a><a href="#produto">O aplicativo</a><a href="#rotina">Na rotina</a><a href="#precos">Planos</a><a href="#perguntas">Dúvidas</a></nav>
-        <a class="header-cta" href="#precos">Conheça os planos <span aria-hidden="true">↗</span></a>
-        <details class="mobile-nav"><summary aria-label="Abrir navegação"><span></span><span></span><span></span></summary><nav aria-label="Navegação mobile"><a href="#visao">Nossa visão</a><a href="#produto">O aplicativo</a><a href="#rotina">Na rotina</a><a href="#precos">Planos</a><a href="#perguntas">Dúvidas</a></nav></details>
+
+  <header class="nav" id="inicio">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#inicio" aria-label="Ovis, voltar ao início"><img src="assets/icon.png?v=logo2" width="30" height="30" alt=""><span>Ovis</span></a>
+      <nav class="nav-links" aria-label="Navegação principal">
+        <a href="#visao">Visão geral</a><a href="#produto">Ficha</a><a href="#rotina">Manejos</a><a href="#recursos">Recursos</a><a href="#precos">Planos</a><a href="#perguntas">Dúvidas</a>
+      </nav>
+      <a class="btn btn-solid btn-sm" href="#precos">Teste grátis</a>
+      <details class="nav-mobile">
+        <summary aria-label="Abrir navegação"><span></span><span></span></summary>
+        <nav aria-label="Navegação mobile"><a href="#visao">Visão geral</a><a href="#produto">Ficha</a><a href="#rotina">Manejos</a><a href="#recursos">Recursos</a><a href="#precos">Planos</a><a href="#perguntas">Dúvidas</a></nav>
+      </details>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-photo" data-hero-photo><img src="assets/sheep-portrait.webp" width="1800" height="1200" alt="Ovelha olhando para a câmera em uma pastagem verde" fetchpriority="high"></div>
+      <div class="wrap hero-content">
+        <p class="eyebrow" data-rise>Ovis · Gestão de rebanhos ovinos para produtores de ovinos e equipes de fazenda.</p>
+        <h1 id="hero-title" class="display hero-title" data-lines>
+          <span class="line"><span>Seu rebanho ovino,</span></span>
+          <span class="line"><span>animal por animal<em>*</em></span></span>
+        </h1>
+        <p class="hero-note" data-rise>*sem caderno de campo, sem planilha perdida.</p>
+        <div class="hero-actions" data-rise>
+          <a class="btn btn-solid" href="#precos">Começar 14 dias grátis</a>
+          <a class="btn btn-ghost" href="#visao">Ver o aplicativo</a>
+        </div>
       </div>
-    </header>
-    <main id="conteudo">
-      <section class="field-hero" aria-labelledby="hero-title">
-        <div class="field-hero-photo" role="img" aria-label="Ovelhas no pasto"></div>
-        <div class="field-hero-shade"></div>
-        <div class="wrap field-hero-content">
-          <span class="field-label light">OVIS &nbsp; / &nbsp; GESTÃO DE REBANHOS OVINOS</span>
-          <h1 id="hero-title">Seu rebanho ovino,<br><em>animal por animal.</em></h1>
-          <p>Identificação, lotes e histórico em uma visão feita para produtores de ovinos e equipes de fazenda. Do campo à palma da mão.</p>
-          <div class="field-actions"><a class="field-button light-button" href="#produto">Conheça o aplicativo <span aria-hidden="true">↗</span></a><a class="field-text-link" href="#precos">Ver planos ↓</a></div>
-        </div>
-        <div class="hero-app-preview" aria-hidden="true"><span>OVIS / FICHA DO ANIMAL</span><img src="assets/ovis-ficha.webp" width="780" height="1688" alt=""><small>Dados de demonstração</small></div>
-        <span class="hero-photo-label">NO CAMPO, CADA ANIMAL TEM UMA HISTÓRIA. &nbsp; ↗</span>
-        <div class="field-hero-bottom"><span>PARA QUEM CRIA OVINOS</span><span>ROLE PARA EXPLORAR ↓</span></div>
-      </section>
-      <section id="visao" class="vision-section" aria-labelledby="vision-title">
-        <div class="wrap vision-grid">
-          <div class="vision-side"><span class="field-label">01 / NOSSA VISÃO</span><span class="vision-line" aria-hidden="true"></span><span>DO PASTO À PALMA DA MÃO</span></div>
-          <div class="vision-story" data-reveal><h2 id="vision-title">Lote, animal, histórico.<br><em>Tudo começa na identificação.</em></h2><p>O Ovis foi pensado para quem precisa localizar uma ovelha, conferir seus registros e voltar ao trabalho com a informação certa. Na prévia, cada animal tem uma ficha com identificação, pesagens e outros dados de demonstração.</p><a class="inline-arrow" href="#produto">Conheça a ficha no aplicativo <span aria-hidden="true">↗</span></a></div>
-        </div>
-      </section>
-      <section class="photographic-bridge" aria-label="Ovinocultura no campo">
-        <div class="bridge-image" role="img" aria-label="Rebanho de ovelhas em uma pastagem verde"></div>
-        <div class="bridge-words wrap" data-reveal><span class="field-label light">NA ROTINA DE QUEM CRIA OVINOS</span><p>O trabalho é no campo.<br><em>Os registros vão junto.</em></p></div>
-        <span class="bridge-index">OVIS — NO SEU TEMPO, NO SEU CAMPO</span>
-      </section>
-      <section id="produto" class="field-product" aria-labelledby="product-title">
-        <div class="wrap product-intro" data-reveal><span class="field-label">02 / O APLICATIVO</span><h2 id="product-title">Uma ficha para<br><em>cada animal.</em></h2><p>Esta é a ficha da Estrela no protótipo mobile. Identificação, lote e pesagens aparecem na tela. Os dados são simulados.</p></div>
-        <div class="wrap product-stage">
-          <div class="product-portrait" data-reveal><img src="assets/sheep-flock.webp" width="1600" height="1070" loading="lazy" alt="Rebanho de ovelhas em uma pastagem aberta"><span>UM REBANHO. MUITAS HISTÓRIAS.</span></div>
-          <div class="product-device" data-reveal><div class="device-tag">OVIS / APP MOBILE</div><img src="assets/ovis-ficha.webp" width="780" height="1688" loading="lazy" alt="Ficha demonstrativa da ovelha Estrela no aplicativo Ovis, com identificação, lote e pesagens"><div class="device-caption"><span>UM OLHAR DE PERTO</span><span>01 — 02</span></div></div>
-        </div>
-        <div class="wrap product-outro"><p>Encontre a Estrela pelo lote. Consulte a ficha no celular.</p><span>Captura do protótipo em execução. Dados simulados.</span></div>
-      </section>
-      <section id="rotina" class="field-manifesto routine-section" aria-labelledby="routine-title"><div class="wrap manifesto-grid"><span class="field-label light">03 / NA ROTINA</span><div data-reveal><h2 id="routine-title">Do cadastro ao próximo manejo.</h2><p>A prévia reúne a ficha de cada animal e uma agenda para visualizar as tarefas do rebanho.</p><ol class="routine-list"><li><strong>01 / Identifique</strong><span>Encontre o animal pelo brinco e pelo lote.</span></li><li><strong>02 / Acompanhe</strong><span>Consulte pesagens e históricos demonstrativos.</span></li><li><strong>03 / Organize</strong><span>Explore os manejos e a rotina da fazenda.</span></li></ol></div><span class="manifesto-mark" aria-hidden="true">o.</span></div></section>
-      <section class="field-desktop"><div class="wrap desktop-strip"><span class="field-label">TAMBÉM NO DESKTOP</span><p>Explore os lotes em uma demonstração para computador.</p><a class="inline-arrow" href="desktop/">Abrir prévia demonstrativa ↗</a></div></section>
-    <section id="precos" class="pricing-section section-pad" aria-labelledby="pricing-title">
-      <div class="wrap">
-        <div class="pricing-intro"><span class="kicker">04 / PLANOS</span><h2 id="pricing-title">Comece a conhecer.<br><em>Escolha como crescer.</em></h2><p>Uma entrada simples para explorar o Ovis e duas opções para sua operação. Os preços abaixo são valores iniciais, sujeitos às condições de cada plano.</p><fieldset class="billing-switch"><legend>Escolha o período</legend><label><input type="radio" name="billing" value="monthly" checked><span>Mensal</span></label><label><input type="radio" name="billing" value="annual"><span>Anual <strong>15% de desconto</strong></span></label></fieldset></div>
-        <div class="plan-grid">
-          <article class="plan-card trial" data-reveal><div class="plan-top"><span class="plan-number">01 / EXPERIMENTE</span><h3>Teste grátis</h3><p class="plan-price">14 <span>dias grátis</span></p></div><p>Conheça o Ovis antes de escolher um plano.</p><a class="plan-action" href="#estado">Conhecer o teste <span aria-hidden="true">↗</span></a></article>
-          <article class="plan-card plus" data-reveal><div class="plan-top"><span class="plan-number">02 / PLANO</span><h3>Plus</h3><p class="price-prefix">a partir de</p><p class="plan-price" data-plan-price="Plus">R$ 309,90 <span>/ mês</span></p><p class="annual-equivalent" data-plan-equivalent="Plus" hidden></p></div><p>Para levar a organização do rebanho à rotina da fazenda.</p><a class="plan-action" href="#perguntas">Conhecer o Plus <span aria-hidden="true">↗</span></a></article>
-          <article class="plan-card pro" data-reveal><div class="plan-top"><span class="plan-number">03 / PLANO</span><h3>Pro</h3><p class="price-prefix">a partir de</p><p class="plan-price" data-plan-price="Pro">R$ 359,90 <span>/ mês</span></p><p class="annual-equivalent" data-plan-equivalent="Pro" hidden></p></div><p>Uma opção para evoluir o acompanhamento da operação.</p><a class="plan-action" href="#perguntas">Conhecer o Pro <span aria-hidden="true">↗</span></a></article>
-        </div>
-        <p class="pricing-footnote">No anual, o total equivale a 12 mensalidades do preço inicial com 15% de desconto. “A partir de” indica o valor de entrada; limites por rebanho e diferenças de recursos serão confirmados antes de contratar. Este site não inicia assinaturas.</p>
+      <div class="hero-chip" aria-hidden="true" data-rise>
+        <span class="chip-dot"></span>
+        <span><strong>OV-1048</strong> · Texel · Lote Aurora</span>
+        <span class="chip-kpi">78,4 kg</span>
       </div>
     </section>
-      <section id="perguntas" class="faq-section" aria-labelledby="faq-title"><div class="wrap faq-grid"><div><span class="field-label">05 / PERGUNTAS FREQUENTES</span><h2 id="faq-title">Boas perguntas<br><em>merecem clareza.</em></h2></div><div class="faq-list"><details><summary>Como funcionam os 14 dias grátis?</summary><p>O teste é a oferta de entrada apresentada pela Ovis. A ativação do teste e a contratação não acontecem neste site; o canal de acesso será informado antes de começar.</p></details><details><summary>Como funciona o desconto anual?</summary><p>O preço anual inicial equivale a 12 mensalidades com 15% de desconto. As demais condições serão confirmadas antes de contratar.</p></details><details><summary>O que muda entre Plus e Pro?</summary><p>A composição detalhada dos planos ainda não foi publicada. Não atribuímos recursos ou limites a um plano sem confirmação.</p></details><details><summary>O aplicativo e o desktop já compartilham dados?</summary><p>Não. As capturas do aplicativo usam dados simulados e a prévia desktop é separada. Não há sincronização entre elas nesta demonstração.</p></details></div></div></section>
-      <section class="closing-section" aria-labelledby="closing-title"><div class="wrap"><span class="field-label light">OVIS / REBANHO EM FOCO</span><h2 id="closing-title">A informação certa<br>começa em cada animal.</h2><a class="field-button light-button" href="#produto">Conhecer o aplicativo <span aria-hidden="true">↗</span></a></div></section>
-      <div id="estado" class="disclosure"><div class="wrap"><strong>Sobre esta prévia</strong><p>As imagens do aplicativo e o mapa usam dados simulados. A ativação do teste e a contratação não acontecem neste site. Não há conta ou sincronização entre as prévias, e o site não processa pagamentos.</p></div></div>
-    </main>
-    <footer class="footer"><div class="wrap footer-main"><div><a class="brand footer-brand" href="#inicio"><img src="assets/icon.png?v=logo2" width="36" height="36" alt=""><span>ovis<span class="brand-period">.</span></span></a><p>Gestão de rebanhos ovinos.</p></div><nav aria-label="Links do rodapé"><a href="#visao">Nossa visão</a><a href="#produto">O aplicativo</a><a href="#precos">Valores</a><a href="desktop/">Prévia desktop</a></nav></div><div class="wrap footer-bottom"><span>© <span id="year"></span> Ovis</span><span>Fotografia: <a href="https://unsplash.com/photos/close-up-photography-of-sheep-in-grass-field-zv9yI6jh00Q" rel="noopener noreferrer">Nick Cozier</a> · <a href="https://unsplash.com/photos/sheep-grazing-in-a-lush-green-pasture-with-rolling-hills-Rtr1WwcwkoU" rel="noopener noreferrer">Clovis Wood</a> · <a href="https://unsplash.com/photos/flock-of-sheep-grazing-in-a-green-grassy-field-1n4-qp6aYvw" rel="noopener noreferrer">Jiang Xiaopei</a></span><a href="#inicio">Voltar ao topo ↑</a></div></footer>
-  </div>
+
+    <!-- SCRUB STATEMENT -->
+    <section class="statement" aria-label="Por que o Ovis existe">
+      <div class="statement-sticky">
+        <div class="statement-bg"><img src="assets/sheep-pasture.webp" width="1600" height="2000" loading="lazy" alt=""></div>
+        <p class="wrap statement-text" data-scrub>Você sabe mais ou menos quantas cabeças tem. Mas qual matriz está vazia, quem ficou sem vermífugo e quanto o lote Aurora ganhou no mês? <strong>O Ovis lembra por você.</strong></p>
+      </div>
+    </section>
+
+    <!-- OVERVIEW / PHONE -->
+    <section id="visao" class="overview" aria-labelledby="overview-title" data-progress>
+      <div class="wrap overview-grid">
+        <div class="overview-copy">
+          <h2 id="overview-title" class="title-sans" data-lines>
+            <span class="line"><span>Todo o rebanho.</span></span>
+            <span class="line"><span class="muted">E o que ele realmente rende.</span></span>
+          </h2>
+          <p data-rise>Total de ovinos, taxa de prenhez, ganho médio diário e crias por matriz já calculados na tela inicial. Logo abaixo, os manejos que estão vencendo — com um toque para concluir.</p>
+          <ul class="stat-grid" data-rise>
+            <li><strong data-count="1248">1.248</strong><span>ovinos no rebanho</span></li>
+            <li><strong data-count="87" data-suffix="%">87%</strong><span>taxa de prenhez</span></li>
+            <li><strong data-count="215" data-suffix=" g/d">215 g/d</strong><span>ganho médio diário</span></li>
+            <li><strong data-count="1.42" data-decimals="2">1,42</strong><span>crias por matriz</span></li>
+          </ul>
+          <p class="fine" data-rise>Números de demonstração do aplicativo.</p>
+        </div>
+        <div class="phone-stage">
+          <div class="phone" data-rise>
+            <div class="phone-screen"><img src="assets/ovis-mobile.webp" width="780" height="1688" loading="lazy" alt="Tela inicial do Ovis com total de ovinos, indicadores do rebanho e manejos pendentes" data-phone-scroll></div>
+          </div>
+          <div class="float-card fc-1" aria-hidden="true" data-rise><span class="fc-label">No mês</span><strong>+34</strong><span>animais</span></div>
+          <div class="float-card fc-2" aria-hidden="true" data-rise><span class="fc-label alert">2 atrasados</span><strong>Vermifugação</strong><span>Lote Jovens · 45 cordeiros</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FICHA -->
+    <section id="produto" class="feature" aria-labelledby="ficha-title">
+      <div class="wrap">
+        <p class="kicker" data-rise>Ficha do animal</p>
+        <h2 id="ficha-title" class="display section-title" data-lines>
+          <span class="line"><span>Cada animal</span></span>
+          <span class="line"><span>tem uma história.</span></span>
+        </h2>
+        <div class="feature-split">
+          <figure class="photo-card" data-rise>
+            <img src="assets/sheep-flock.webp" width="1600" height="1070" loading="lazy" alt="Rebanho de ovelhas em uma pastagem aberta">
+            <div class="photo-phone"><img src="assets/ovis-ficha.webp" width="780" height="1688" loading="lazy" alt="Ficha da matriz OV-1048 no Ovis com peso atual, ganho médio diário, escore corporal e curva de peso"></div>
+          </figure>
+          <div class="feature-copy">
+            <p data-rise>Brinco, raça, idade e lote no topo. Peso atual, GMD e escore corporal em destaque. A curva de peso do nascimento até hoje e as abas de pesagem, reprodução e sanidade a um toque.</p>
+            <ul class="check-list" data-rise>
+              <li>Curva de peso do nascimento ao desmame</li>
+              <li>Checklist “pronto pra prova” para registro genealógico</li>
+              <li>Observações do manejo junto do animal</li>
+            </ul>
+            <a class="link-arrow" href="#precos" data-rise>Comece pelo teste grátis <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MANEJOS -->
+    <section id="rotina" class="reminders" aria-labelledby="rotina-title">
+      <div class="wrap center">
+        <p class="kicker" data-rise>Manejos</p>
+        <h2 id="rotina-title" class="display section-title" data-lines>
+          <span class="line"><span>Nenhuma vacina</span></span>
+          <span class="line"><span>esquecida de novo.</span></span>
+        </h2>
+        <p class="lead" data-rise>Vacinação, vermifugação e pesagem aparecem por lote, com o que já venceu em vermelho e o que vence hoje em destaque. Fez? Toque em concluir e siga para o próximo.</p>
+        <ol class="task-stack" aria-label="Exemplo de manejos pendentes">
+          <li class="task" data-rise><span class="task-icon red" aria-hidden="true">💉</span><div><strong>Vacinação · Clostridiose</strong><span>Lote Aurora · 70 matrizes</span></div><span class="tag red">venceu 28/08</span><button type="button" class="task-done" aria-pressed="false">Concluir</button></li>
+          <li class="task" data-rise><span class="task-icon red" aria-hidden="true">💉</span><div><strong>Vermifugação</strong><span>Lote Jovens · 45 cordeiros</span></div><span class="tag red">venceu 30/08</span><button type="button" class="task-done" aria-pressed="false">Concluir</button></li>
+          <li class="task" data-rise><span class="task-icon amber" aria-hidden="true">⚖️</span><div><strong>Pesagem mensal</strong><span>Lote Seleção · controle de engorda</span></div><span class="tag amber">hoje</span><button type="button" class="task-done" aria-pressed="false">Concluir</button></li>
+        </ol>
+        <p class="fine" data-rise>Exemplo interativo com dados de demonstração.</p>
+      </div>
+    </section>
+
+    <!-- RAIL -->
+    <section id="recursos" class="rail-section" aria-labelledby="rail-title">
+      <div class="wrap rail-head">
+        <h2 id="rail-title" class="title-sans" data-lines><span class="line"><span>Feito para o dia a dia</span></span><span class="line"><span class="muted">de quem cria ovinos.</span></span></h2>
+        <div class="rail-arrows"><button type="button" data-rail="-1" aria-label="Recurso anterior">←</button><button type="button" data-rail="1" aria-label="Próximo recurso">→</button></div>
+      </div>
+      <div class="rail" tabindex="0" aria-label="Recursos do Ovis">
+        <article class="rail-card"><span class="rail-num">01</span><h3>Pesagem e GMD</h3><p>Registre o peso e veja o ganho médio diário de cada animal e de cada lote, sem fazer conta.</p><div class="rail-viz viz-line" aria-hidden="true"><svg viewBox="0 0 300 110"><polyline points="4,100 60,92 120,82 180,70 230,30 296,18"/></svg></div></article>
+        <article class="rail-card"><span class="rail-num">02</span><h3>Reprodução</h3><p>Acompanhe a taxa de prenhez e quantas crias cada matriz entrega. Saiba quem segue no plantel.</p><div class="rail-viz viz-big" aria-hidden="true"><strong>87%</strong><span>prenhez</span></div></article>
+        <article class="rail-card"><span class="rail-num">03</span><h3>Sanidade</h3><p>Histórico sanitário na ficha e manejos por lote, para ninguém ficar para trás no calendário.</p><div class="rail-viz viz-pills" aria-hidden="true"><span>Clostridiose</span><span>Vermifugação</span><span>Histórico</span></div></article>
+        <article class="rail-card"><span class="rail-num">04</span><h3>Pronto pra prova</h3><p>Veja quais pesagens faltam para o registro genealógico antes do prazo, animal por animal.</p><div class="rail-viz viz-check" aria-hidden="true"><span class="ok">Peso ao nascer</span><span class="ok">Peso ao desmame</span><span class="warn">Pesagem aos 90 dias</span></div></article>
+        <article class="rail-card"><span class="rail-num">05</span><h3>Lotes no desktop</h3><p>No computador, organize os lotes em um mapa da propriedade. Abra a demonstração e explore.</p><a class="link-arrow" href="desktop/">Abrir demonstração <span aria-hidden="true">→</span></a></article>
+      </div>
+      <div class="rail-dots" aria-hidden="true"></div>
+    </section>
+
+    <!-- BRIDGE -->
+    <section class="bridge" aria-label="Ovinocultura no campo">
+      <div class="bridge-photo" data-parallax><img src="assets/sheep-flock.webp" width="1600" height="1070" loading="lazy" alt="Rebanho de ovelhas pastando"></div>
+      <div class="wrap bridge-copy">
+        <h2 class="display" data-lines><span class="line"><span>O trabalho é no campo.</span></span><span class="line"><span class="accent">Os registros vão junto.</span></span></h2>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="precos" class="pricing" aria-labelledby="pricing-title">
+      <div class="wrap">
+        <p class="kicker center" data-rise>Planos</p>
+        <h2 id="pricing-title" class="display section-title center" data-lines>
+          <span class="line"><span>Comece grátis.</span></span>
+          <span class="line"><span>Cresça com o plano certo.</span></span>
+        </h2>
+        <fieldset class="billing" data-rise>
+          <legend class="sr-only">Escolha o período</legend>
+          <span class="billing-pill" aria-hidden="true"></span>
+          <label><input type="radio" name="billing" value="monthly" checked><span>Mensal</span></label>
+          <label><input type="radio" name="billing" value="annual"><span>Anual <em>15% de desconto</em></span></label>
+        </fieldset>
+        <div class="plans">
+          <article class="plan" data-rise>
+            <div class="plan-head"><h3>Teste</h3><p class="plan-price">14 <small>dias grátis</small></p></div>
+            <p class="plan-desc">Conheça o Ovis com o seu rebanho antes de escolher um plano.</p>
+            <a class="btn btn-ghost" href="#perguntas">Como funciona o teste</a>
+          </article>
+          <article class="plan plan-featured" data-rise>
+            <span class="plan-badge">Mais escolhido</span>
+            <div class="plan-head"><h3>Plus</h3><p class="price-prefix">a partir de</p><p class="plan-price" data-plan-price="Plus">R$ 309,90 <small>/ mês</small></p><p class="annual-equivalent" data-plan-equivalent="Plus" hidden></p></div>
+            <p class="plan-desc">Para levar a organização do rebanho à rotina da fazenda.</p>
+            <a class="btn btn-solid" href="#perguntas">Quero o Plus</a>
+          </article>
+          <article class="plan" data-rise>
+            <div class="plan-head"><h3>Pro</h3><p class="price-prefix">a partir de</p><p class="plan-price" data-plan-price="Pro">R$ 359,90 <small>/ mês</small></p><p class="annual-equivalent" data-plan-equivalent="Pro" hidden></p></div>
+            <p class="plan-desc">Para operações que querem evoluir o acompanhamento do rebanho.</p>
+            <a class="btn btn-ghost" href="#perguntas">Quero o Pro</a>
+          </article>
+        </div>
+        <p class="fine center pricing-note" data-rise>No anual, o total equivale a 12 mensalidades do preço inicial com 15% de desconto. “A partir de” indica o valor de entrada; limites por rebanho e diferenças de recursos são confirmados antes de contratar. Este site não inicia assinaturas.</p>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="perguntas" class="faq" aria-labelledby="faq-title">
+      <div class="wrap faq-grid">
+        <div>
+          <p class="kicker" data-rise>Dúvidas</p>
+          <h2 id="faq-title" class="display section-title" data-lines><span class="line"><span>Boas perguntas.</span></span></h2>
+        </div>
+        <div class="faq-list" data-rise>
+          <details><summary>Como funcionam os 14 dias grátis?</summary><div class="faq-body"><p>O teste é a porta de entrada para conhecer o Ovis com o seu rebanho. A ativação do teste e a contratação não acontecem neste site; o canal de acesso é informado pela equipe Ovis antes de começar.</p></div></details>
+          <details><summary>Como funciona o desconto anual?</summary><div class="faq-body"><p>O preço anual inicial equivale a 12 mensalidades com 15% de desconto. As demais condições são confirmadas antes de contratar.</p></div></details>
+          <details><summary>O que muda entre Plus e Pro?</summary><div class="faq-body"><p>A composição detalhada dos planos é apresentada na contratação. Não atribuímos recursos ou limites a um plano sem confirmação.</p></div></details>
+          <details><summary>As imagens do site são do meu rebanho?</summary><div class="faq-body"><p>Não. As telas mostradas aqui usam dados simulados, e a demonstração desktop é separada do app, sem sincronização entre elas.</p></div></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOSING -->
+    <section class="closing" aria-labelledby="closing-title">
+      <div class="wrap">
+        <h2 id="closing-title" class="display closing-title" data-scrub-color>Rebanho em foco.</h2>
+        <div class="closing-row">
+          <p data-rise>A informação certa começa em cada animal.</p>
+          <a class="btn btn-solid" href="#precos" data-rise>Começar 14 dias grátis</a>
+        </div>
+      </div>
+    </section>
+
+    <div id="estado" class="disclosure"><div class="wrap"><strong>Sobre esta página.</strong> As imagens do aplicativo e o mapa usam dados simulados. A ativação do teste e a contratação não acontecem neste site. Não há conta ou sincronização entre as demonstrações, e o site não processa pagamentos.</div></div>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-grid">
+      <a class="brand" href="#inicio"><img src="assets/icon.png?v=logo2" width="30" height="30" alt=""><span>Ovis</span></a>
+      <nav aria-label="Produto"><a href="#visao">Visão geral</a><a href="#produto">Ficha do animal</a><a href="#rotina">Manejos</a><a href="#recursos">Recursos</a></nav>
+      <nav aria-label="Ovis"><a href="#precos">Planos</a><a href="#perguntas">Dúvidas</a><a href="desktop/">Demonstração desktop</a></nav>
+      <p class="footer-tag">Gestão de rebanhos ovinos.<br>Do pasto à palma da mão.</p>
+    </div>
+    <div class="wrap footer-bottom">
+      <span>© <span id="year"></span> Ovis</span>
+      <span>Fotografia: <a href="https://unsplash.com/photos/close-up-photography-of-sheep-in-grass-field-zv9yI6jh00Q" rel="noopener noreferrer">Nick Cozier</a> · <a href="https://unsplash.com/photos/sheep-grazing-in-a-lush-green-pasture-with-rolling-hills-Rtr1WwcwkoU" rel="noopener noreferrer">Clovis Wood</a> · <a href="https://unsplash.com/photos/flock-of-sheep-grazing-in-a-green-grassy-field-1n4-qp6aYvw" rel="noopener noreferrer">Jiang Xiaopei</a></span>
+    </div>
+  </footer>
+  <a class="to-top" href="#inicio" aria-label="Voltar ao topo">↑</a>
 </body>
 </html>

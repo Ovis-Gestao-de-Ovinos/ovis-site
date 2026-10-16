@@ -3,9 +3,9 @@ import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
 
 const page = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
-const css = readFileSync(new URL('../landing.css', import.meta.url), 'utf8');
+const css = readFileSync(new URL('../site.css', import.meta.url), 'utf8');
 
-for (const id of ['inicio', 'visao', 'produto', 'rotina', 'precos', 'perguntas', 'estado']) {
+for (const id of ['inicio', 'visao', 'produto', 'rotina', 'recursos', 'precos', 'perguntas', 'estado']) {
   test(`navegação tem seção ${id}`, () => assert.match(page, new RegExp(`id="${id}"`)));
 }
 
@@ -14,21 +14,24 @@ test('página usa identidade Ovis e ativos próprios', () => {
   assert.match(page, /produtores de ovinos e equipes de fazenda/);
   assert.match(page, /assets\/ovis-ficha\.webp/);
   assert.match(page, /assets\/sheep-flock\.webp/);
-  assert.match(css, /--field-ink/);
+  assert.match(css, /--accent:/);
   assert.ok(existsSync(new URL('../assets/ovis-ficha.webp', import.meta.url)));
   assert.doesNotMatch(page, /Subscrr|Apple Watch|subscriptions/);
 });
 
-test('nova composição visual rompe com hero fotográfico de tela cheia e grade uniforme de planos', () => {
-  const redesign = readFileSync(new URL('../redesign.css', import.meta.url), 'utf8');
-  assert.match(page, /href="redesign\.css"/);
-  assert.match(page, /class="hero-app-preview"/);
-  assert.match(page, /class="hero-photo-label"/);
-  assert.match(redesign, /\.field-hero\s*\{/);
-  assert.match(redesign, /\.field-hero-photo\s*\{/);
-  assert.match(redesign, /\.pricing-section\s*>\s*\.wrap\s*\{/);
-  assert.match(redesign, /\.plan-card\.trial\s*\{/);
-  assert.match(redesign, /@media\s*\(max-width:\s*760px\)/);
+test('composição escura com tipografia de impacto e animações acessíveis', () => {
+  const script = readFileSync(new URL('../script.js', import.meta.url), 'utf8');
+  assert.match(page, /href="site\.css(\?v=\d+)?"/);
+  assert.match(page, /Bebas\+Neue/);
+  assert.match(page, /data-scrub/);
+  assert.match(page, /data-phone-scroll/);
+  assert.match(css, /\.has-motion \[data-lines\]/);
+  assert.match(css, /prefers-reduced-motion: reduce/);
+  assert.match(css, /@media \(max-width: 640px\)/);
+  assert.match(script, /prefers-reduced-motion/);
+  for (const old of ['styles.css', 'landing.css', 'redesign.css']) {
+    assert.doesNotMatch(page, new RegExp(old.replace('.', '\\.')));
+  }
 });
 
 test('planos novos substituem tabela antiga sem promessa de compra ou desconto', () => {
