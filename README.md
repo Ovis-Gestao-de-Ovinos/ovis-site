@@ -14,7 +14,7 @@ Abra `http://localhost:8765`. Use um servidor local: o script usa módulos JavaS
 
 A marca foi fornecida pela equipe Ovis. `assets/ovis-ficha.webp` é uma captura do protótipo mobile em execução, com dados simulados; `assets/ovis-mobile.webp` permanece disponível, mas não aparece nesta composição. As fotografias do campo são do Unsplash, creditadas no rodapé: Nick Cozier, Clovis Wood e Jiang Xiaopei. A prévia desktop em `/desktop/` é separada e usa um mapa esquemático, sem localização real.
 
-A página usa `styles.css`, `enhancements.css`, `field-notes.css`, `landing.css` e `redesign.css`. A última camada recompõe o hero claro com fotografia recortada e captura do app, transforma a ponte fotográfica em capítulo dividido, amplia a prévia do produto e coloca os planos em uma comparação lateral com o teste gratuito em destaque. Animações editoriais usam CSS e IntersectionObserver; sem JavaScript o conteúdo permanece visível e os valores mensais aparecem no HTML.
+A página usa uma única folha, `site.css`: tema escuro, títulos em Bebas Neue, texto em Inter e verde Ovis como cor de destaque. A composição segue o ritmo do subscrr.app — hero fotográfico, frase que acende com o scroll, celular com a tela rolando, ficha do animal, manejos interativos, trilho de recursos, ponte fotográfica, planos, FAQ e encerramento.
 
 ## Preços e simulador
 
@@ -28,7 +28,7 @@ O app mobile continua sendo um protótipo demonstrativo sem conta, servidor ou a
 
 ## Animação
 
-Os capítulos usam CSS e IntersectionObserver; com `prefers-reduced-motion`, não há animação. O conteúdo permanece disponível sem movimento. O código de Anime.js legado permanece em `vendor/`, mas não é carregado pela página.
+Tudo em JavaScript puro (`script.js`), sem biblioteca: títulos sobem de uma máscara linha a linha, blocos entram com desfoque, a frase da segunda seção acende palavra por palavra, a tela do celular rola junto com a página, os números contam, a foto da ponte tem parallax, o toggle de preços desliza e o FAQ abre suavemente. Sem JavaScript ou com `prefers-reduced-motion`, todo o conteúdo aparece estático. Ao mudar `site.css`, incremente o `?v=` no `<link>` para evitar cache.
 
 ## SEO e descoberta por buscadores
 
