@@ -3,6 +3,7 @@ import { PLANS, money } from './pricing.js';
 const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
 const motion = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+let checkoutLinks = null;
 
 $('#year').textContent = new Date().getFullYear();
 $$('.nav-mobile nav a').forEach((link) => link.addEventListener('click', () => { $('.nav-mobile').open = false; }));
@@ -33,7 +34,27 @@ function renderPrices(animate = false) {
     }
   }
   movePill();
+  updateCheckoutLinks();
 }
+
+// Checkout AbacatePay: cada botão aponta para o link do plano no período escolhido.
+// Sem links configurados, os botões continuam levando às dúvidas.
+function updateCheckoutLinks() {
+  if (!checkoutLinks) return;
+  const annual = $('input[name="billing"]:checked')?.value === 'annual';
+  $$('[data-checkout]').forEach((button) => {
+    const period = button.dataset.checkoutPeriod ?? (annual ? 'annual' : 'monthly');
+    const url = checkoutLinks[button.dataset.checkout]?.[period];
+    if (!url) return;
+    button.href = url;
+    button.rel = 'noopener';
+  });
+  $('[data-checkout-mode]').hidden = checkoutLinks.devMode !== true;
+}
+fetch('checkout-links.json', { cache: 'no-cache' })
+  .then((res) => (res.ok ? res.json() : null))
+  .then((links) => { checkoutLinks = links; updateCheckoutLinks(); })
+  .catch(() => {});
 $$('input[name="billing"]').forEach((radio) => radio.addEventListener('change', () => renderPrices(true)));
 renderPrices();
 window.addEventListener('resize', movePill);

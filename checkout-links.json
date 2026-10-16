@@ -1,0 +1,11 @@
+{
+  "devMode": true,
+  "Plus": {
+    "monthly": "https://app.abacatepay.com/pay/bill_AZBLuSbFemaMABbJwrXjGBbF",
+    "annual": "https://app.abacatepay.com/pay/bill_5uXRZLPtEbbBSPUQbUfNhsub"
+  },
+  "Pro": {
+    "monthly": "https://app.abacatepay.com/pay/bill_Jms3Ey1C0g4bbYgHuyrbS3yw",
+    "annual": "https://app.abacatepay.com/pay/bill_Sr2Ws0EFpLZEbcbDpBXresSm"
+  }
+}

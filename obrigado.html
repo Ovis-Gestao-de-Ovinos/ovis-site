@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e0b">
+  <meta name="robots" content="noindex">
+  <title>Assinatura confirmada | Ovis</title>
+  <link rel="icon" href="assets/favicon.png?v=logo2" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="site.css?v=6">
+</head>
+<body>
+  <header class="nav is-scrolled">
+    <div class="wrap nav-inner">
+      <a class="brand" href="./"><img src="assets/icon.png?v=logo2" width="30" height="30" alt=""><span>Ovis</span></a>
+    </div>
+  </header>
+  <main class="thanks">
+    <div class="wrap">
+      <div class="thanks-mark" aria-hidden="true">✓</div>
+      <h1 class="display">Bem-vindo<br>ao <em>Ovis</em>.</h1>
+      <p>Sua assinatura do <strong data-plan>Ovis</strong> está ativa e os 14 dias grátis já começaram. Nada foi cobrado hoje.</p>
+      <ol>
+        <li><span><strong>Confira seu e-mail.</strong> A AbacatePay envia o comprovante da assinatura.</span></li>
+        <li><span><strong>Cadastre o rebanho.</strong> Comece pelos lotes e pelos animais que você mais acompanha.</span></li>
+        <li><span><strong>Primeira cobrança ao fim do teste.</strong> Cancele antes e nada é cobrado.</span></li>
+      </ol>
+      <a class="btn btn-solid" href="./">Voltar ao site</a>
+    </div>
+  </main>
+  <script>
+    const params = new URLSearchParams(location.search);
+    const plan = ['Plus', 'Pro'].includes(params.get('plano')) ? params.get('plano') : null;
+    const period = params.get('periodo') === 'annual' ? 'anual' : 'mensal';
+    if (plan) document.querySelector('[data-plan]').textContent = `Ovis ${plan} ${period}`;
+  </script>
+</body>
+</html>

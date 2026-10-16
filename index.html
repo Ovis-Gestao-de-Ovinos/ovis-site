@@ -23,9 +23,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="site.css?v=5">
+  <link rel="stylesheet" href="site.css?v=6">
   <script>document.documentElement.classList.add('js')</script>
-  <script type="module" src="script.js?v=5"></script>
+  <script type="module" src="script.js?v=6"></script>
 </head>
 <body>
   <a class="skip" href="#conteudo">Pular para o conteúdo</a>
@@ -187,22 +187,25 @@
         <div class="plans">
           <article class="plan" data-rise>
             <div class="plan-head"><h3>Teste</h3><p class="plan-price">14 <small>dias grátis</small></p></div>
-            <p class="plan-desc">Conheça o Ovis com o seu rebanho antes de escolher um plano.</p>
-            <a class="btn btn-ghost" href="#perguntas">Como funciona o teste</a>
+            <p class="plan-desc">Use o Ovis com o seu rebanho por 14 dias sem pagar nada. O teste começa no Plus mensal; cancele antes do fim e nada é cobrado.</p>
+            <a class="btn btn-ghost" href="#perguntas" data-checkout="Plus" data-checkout-period="monthly">Começar teste grátis</a>
           </article>
           <article class="plan plan-featured" data-rise>
             <span class="plan-badge">Mais escolhido</span>
             <div class="plan-head"><h3>Plus</h3><p class="price-prefix">a partir de</p><p class="plan-price" data-plan-price="Plus">R$ 309,90 <small>/ mês</small></p><p class="annual-equivalent" data-plan-equivalent="Plus" hidden></p></div>
             <p class="plan-desc">Para levar a organização do rebanho à rotina da fazenda.</p>
-            <a class="btn btn-solid" href="#perguntas">Quero o Plus</a>
+            <a class="btn btn-solid" href="#perguntas" data-checkout="Plus">Assinar o Plus</a>
+            <p class="plan-trial">14 dias grátis, depois cobrança automática</p>
           </article>
           <article class="plan" data-rise>
             <div class="plan-head"><h3>Pro</h3><p class="price-prefix">a partir de</p><p class="plan-price" data-plan-price="Pro">R$ 359,90 <small>/ mês</small></p><p class="annual-equivalent" data-plan-equivalent="Pro" hidden></p></div>
             <p class="plan-desc">Para operações que querem evoluir o acompanhamento do rebanho.</p>
-            <a class="btn btn-ghost" href="#perguntas">Quero o Pro</a>
+            <a class="btn btn-ghost" href="#perguntas" data-checkout="Pro">Assinar o Pro</a>
+            <p class="plan-trial">14 dias grátis, depois cobrança automática</p>
           </article>
         </div>
-        <p class="fine center pricing-note" data-rise>No anual, o total equivale a 12 mensalidades do preço inicial com 15% de desconto. “A partir de” indica o valor de entrada; limites por rebanho e diferenças de recursos são confirmados antes de contratar. Este site não inicia assinaturas.</p>
+        <p class="fine center pricing-note" data-rise>Pagamento por cartão de crédito em checkout seguro da AbacatePay. Todos os planos começam com 14 dias grátis: o cartão é cadastrado, nada é cobrado hoje e a primeira cobrança acontece no fim do teste. No anual, o total equivale a 12 mensalidades com 15% de desconto. “A partir de” indica o valor de entrada; limites por rebanho e diferenças de recursos são confirmados na contratação.</p>
+        <p class="checkout-mode" data-checkout-mode hidden>Ambiente de teste: os checkouts não fazem cobranças reais. Use o cartão 4242 4242 4242 4242, qualquer validade futura e qualquer CVV.</p>
       </div>
     </section>
 
@@ -214,9 +217,10 @@
           <h2 id="faq-title" class="display section-title" data-lines><span class="line"><span>Boas perguntas.</span></span></h2>
         </div>
         <div class="faq-list" data-rise>
-          <details><summary>Como funcionam os 14 dias grátis?</summary><div class="faq-body"><p>O teste é a porta de entrada para conhecer o Ovis com o seu rebanho. A ativação do teste e a contratação não acontecem neste site; o canal de acesso é informado pela equipe Ovis antes de começar.</p></div></details>
-          <details><summary>Como funciona o desconto anual?</summary><div class="faq-body"><p>O preço anual inicial equivale a 12 mensalidades com 15% de desconto. As demais condições são confirmadas antes de contratar.</p></div></details>
+          <details><summary>Como funcionam os 14 dias grátis?</summary><div class="faq-body"><p>Você escolhe o plano, cadastra o cartão no checkout da AbacatePay e o valor cobrado hoje é R$ 0,00. A assinatura começa na hora e a primeira cobrança acontece automaticamente ao fim dos 14 dias. Cancele antes disso e nada é cobrado.</p></div></details>
+          <details><summary>Como funciona o desconto anual?</summary><div class="faq-body"><p>No anual você paga uma vez por ano o equivalente a 12 mensalidades com 15% de desconto: R$ 3.160,98 no Plus e R$ 3.670,98 no Pro, também depois dos 14 dias grátis.</p></div></details>
           <details><summary>O que muda entre Plus e Pro?</summary><div class="faq-body"><p>A composição detalhada dos planos é apresentada na contratação. Não atribuímos recursos ou limites a um plano sem confirmação.</p></div></details>
+          <details><summary>Quais formas de pagamento são aceitas?</summary><div class="faq-body"><p>As assinaturas são cobradas no cartão de crédito, de forma recorrente, pela AbacatePay. Os dados do cartão são digitados na página segura da AbacatePay e não passam pelo site da Ovis.</p></div></details>
           <details><summary>As imagens do site são do meu rebanho?</summary><div class="faq-body"><p>Não. As telas mostradas aqui usam dados simulados, e a demonstração desktop é separada do app, sem sincronização entre elas.</p></div></details>
         </div>
       </div>
@@ -233,7 +237,7 @@
       </div>
     </section>
 
-    <div id="estado" class="disclosure"><div class="wrap"><strong>Sobre esta página.</strong> As imagens do aplicativo e o mapa usam dados simulados. A ativação do teste e a contratação não acontecem neste site. Não há conta ou sincronização entre as demonstrações, e o site não processa pagamentos.</div></div>
+    <div id="estado" class="disclosure"><div class="wrap"><strong>Sobre esta página.</strong> As imagens do aplicativo e o mapa usam dados simulados. Pagamentos e assinaturas são processados pela AbacatePay; a Ovis não armazena dados de cartão.</div></div>
   </main>
 
   <footer class="footer">

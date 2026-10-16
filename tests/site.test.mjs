@@ -46,11 +46,24 @@ test('planos novos substituem tabela antiga sem promessa de compra ou desconto',
   assert.doesNotMatch(page, /Basic|R\$ 259,90|herd-size|price-results/i);
 });
 
-test('condições não definidas e limitações do protótipo ficam claras', () => {
+test('contratação passa pelo checkout da AbacatePay sem expor chave', () => {
+  const script = readFileSync(new URL('../script.js', import.meta.url), 'utf8');
+  const links = JSON.parse(readFileSync(new URL('../checkout-links.json', import.meta.url), 'utf8'));
+  assert.match(page, /data-checkout="Plus"/);
+  assert.match(page, /data-checkout="Pro"/);
+  assert.match(page, /data-checkout-period="monthly"/);
+  assert.match(script, /checkout-links\.json/);
   assert.match(page, /dados simulados/i);
-  assert.match(page, /condições.*confirmadas/i);
-  assert.match(page, /não processa pagamentos/i);
-  assert.match(page, /a ativação do teste e a contratação não acontecem neste site/i);
+  assert.match(page, /confirmados na contratação/i);
+  assert.match(page, /AbacatePay/);
+  assert.ok('devMode' in links && 'Plus' in links && 'Pro' in links);
+  for (const url of [links.Plus, links.Pro].flatMap((p) => Object.values(p))) {
+    assert.match(url, /^https:\/\/[^/]*abacatepay\.com\//);
+  }
+  const tracked = page + script + JSON.stringify(links);
+  assert.doesNotMatch(tracked, /abc_(dev|prod)_|sk_/, 'chave de API nunca vai para o site');
+  assert.match(readFileSync(new URL('../.gitignore', import.meta.url), 'utf8'), /^\.env$/m);
+  assert.ok(existsSync(new URL('../obrigado.html', import.meta.url)));
 });
 
 test('SEO permanece coerente com a prévia', () => {
