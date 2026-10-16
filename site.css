@@ -82,7 +82,7 @@ h1, h2, h3, p { margin: 0; }
 /* Hero */
 .hero { position: relative; min-height: 100svh; padding: 132px 0 120px; display: flex; flex-direction: column; overflow: hidden; background: var(--bg-2); }
 .hero-photo { position: absolute; inset: 34% 0 0; overflow: hidden; }
-.hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 60% 40%; transform: scale(var(--hero-scale, 1.12)); transform-origin: 60% 30%; will-change: transform; }
+.hero-photo img, .hero-photo video { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 60% 40%; transform: scale(var(--hero-scale, 1.12)); transform-origin: 60% 30%; will-change: transform; }
 .hero-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, var(--bg-2) 0%, rgba(17, 23, 18, .15) 30%, rgba(10, 14, 11, .05) 55%, var(--bg) 100%), linear-gradient(90deg, rgba(10, 14, 11, .6), transparent 60%); }
 .hero-content { position: relative; z-index: 2; flex: 1; display: flex; flex-direction: column; }
 .hero-title { font-size: clamp(64px, 12.4vw, 196px); line-height: .86; transform: translateY(var(--hero-shift, 0)); }
