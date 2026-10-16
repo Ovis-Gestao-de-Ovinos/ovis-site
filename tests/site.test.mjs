@@ -23,9 +23,10 @@ test('composição escura com tipografia de impacto e animações acessíveis', 
   const script = readFileSync(new URL('../script.js', import.meta.url), 'utf8');
   assert.match(page, /href="site\.css(\?v=\d+)?"/);
   assert.match(page, /Bebas\+Neue/);
+  assert.match(page, /src="script\.js\?v=\d+"/, "script versionado evita cache de versão antiga");
   assert.match(page, /data-scrub/);
   assert.match(page, /data-phone-scroll/);
-  assert.match(css, /\.has-motion \[data-lines\]/);
+  assert.match(css, /\.motion-on \[data-lines\]/);
   assert.match(css, /prefers-reduced-motion: reduce/);
   assert.match(css, /@media \(max-width: 640px\)/);
   assert.match(script, /prefers-reduced-motion/);
