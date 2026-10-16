@@ -25,8 +25,9 @@ function renderPrices(animate = false) {
     const cadence = document.createElement('small');
     cadence.textContent = annual ? '/ ano' : '/ mês';
     price.replaceChildren(document.createTextNode(`${money(annual ? plan.annualCents : plan.fromCents)} `), cadence);
-    equivalent.hidden = !annual;
-    if (annual) equivalent.textContent = `${money(Math.round(plan.annualCents / 12))} por mês, equivalente no anual`;
+    // A linha existe nos dois períodos para os cards não mudarem de altura na troca.
+    equivalent.classList.toggle('is-annual', annual);
+    equivalent.textContent = annual ? `${money(Math.round(plan.annualCents / 12))} por mês, equivalente no anual` : 'cobrado todo mês';
     if (animate && motion) {
       price.classList.remove('is-swapping');
       void price.offsetWidth;

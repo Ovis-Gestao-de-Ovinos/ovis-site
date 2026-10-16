@@ -66,6 +66,15 @@ test('contratação passa pelo checkout da AbacatePay sem expor chave', () => {
   assert.ok(existsSync(new URL('../obrigado.html', import.meta.url)));
 });
 
+test('canais de atendimento para dúvidas e cancelamento', () => {
+  const thanks = readFileSync(new URL('../obrigado.html', import.meta.url), 'utf8');
+  for (const html of [page, thanks]) {
+    assert.match(html, /href="https:\/\/wa\.me\/5551984931844"/);
+    assert.match(html, /href="mailto:ovisfinanceiro@gmail\.com"/);
+  }
+  assert.match(page, /Como cancelo/);
+});
+
 test('SEO permanece coerente com a prévia', () => {
   const sitemap = readFileSync(new URL('../sitemap.xml', import.meta.url), 'utf8');
   assert.match(page, /<html lang="pt-BR">/);
