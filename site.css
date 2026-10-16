@@ -88,10 +88,6 @@ h1, h2, h3, p { margin: 0; }
 .hero-title { font-size: clamp(64px, 12.4vw, 196px); line-height: .86; transform: translateY(var(--hero-shift, 0)); }
 .hero-note { margin-top: 22px; font-size: clamp(16px, 1.6vw, 20px); color: #fff; font-weight: 500; }
 .hero-actions { margin-top: auto; padding-top: 48px; display: flex; flex-wrap: wrap; gap: 12px; }
-.hero-chip { position: absolute; z-index: 3; right: max(32px, (100% - 1200px) / 2); bottom: 120px; display: flex; align-items: center; gap: 12px; padding: 12px 14px 12px 16px; border-radius: 999px; background: rgba(17, 23, 18, .55); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, .14); font-size: 13px; color: var(--text-2); }
-.hero-chip strong { color: var(--text); }
-.chip-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 0 var(--accent); animation: pulse 2.2s infinite; }
-.chip-kpi { padding: 5px 12px; border-radius: 999px; background: var(--accent); color: var(--accent-ink); font-weight: 700; }
 @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(79, 209, 107, .6); } 70% { box-shadow: 0 0 0 10px rgba(79, 209, 107, 0); } 100% { box-shadow: 0 0 0 0 rgba(79, 209, 107, 0); } }
 
 /* Frase com preenchimento por scroll */
@@ -290,7 +286,6 @@ html:not(.js) .billing input:checked + span { background: var(--accent); }
   .hero { padding: 108px 0 64px; }
   .hero-photo { inset: 46% 0 0; }
   .hero-actions .btn { flex: 1 1 100%; }
-  .hero-chip { display: none; }
   .statement { height: 200vh; }
   .overview, .feature, .reminders, .pricing { padding: 96px 0; }
   .stat-grid strong { font-size: 38px; }
