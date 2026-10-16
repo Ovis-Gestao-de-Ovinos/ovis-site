@@ -51,14 +51,20 @@ async function ensureProduct(p) {
   return api('POST', '/products/create', body);
 }
 
+// Checkout de assinatura é de uso único na prática: depois do primeiro pagamento fica PAID
+// e a API devolve o mesmo checkout para o mesmo externalId. Por isso reaproveitamos só o
+// checkout publicado que ainda está PENDING e criamos outro, com externalId novo, quando não.
+const previous = existsSync(OUT) ? JSON.parse(readFileSync(OUT, 'utf8')) : {};
+
 async function ensureCheckout(product, p) {
-  const externalId = `${p.externalId}-site`;
-  const found = list(await api('GET', `/subscriptions/checkouts/list?externalId=${encodeURIComponent(externalId)}`))
-    .find((item) => item.externalId === externalId && item.status === 'PENDING');
-  if (found) return { ...found, reused: true };
+  const id = previous[p.plan]?.[p.period]?.split('/pay/')[1];
+  if (id) {
+    const current = await api('GET', `/subscriptions/checkouts/get?id=${encodeURIComponent(id)}`).catch(() => null);
+    if (current?.status === 'PENDING') return { ...current, reused: true };
+  }
   return api('POST', '/subscriptions/create', {
     items: [{ id: product.id, quantity: 1 }],
-    externalId,
+    externalId: `${p.externalId}-site-${Date.now()}`,
     methods: ['CARD'],
     returnUrl: `${SITE}#precos`,
     completionUrl: `${SITE}obrigado.html?plano=${p.plan}&periodo=${p.period}`,
