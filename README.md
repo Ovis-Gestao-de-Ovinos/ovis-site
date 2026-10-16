@@ -22,9 +22,20 @@ A página apresenta 14 dias grátis, Plus a partir de R$ 309,90/mês e Pro a par
 
 Não usamos a tabela antiga por faixa nem presumimos os recursos e limites de cada plano. As condições comerciais ainda precisam ser confirmadas antes da contratação.
 
-## Estado do produto
+## Contratação (AbacatePay)
 
-O app mobile continua sendo um protótipo demonstrativo sem conta, servidor ou assinatura ativa nesta versão. O link para `/desktop/` é secundário; as movimentações no mapa ficam somente no navegador do visitante, sem sincronização com o app mobile. O site apresenta os preços, mas não ativa o teste nem processa pagamentos. Os CTAs levam a seções informativas até existir um destino real de cadastro/contratação.
+Os botões dos planos levam a checkouts de assinatura hospedados pela AbacatePay. Cada plano tem um produto mensal e um anual, todos com 14 dias grátis (`trialDays`): o cliente cadastra o cartão, paga R$ 0,00 hoje e a primeira cobrança acontece no fim do teste. Depois do pagamento, a AbacatePay redireciona para `obrigado.html`.
+
+Um checkout de assinatura pode ser pago por vários clientes, então o site é estático: os links ficam em `checkout-links.json`, gerado por
+
+```bash
+# .env (fora do git): ABACATEPAY_API_KEY=abc_dev_...
+node scripts/abacatepay-setup.mjs
+```
+
+O script lê os preços de `pricing.js`, cria ou reaproveita os produtos e checkouts (pelo `externalId`) e grava os links. A chave precisa das permissões `PRODUCT:CREATE`, `PRODUCT:READ`, `SUBSCRIPTION:CREATE` e `SUBSCRIPTION:READ`. Com chave de Dev mode, o site mostra o aviso de ambiente de teste. Para produção, gere a chave de produção, rode o script de novo e publique o `checkout-links.json` atualizado. Sem links configurados, os botões levam às dúvidas.
+
+Liberar o acesso no app depois do pagamento é responsabilidade do backend do app, via webhooks `subscription.completed`, `subscription.renewed` e `subscription.cancelled`.
 
 ## Animação
 
