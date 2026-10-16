@@ -23,9 +23,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="site.css?v=7">
+  <link rel="stylesheet" href="site.css?v=8">
   <script>document.documentElement.classList.add('js')</script>
-  <script type="module" src="script.js?v=6"></script>
+  <script type="module" src="script.js?v=7"></script>
 </head>
 <body>
   <a class="skip" href="#conteudo">Pular para o conteúdo</a>
@@ -186,19 +186,20 @@
         </fieldset>
         <div class="plans">
           <article class="plan" data-rise>
-            <div class="plan-head"><h3>Teste</h3><p class="plan-price">14 <small>dias grátis</small></p></div>
-            <p class="plan-desc">Use o Ovis com o seu rebanho por 14 dias sem pagar nada. O teste começa no Plus mensal; cancele antes do fim e nada é cobrado.</p>
+            <div class="plan-head"><h3>Teste</h3><p class="price-prefix">comece com</p><p class="plan-price">14 <small>dias grátis</small></p><p class="annual-equivalent">nada é cobrado hoje</p></div>
+            <p class="plan-desc">Use o Ovis com o seu rebanho por 14 dias sem pagar nada. O teste começa no Plus mensal.</p>
             <a class="btn btn-ghost" href="#perguntas" data-checkout="Plus" data-checkout-period="monthly">Começar teste grátis</a>
+            <p class="plan-trial">Cancele antes do fim e nada é cobrado</p>
           </article>
           <article class="plan plan-featured" data-rise>
             <span class="plan-badge">Mais escolhido</span>
-            <div class="plan-head"><h3>Plus</h3><p class="price-prefix">a partir de</p><p class="plan-price" data-plan-price="Plus">R$ 309,90 <small>/ mês</small></p><p class="annual-equivalent" data-plan-equivalent="Plus" hidden></p></div>
+            <div class="plan-head"><h3>Plus</h3><p class="price-prefix">a partir de</p><p class="plan-price" data-plan-price="Plus">R$ 309,90 <small>/ mês</small></p><p class="annual-equivalent" data-plan-equivalent="Plus">cobrado todo mês</p></div>
             <p class="plan-desc">Para levar a organização do rebanho à rotina da fazenda.</p>
             <a class="btn btn-solid" href="#perguntas" data-checkout="Plus">Assinar o Plus</a>
             <p class="plan-trial">14 dias grátis, depois cobrança automática</p>
           </article>
           <article class="plan" data-rise>
-            <div class="plan-head"><h3>Pro</h3><p class="price-prefix">a partir de</p><p class="plan-price" data-plan-price="Pro">R$ 359,90 <small>/ mês</small></p><p class="annual-equivalent" data-plan-equivalent="Pro" hidden></p></div>
+            <div class="plan-head"><h3>Pro</h3><p class="price-prefix">a partir de</p><p class="plan-price" data-plan-price="Pro">R$ 359,90 <small>/ mês</small></p><p class="annual-equivalent" data-plan-equivalent="Pro">cobrado todo mês</p></div>
             <p class="plan-desc">Para operações que querem evoluir o acompanhamento do rebanho.</p>
             <a class="btn btn-ghost" href="#perguntas" data-checkout="Pro">Assinar o Pro</a>
             <p class="plan-trial">14 dias grátis, depois cobrança automática</p>

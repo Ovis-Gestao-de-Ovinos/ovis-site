@@ -209,17 +209,17 @@ h1, h2, h3, p { margin: 0; }
 .billing-pill { position: absolute; z-index: 0; top: 5px; bottom: 5px; left: var(--pill-x, 5px); width: var(--pill-w, 90px); border-radius: 999px; background: var(--accent); transition: left .45s var(--ease), width .45s var(--ease); }
 html:not(.js) .billing-pill { display: none; }
 html:not(.js) .billing input:checked + span { background: var(--accent); }
-.plans { display: grid; grid-template-columns: .85fr 1.1fr 1fr; gap: 18px; align-items: stretch; }
+.plans { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; align-items: stretch; }
 .plan { position: relative; padding: 36px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 22px; }
 .plan h3 { font: 400 34px/1 var(--display); letter-spacing: .02em; text-transform: uppercase; }
 .plan-head { display: grid; gap: 6px; }
 .price-prefix { color: var(--text-3); font-size: 13px; margin-top: 18px; }
-.plan-head h3 + .plan-price { margin-top: 18px; }
-.plan-price { font: 400 clamp(56px, 5.4vw, 80px)/.9 var(--display); letter-spacing: .005em; white-space: nowrap; }
+.plan-price { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 8px; min-height: .9em; font: 400 clamp(44px, 4.4vw, 68px)/.9 var(--display); letter-spacing: .005em; white-space: nowrap; }
 .plan-price small { font: 500 15px var(--sans); color: var(--text-3); letter-spacing: 0; }
 .plan-price.is-swapping { animation: swap .5s var(--ease); }
 @keyframes swap { 0% { opacity: 0; transform: translateY(14px); filter: blur(6px); } 100% { opacity: 1; transform: none; filter: none; } }
-.annual-equivalent { color: var(--accent); font-size: 13px; }
+.annual-equivalent { color: var(--text-3); font-size: 13px; min-height: 1.6em; }
+.annual-equivalent.is-annual { color: var(--accent); }
 .plan-desc { color: var(--text-2); }
 .plan .btn { margin-top: auto; }
 .plan-featured { background: linear-gradient(180deg, rgba(79, 209, 107, .12), var(--surface) 55%); border-color: rgba(79, 209, 107, .45); box-shadow: 0 40px 90px -40px rgba(79, 209, 107, .45); }
