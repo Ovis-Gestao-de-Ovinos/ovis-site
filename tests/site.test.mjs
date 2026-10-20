@@ -170,3 +170,16 @@ test('voltar ao topo aponta para um elemento que rola, e sem créditos de fotogr
   assert.doesNotMatch(page, /Fotografia:|unsplash\.com/);
 });
 
+test('calculadora de GMD publicada e ligada ao site', () => {
+  const calc = readFileSync(new URL('../calculadora-gmd/index.html', import.meta.url), 'utf8');
+  assert.match(calc, /<title>Calculadora de GMD de cordeiros e ovinos \| Ovis<\/title>/);
+  assert.match(calc, /<link rel="canonical" href="https:\/\/ovisapp\.com\.br\/calculadora-gmd\/">/);
+  for (const n of ['pesoInicial', 'dataInicial', 'pesoFinal', 'dataFinal']) assert.match(calc, new RegExp(`name="${n}"`));
+  assert.match(calc, /import \{ computeGmd \} from '\/gmd\.js'/);
+  assert.match(calc, /217 g por dia/);
+  assert.match(calc, /"@type":"BreadcrumbList"/);
+  assert.match(page, /href="calculadora-gmd\/"/);
+  assert.match(readFileSync(new URL('../sitemap.xml', import.meta.url), 'utf8'), /<loc>https:\/\/ovisapp\.com\.br\/calculadora-gmd\/<\/loc>/);
+  assert.ok(readFileSync(new URL('../llms.txt', import.meta.url), 'utf8').includes('](https://ovisapp.com.br/calculadora-gmd/)'));
+});
+
