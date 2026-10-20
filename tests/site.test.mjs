@@ -20,6 +20,11 @@ test('página usa identidade Ovis e ativos próprios', () => {
   assert.doesNotMatch(page, /hero-mobile/, 'celular fica só com a foto');
   for (const f of ['hero.mp4', 'hero-av1.mp4', 'hero-hevc.mp4', 'hero.avif', 'hero-720.avif']) assert.ok(existsSync(new URL(`../assets/video/${f}`, import.meta.url)));
   assert.match(css, /--accent:/);
+  // Texto secundário com contraste WCAG AA (4,5:1) nos fundos escuros do site.
+  const lum = (hex) => { const [r, g, b] = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255).map((c) => (c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4)); return 0.2126 * r + 0.7152 * g + 0.0722 * b; };
+  const contrast = (a, b) => { const [x, y] = [lum(a), lum(b)].sort((m, n) => n - m); return (x + 0.05) / (y + 0.05); };
+  const token = (name) => css.match(new RegExp(`--${name}: (#[0-9a-f]{6})`))[1];
+  for (const bg of ['bg', 'bg-2', 'surface']) assert.ok(contrast(token('text-3'), token(bg)) >= 4.5, `--text-3 sobre --${bg}`);
   assert.ok(existsSync(new URL('../assets/ovis-ficha.webp', import.meta.url)));
   assert.doesNotMatch(page, /Subscrr|Apple Watch|subscriptions/);
 });
