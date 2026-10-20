@@ -1,9 +1,9 @@
 import { PLANS, money } from './pricing.js';
+import { formatPhone, normalizePhone, saveLead, validateLead, whatsappUrl } from './lead.js';
 
 const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
 const motion = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-let checkoutLinks = null;
 
 $('#year').textContent = new Date().getFullYear();
 $$('.nav-mobile nav a').forEach((link) => link.addEventListener('click', () => { $('.nav-mobile').open = false; }));
@@ -35,29 +35,63 @@ function renderPrices(animate = false) {
     }
   }
   movePill();
-  updateCheckoutLinks();
 }
 
-// Checkout AbacatePay: cada botão aponta para o link do plano no período escolhido.
-// Sem links configurados, os botões continuam levando às dúvidas.
-function updateCheckoutLinks() {
-  if (!checkoutLinks) return;
-  const annual = $('input[name="billing"]:checked')?.value === 'annual';
-  $$('[data-checkout]').forEach((button) => {
-    const period = button.dataset.checkoutPeriod ?? (annual ? 'annual' : 'monthly');
-    const url = checkoutLinks[button.dataset.checkout]?.[period];
-    if (!url) return;
-    button.href = url;
-    button.rel = 'noopener';
-  });
-  $('[data-checkout-mode]').hidden = checkoutLinks.devMode !== true;
-}
-fetch('checkout-links.json', { cache: 'no-cache' })
-  .then((res) => (res.ok ? res.json() : null))
-  .then((links) => { checkoutLinks = links; updateCheckoutLinks(); })
-  .catch(() => {});
 $$('input[name="billing"]').forEach((radio) => radio.addEventListener('change', () => renderPrices(true)));
 renderPrices();
+
+// Contato: os botões dos planos abrem o formulário; o lead vai para a planilha e segue para o WhatsApp.
+const leadDialog = $('#lead-dialog');
+const leadForm = $('[data-lead-form]', leadDialog);
+const leadPlanNames = { Teste: 'Teste grátis de 14 dias', Plus: 'Plano Plus', Pro: 'Plano Pro' };
+let leadPlan = { plano: 'Teste', periodo: 'mensal' };
+let leadEndpoint = null;
+fetch('lead-config.json', { cache: 'no-cache' })
+  .then((res) => (res.ok ? res.json() : null))
+  .then((config) => { leadEndpoint = config?.endpoint || null; })
+  .catch(() => {});
+
+$$('[data-lead]').forEach((button) => button.addEventListener('click', () => {
+  const annual = $('input[name="billing"]:checked')?.value === 'annual';
+  const plano = button.dataset.lead;
+  leadPlan = { plano, periodo: annual && plano !== 'Teste' ? 'anual' : 'mensal' };
+  $('[data-lead-plan]', leadDialog).textContent = leadPlan.periodo === 'anual' ? `${leadPlanNames[plano]} · anual` : leadPlanNames[plano];
+  leadDialog.showModal();
+}));
+$('[data-lead-close]', leadDialog).addEventListener('click', () => leadDialog.close());
+leadDialog.addEventListener('click', (event) => { if (event.target === leadDialog) leadDialog.close(); });
+
+leadForm.elements.whatsapp.addEventListener('blur', (event) => {
+  const digits = normalizePhone(event.target.value);
+  if (digits) event.target.value = formatPhone(digits);
+});
+leadForm.addEventListener('input', (event) => event.target.removeAttribute('aria-invalid'));
+
+leadForm.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  const submit = $('[data-lead-submit]', leadForm);
+  if (submit.disabled) return;
+  const field = (name) => leadForm.elements[name].value;
+  // Campo isca: só robôs preenchem.
+  if (field('site')) return;
+  const lead = { nome: field('nome'), whatsapp: field('whatsapp'), fazenda: field('fazenda'), rebanho: field('rebanho'), ...leadPlan };
+  const invalid = validateLead(lead);
+  ['nome', 'whatsapp', 'fazenda', 'rebanho'].forEach((name) => leadForm.elements[name].toggleAttribute('aria-invalid', invalid.includes(name)));
+  if (invalid.length) {
+    leadForm.elements[invalid[0]].focus();
+    return;
+  }
+  submit.disabled = true;
+  submit.textContent = 'Abrindo o WhatsApp…';
+  await saveLead(leadEndpoint && `${leadEndpoint}?origem=${encodeURIComponent(location.href)}`, lead);
+  location.href = whatsappUrl(lead);
+});
+// Quem volta do WhatsApp pelo botão de voltar encontra o formulário pronto de novo.
+window.addEventListener('pageshow', () => {
+  const submit = $('[data-lead-submit]', leadForm);
+  submit.disabled = false;
+  submit.textContent = 'Continuar no WhatsApp';
+});
 window.addEventListener('resize', movePill);
 document.fonts?.ready.then(movePill);
 

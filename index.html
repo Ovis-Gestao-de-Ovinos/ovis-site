@@ -23,9 +23,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="site.css?v=10">
+  <link rel="stylesheet" href="site.css?v=11">
   <script>document.documentElement.classList.add('js')</script>
-  <script type="module" src="script.js?v=10"></script>
+  <script type="module" src="script.js?v=11"></script>
 </head>
 <body>
   <a class="skip" href="#conteudo">Pular para o conteúdo</a>
@@ -184,25 +184,24 @@
           <article class="plan" data-rise>
             <div class="plan-head"><h3>Teste</h3><p class="price-prefix">comece com</p><p class="plan-price">14 <small>dias grátis</small></p><p class="annual-equivalent">nada é cobrado hoje</p></div>
             <p class="plan-desc">Use o Ovis com o seu rebanho por 14 dias sem pagar nada. O teste começa no Plus mensal.</p>
-            <a class="btn btn-ghost" href="#perguntas" data-checkout="Plus" data-checkout-period="monthly">Começar teste grátis</a>
-            <p class="plan-trial">Cancele antes do fim e nada é cobrado</p>
+            <button type="button" class="btn btn-ghost" data-lead="Teste">Começar teste grátis</button>
+            <p class="plan-trial">Sem cartão. A gente combina pelo WhatsApp.</p>
           </article>
           <article class="plan plan-featured" data-rise>
             <span class="plan-badge">Para começar</span>
             <div class="plan-head"><h3>Plus</h3><p class="price-prefix">a partir de</p><p class="plan-price" data-plan-price="Plus">R$ 309,90 <small>/ mês</small></p><p class="annual-equivalent" data-plan-equivalent="Plus">cobrado todo mês</p></div>
             <p class="plan-desc">Para levar a organização do rebanho à rotina da fazenda.</p>
-            <a class="btn btn-solid" href="#perguntas" data-checkout="Plus">Assinar o Plus</a>
-            <p class="plan-trial">14 dias grátis, depois cobrança automática</p>
+            <button type="button" class="btn btn-solid" data-lead="Plus">Assinar o Plus</button>
+            <p class="plan-trial">14 dias grátis. Preço combinado pelo tamanho do rebanho.</p>
           </article>
           <article class="plan" data-rise>
             <div class="plan-head"><h3>Pro</h3><p class="price-prefix">a partir de</p><p class="plan-price" data-plan-price="Pro">R$ 359,90 <small>/ mês</small></p><p class="annual-equivalent" data-plan-equivalent="Pro">cobrado todo mês</p></div>
             <p class="plan-desc">Para operações que querem evoluir o acompanhamento do rebanho.</p>
-            <a class="btn btn-ghost" href="#perguntas" data-checkout="Pro">Assinar o Pro</a>
-            <p class="plan-trial">14 dias grátis, depois cobrança automática</p>
+            <button type="button" class="btn btn-ghost" data-lead="Pro">Assinar o Pro</button>
+            <p class="plan-trial">14 dias grátis. Preço combinado pelo tamanho do rebanho.</p>
           </article>
         </div>
-        <p class="fine center pricing-note" data-rise>Pagamento por cartão de crédito em checkout seguro da AbacatePay. Todos os planos começam com 14 dias grátis: o cartão é cadastrado, nada é cobrado hoje e a primeira cobrança acontece no fim do teste. No anual, o total equivale a 12 mensalidades com 15% de desconto. “A partir de” é o valor de entrada: o preço final depende do tamanho do rebanho e é confirmado na contratação.</p>
-        <p class="checkout-mode" data-checkout-mode hidden>Ambiente de teste: os checkouts não fazem cobranças reais. Use o cartão 4242 4242 4242 4242, qualquer validade futura e qualquer CVV.</p>
+        <p class="fine center pricing-note" data-rise>Todos os planos começam com 14 dias grátis, sem cartão. Você preenche o formulário, fala com a gente pelo WhatsApp e a gente libera o acesso. No anual, o total equivale a 12 mensalidades com 15% de desconto. “A partir de” é o valor de entrada: o preço final depende do tamanho do rebanho e é confirmado na conversa.</p>
       </div>
     </section>
 
@@ -215,12 +214,12 @@
         </div>
         <div class="faq-list" data-rise>
           <details><summary>Preciso entender de tecnologia?</summary><div class="faq-body"><p>Não. Quem usa o celular pra mandar mensagem consegue anotar no Ovis. As telas mostram só o que importa no dia: o que venceu, o que é pra hoje e a ficha de cada animal.</p></div></details>
-          <details><summary>Como funcionam os 14 dias grátis?</summary><div class="faq-body"><p>Você escolhe o plano, cadastra o cartão no checkout da AbacatePay e o valor cobrado hoje é R$ 0,00. A assinatura começa na hora e a primeira cobrança acontece automaticamente ao fim dos 14 dias. Cancele antes disso e nada é cobrado.</p></div></details>
+          <details><summary>Como funcionam os 14 dias grátis?</summary><div class="faq-body"><p>Você preenche o formulário e fala com a gente pelo WhatsApp. A gente libera o acesso e você usa o Ovis com o seu rebanho por 14 dias, sem cartão e sem pagar nada. No fim, se fizer sentido, combinamos o plano.</p></div></details>
           <details><summary>Como funciona o desconto anual?</summary><div class="faq-body"><p>No anual você paga uma vez por ano o equivalente a 12 mensalidades com 15% de desconto: R$ 3.160,98 no Plus e R$ 3.670,98 no Pro, também depois dos 14 dias grátis.</p></div></details>
           <details><summary>O que muda entre Plus e Pro?</summary><div class="faq-body"><p>A composição detalhada dos planos é apresentada na contratação. Não atribuímos recursos ou limites a um plano sem confirmação.</p></div></details>
           <details><summary>Precisa de internet?</summary><div class="faq-body"><p>Sim, por enquanto o Ovis salva os registros com o celular conectado. Onde não pega sinal, anote assim que voltar à área com internet.</p></div></details>
-          <details><summary>Como cancelo ou falo com a Ovis?</summary><div class="faq-body"><p>Fale com a gente pelo WhatsApp <a class="inline-link" href="https://wa.me/5551984931844" rel="noopener">(51) 98493-1844</a> ou pelo e-mail <a class="inline-link" href="mailto:ovisfinanceiro@gmail.com">ovisfinanceiro@gmail.com</a>. Pedidos de cancelamento durante os 14 dias grátis encerram a assinatura sem nenhuma cobrança.</p></div></details>
-          <details><summary>Quais formas de pagamento são aceitas?</summary><div class="faq-body"><p>As assinaturas são cobradas no cartão de crédito, de forma recorrente, pela AbacatePay. Os dados do cartão são digitados na página segura da AbacatePay e não passam pelo site da Ovis.</p></div></details>
+          <details><summary>Como cancelo ou falo com a Ovis?</summary><div class="faq-body"><p>Fale com a gente pelo WhatsApp <a class="inline-link" href="https://wa.me/5551984931844" rel="noopener">(51) 98493-1844</a> ou pelo e-mail <a class="inline-link" href="mailto:ovisfinanceiro@gmail.com">ovisfinanceiro@gmail.com</a>. Durante o teste não há cobrança nenhuma.</p></div></details>
+          <details><summary>Quais formas de pagamento são aceitas?</summary><div class="faq-body"><p>A forma de pagamento é combinada na conversa pelo WhatsApp, depois do teste. Nada é cobrado pelo site.</p></div></details>
           <details><summary>As imagens do site são do meu rebanho?</summary><div class="faq-body"><p>Não. As telas mostradas aqui usam dados simulados, e a demonstração desktop é separada do app, sem sincronização entre elas.</p></div></details>
         </div>
       </div>
@@ -237,7 +236,21 @@
       </div>
     </section>
 
-    <div id="estado" class="disclosure"><div class="wrap"><strong>Sobre esta página.</strong> As imagens do aplicativo e o mapa usam dados simulados. Pagamentos e assinaturas são processados pela AbacatePay; a Ovis não armazena dados de cartão.</div></div>
+    <div id="estado" class="disclosure"><div class="wrap"><strong>Sobre esta página.</strong> As imagens do aplicativo e o mapa usam dados simulados. Os dados do formulário vão só para a equipe Ovis.</div></div>
+    <dialog id="lead-dialog" class="lead-dialog" aria-labelledby="lead-title">
+      <form class="lead-form" method="dialog" data-lead-form novalidate>
+        <button type="button" class="lead-close" aria-label="Fechar" data-lead-close>×</button>
+        <h2 id="lead-title" class="title-sans">Falta pouco</h2>
+        <p class="lead-plan" data-lead-plan>Teste grátis de 14 dias</p>
+        <label>Seu nome<input name="nome" type="text" autocomplete="name" required></label>
+        <label>WhatsApp com DDD<input name="whatsapp" type="tel" inputmode="numeric" autocomplete="tel" placeholder="(51) 99999-9999" required></label>
+        <label>Nome da fazenda<input name="fazenda" type="text" autocomplete="organization" required></label>
+        <label>Tamanho do rebanho<select name="rebanho" required><option value="">Escolha</option><option>até 100</option><option>101 a 300</option><option>301 a 1.000</option><option>mais de 1.000</option></select></label>
+        <label class="lead-trap" aria-hidden="true">Site<input name="site" type="text" tabindex="-1" autocomplete="off"></label>
+        <button type="submit" class="btn btn-solid" data-lead-submit>Continuar no WhatsApp</button>
+        <p class="fine">Usamos esses dados só para falar com você sobre o Ovis.</p>
+      </form>
+    </dialog>
   </main>
 
   <footer class="footer">

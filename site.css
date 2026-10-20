@@ -318,7 +318,6 @@ html:not(.js) .billing input:checked + span { background: var(--accent); }
 
 /* Checkout */
 .plan-trial { margin-top: -10px; text-align: center; color: var(--text-3); font-size: 12px; }
-.checkout-mode { max-width: 720px; margin: 18px auto 0; padding: 12px 18px; border-radius: 14px; border: 1px dashed rgba(240, 163, 71, .5); background: rgba(240, 163, 71, .08); color: var(--amber); font-size: 13px; text-align: center; }
 .thanks { min-height: 100svh; display: grid; place-items: center; padding: 120px 0 80px; text-align: center; }
 .thanks-mark { width: 84px; height: 84px; margin: 0 auto 36px; border-radius: 50%; display: grid; place-items: center; background: var(--accent); color: var(--accent-ink); font-size: 40px; font-weight: 700; box-shadow: 0 0 0 0 rgba(79, 209, 107, .6); animation: pulse 2.4s infinite; }
 .thanks h1 { font-size: clamp(64px, 11vw, 150px); }
@@ -334,3 +333,22 @@ html:not(.js) .billing input:checked + span { background: var(--accent); }
 .footer-contact .footer-tag { margin-top: 8px; text-align: left; }
 .thanks-actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
 .thanks .thanks-contact { font-size: 14px; color: var(--text-3); margin-top: 28px; }
+
+/* Formulário de contato */
+.lead-dialog { width: min(440px, calc(100% - 32px)); max-height: calc(100dvh - 32px); margin: auto; padding: 0; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); color: var(--text); overflow: auto; }
+.lead-dialog::backdrop { background: rgba(4, 7, 5, .72); backdrop-filter: blur(6px); }
+.lead-dialog[open] { animation: lead-in .45s var(--ease); }
+@keyframes lead-in { from { opacity: 0; transform: translateY(16px); } }
+.lead-form { position: relative; display: flex; flex-direction: column; gap: 14px; padding: 32px 28px 24px; }
+.lead-form h2 { font-size: 28px; }
+.lead-plan { margin-top: -8px; color: var(--accent); font-size: 14px; font-weight: 500; }
+.lead-form label { display: flex; flex-direction: column; gap: 6px; color: var(--text-2); font-size: 13px; font-weight: 500; }
+.lead-form input, .lead-form select { min-height: 48px; padding: 0 14px; border: 1px solid var(--line); border-radius: 14px; background: var(--bg-2); color: var(--text); font: inherit; font-size: 16px; }
+.lead-form input:focus-visible, .lead-form select:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.lead-form [aria-invalid] { border-color: var(--red); }
+.lead-form .btn { margin-top: 6px; }
+.lead-form .btn:disabled { opacity: .7; cursor: progress; }
+.lead-form .fine { text-align: center; }
+.lead-close { position: absolute; top: 14px; right: 14px; width: 40px; height: 40px; border-radius: 50%; color: var(--text-2); font-size: 24px; line-height: 1; }
+.lead-close:hover { color: var(--text); background: var(--surface-2); }
+.lead-trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
