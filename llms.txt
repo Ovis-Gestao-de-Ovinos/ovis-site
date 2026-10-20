@@ -1,14 +1,16 @@
 # Ovis
 
-> Ovis é um aplicativo de celular para controle de rebanhos ovinos, feito para produtores de ovinos e equipes de fazenda que hoje anotam tudo em quadro branco e caderno. Cada manejo é registrado na hora e fica guardado.
+> Ovis é um aplicativo de celular para controle de rebanhos ovinos, feito para produtores de ovinos e equipes de fazenda que hoje anotam tudo em quadro branco e caderno. Cada manejo é registrado na hora e fica guardado. Site em português do Brasil.
 
-- Site: https://ovisapp.com.br/
-- Idioma: português do Brasil
-- Contato: WhatsApp (51) 98493-1844
-- Empresa: 65.981.257 DARTAGNAN ROMANN DE MELLO, CNPJ 65.981.257/0001-17, São Leopoldo, RS
-- Sobre: https://ovisapp.com.br/sobre/
-- Privacidade: https://ovisapp.com.br/privacidade/
-- Instagram: https://www.instagram.com/ovis.gestao/
+Empresa: 65.981.257 DARTAGNAN ROMANN DE MELLO, CNPJ 65.981.257/0001-17, São Leopoldo, RS.
+
+## Páginas
+
+- [Ovis, controle do rebanho ovino no celular](https://ovisapp.com.br/): página principal com o aplicativo, os recursos, os planos e as dúvidas frequentes.
+- [Planos e preços](https://ovisapp.com.br/#precos): 14 dias grátis sem cartão; Plus a partir de R$ 309,90 por mês; Pro a partir de R$ 359,90 por mês.
+- [Dúvidas frequentes](https://ovisapp.com.br/#perguntas): teste grátis, desconto anual, diferença entre Plus e Pro, internet, pagamento e cancelamento.
+- [Sobre a Ovis](https://ovisapp.com.br/sobre/): quem faz a Ovis, como começou e dados da empresa.
+- [Política de privacidade](https://ovisapp.com.br/privacidade/): quais dados o formulário de contato coleta, para quê e como pedir acesso ou exclusão.
 
 ## O que o Ovis faz
 
@@ -25,7 +27,10 @@
 - Pro a partir de R$ 359,90 por mês: aplicativo e sistema no computador.
 - O preço final depende do tamanho do rebanho e é combinado pelo WhatsApp.
 - Em breve: registro pelo WhatsApp e, no Pro, controle de estoque e financeiro.
-
-## Limitações atuais
-
 - O aplicativo precisa de internet para salvar os registros.
+
+## Contato
+
+- [WhatsApp (51) 98493-1844](https://wa.me/5551984931844): teste grátis, demonstração, preços e suporte.
+- [E-mail ovisfinanceiro@gmail.com](mailto:ovisfinanceiro@gmail.com)
+- [Instagram @ovis.gestao](https://www.instagram.com/ovis.gestao/)
