@@ -40,6 +40,12 @@ test('composição escura com tipografia de impacto e animações acessíveis', 
   assert.match(script, /addEventListener\('load', startHeroVideo/, 'vídeo do hero só baixa depois do load');
   assert.match(script, /navigator\.connection\?\.saveData/, 'economia de dados fica só com o poster');
   assert.match(page, /src="script\.js\?v=\d+"/, "script versionado evita cache de versão antiga");
+  // Os módulos importados pelo script entram na fila junto com ele, sem esperar o script baixar.
+  const version = (re) => (page.match(re) || [])[0];
+  assert.equal(version(/modulepreload" href="script\.js\?v=\d+/)?.split('href="')[1], version(/src="script\.js\?v=\d+/)?.split('src="')[1], 'modulepreload na mesma versão do script');
+  assert.match(page, /<link rel="modulepreload" href="pricing\.js">/);
+  const leadImport = script.match(/from '\.\/(lead\.js[^']*)'/)[1];
+  assert.ok(page.includes(`<link rel="modulepreload" href="${leadImport}">`), `modulepreload de ${leadImport}`);
   assert.match(page, /data-scrub/);
   assert.match(page, /data-phone-scroll/);
   assert.match(css, /\.motion-on \[data-lines\]/);
