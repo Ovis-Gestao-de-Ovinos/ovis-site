@@ -51,7 +51,7 @@ test('planos novos substituem tabela antiga sem promessa de compra ou desconto',
 
 test('contratação passa por formulário, planilha e WhatsApp', () => {
   const script = readFileSync(new URL('../script.js', import.meta.url), 'utf8');
-  for (const p of ['Teste', 'Plus', 'Pro']) assert.match(page, new RegExp(`data-lead="${p}"`));
+  for (const p of ['Teste', 'Plus', 'Pro', 'Demonstração']) assert.match(page, new RegExp(`data-lead="${p}"`));
   assert.match(page, /<dialog id="lead-dialog"/);
   for (const n of ['nome', 'whatsapp', 'fazenda', 'rebanho']) assert.match(page, new RegExp(`name="${n}"[^>]*required`));
   assert.match(page, /Usamos esses dados só para falar com você sobre o Ovis/);

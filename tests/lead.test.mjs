@@ -33,6 +33,7 @@ test('mensagem do WhatsApp por plano e período', () => {
     'Oi! Sou João, da fazenda Boa Vista. Temos 101 a 300 animais e quero começar o teste grátis. Meu WhatsApp: (51) 98493-1844.');
   assert.equal(leadMessage({ ...ok, plano: 'Teste', periodo: 'anual' }).includes('(anual)'), false);
   assert.match(leadMessage(ok), /quero conhecer o plano Plus\./);
+  assert.match(leadMessage({ ...ok, plano: 'Demonstração', periodo: 'anual' }), /quero ver uma demonstração do Ovis no computador\. Meu/);
   assert.match(leadMessage({ ...ok, plano: 'Pro', periodo: 'anual' }), /quero conhecer o plano Pro \(anual\)\./);
   assert.match(leadMessage({ ...ok, nome: '  João ', fazenda: ' Boa Vista  ' }), /^Oi! Sou João, da fazenda Boa Vista\./);
   assert.ok(whatsappUrl(ok).startsWith('https://wa.me/5551984931844?text=Oi!%20Sou%20Jo%C3%A3o'));

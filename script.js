@@ -43,7 +43,7 @@ renderPrices();
 // Contato: os botões dos planos abrem o formulário; o lead vai para a planilha e segue para o WhatsApp.
 const leadDialog = $('#lead-dialog');
 const leadForm = $('[data-lead-form]', leadDialog);
-const leadPlanNames = { Teste: 'Teste grátis de 14 dias', Plus: 'Plano Plus', Pro: 'Plano Pro' };
+const leadPlanNames = { Teste: 'Teste grátis de 14 dias', Plus: 'Plano Plus', Pro: 'Plano Pro', Demonstração: 'Demonstração no computador' };
 let leadPlan = { plano: 'Teste', periodo: 'mensal' };
 let leadEndpoint = null;
 fetch('lead-config.json', { cache: 'no-cache' })
@@ -54,7 +54,7 @@ fetch('lead-config.json', { cache: 'no-cache' })
 $$('[data-lead]').forEach((button) => button.addEventListener('click', () => {
   const annual = $('input[name="billing"]:checked')?.value === 'annual';
   const plano = button.dataset.lead;
-  leadPlan = { plano, periodo: annual && plano !== 'Teste' ? 'anual' : 'mensal' };
+  leadPlan = { plano, periodo: annual && (plano === 'Plus' || plano === 'Pro') ? 'anual' : 'mensal' };
   $('[data-lead-plan]', leadDialog).textContent = leadPlan.periodo === 'anual' ? `${leadPlanNames[plano]} · anual` : leadPlanNames[plano];
   leadDialog.showModal();
 }));
