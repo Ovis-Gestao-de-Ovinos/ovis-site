@@ -138,3 +138,13 @@ test('páginas de confiança: privacidade e sobre', () => {
   const sitemap = readFileSync(new URL('../sitemap.xml', import.meta.url), 'utf8');
   for (const p of ['sobre', 'privacidade']) assert.match(sitemap, new RegExp(`<loc>https://ovisapp\\.com\\.br/${p}/</loc>`));
 });
+
+test('material interno e demonstração não são publicados', () => {
+  const config = readFileSync(new URL('../_config.yml', import.meta.url), 'utf8');
+  for (const path of ['desktop', 'docs', 'tests', 'scripts', 'vendor', 'README.md', 'checkout-links.json']) assert.match(config, new RegExp(`^  - ${path.replace('.', '\\.')}$`, 'm'), path);
+  assert.ok(!existsSync(new URL('../.nojekyll', import.meta.url)), '.nojekyll desligaria o exclude');
+  assert.doesNotMatch(page, /href="[^"]*desktop/);
+  const sitemap = readFileSync(new URL('../sitemap.xml', import.meta.url), 'utf8');
+  assert.doesNotMatch(sitemap, /desktop|docs/);
+});
+

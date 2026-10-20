@@ -1,0 +1,10 @@
+# GitHub Pages (Jekyll): estes caminhos ficam no repositório, mas não são publicados no site.
+# desktop/ é a demonstração interna; docs/, tests/ e scripts/ são material de trabalho.
+exclude:
+  - desktop
+  - docs
+  - tests
+  - scripts
+  - vendor
+  - README.md
+  - checkout-links.json
