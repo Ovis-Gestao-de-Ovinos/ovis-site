@@ -83,9 +83,11 @@ test('canais de atendimento para dúvidas e cancelamento', () => {
 test('SEO permanece coerente com a prévia', () => {
   const sitemap = readFileSync(new URL('../sitemap.xml', import.meta.url), 'utf8');
   assert.match(page, /<html lang="pt-BR">/);
-  assert.match(page, /<link rel="canonical" href="https:\/\/ovis-gestao-de-ovinos\.github\.io\/ovis-site\/">/);
+  assert.match(page, /<link rel="canonical" href="https:\/\/ovisapp\.com\.br\/">/);
+  assert.equal(readFileSync(new URL('../CNAME', import.meta.url), 'utf8').trim(), 'ovisapp.com.br');
+  assert.doesNotMatch(page + readFileSync(new URL('../desktop/index.html', import.meta.url), 'utf8'), /github\.io|\/ovis-site\//, 'domínio próprio na raiz, sem o caminho antigo');
   assert.match(page, /<meta property="og:image"/);
   assert.match(page, /type="application\/ld\+json"/);
-  assert.match(sitemap, /ovis-site\//);
+  assert.match(sitemap, /<loc>https:\/\/ovisapp\.com\.br\/<\/loc>/);
   assert.doesNotMatch(page, /aggregateRating|"@type":"SoftwareApplication"/);
 });
