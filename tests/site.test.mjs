@@ -106,6 +106,7 @@ test('SEO permanece coerente com a prévia', () => {
   const app = ld['@graph'][2];
   assert.equal(app.applicationCategory, 'BusinessApplication');
   assert.deepEqual(app.offers.map((o) => [o.name, o.price, o.priceCurrency]), [['Plus', '309.90', 'BRL'], ['Pro', '359.90', 'BRL']]);
+  for (const offer of app.offers) assert.deepEqual([offer.priceSpecification['@type'], offer.priceSpecification.unitCode, offer.priceSpecification.minPrice], ['UnitPriceSpecification', 'MON', offer.price]);
   const description = page.match(/<meta name="description" content="([^"]*)">/)[1];
   assert.ok(description.length <= 160, `descrição com ${description.length} caracteres`);
   assert.match(description, /14 dias grátis/);
