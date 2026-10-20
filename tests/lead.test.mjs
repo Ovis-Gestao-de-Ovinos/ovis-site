@@ -1,0 +1,53 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { HERD_SIZES, OVIS_WHATSAPP, normalizePhone, formatPhone, validateLead, leadMessage, whatsappUrl, saveLead } from '../lead.js';
+
+const ok = { nome: 'João', whatsapp: '51984931844', fazenda: 'Boa Vista', rebanho: '101 a 300', plano: 'Plus', periodo: 'mensal' };
+
+test('faixas do rebanho e WhatsApp da Ovis', () => {
+  assert.deepEqual(HERD_SIZES, ['até 100', '101 a 300', '301 a 1.000', 'mais de 1.000']);
+  assert.equal(OVIS_WHATSAPP, '5551984931844');
+});
+
+test('telefone aceita máscara, +55 e espaços', () => {
+  assert.equal(normalizePhone('(51) 98493-1844'), '51984931844');
+  assert.equal(normalizePhone('+55 51 98493 1844'), '51984931844');
+  assert.equal(normalizePhone('51 3333-4444'), '5133334444');
+  assert.equal(normalizePhone('98493-1844'), null);
+  assert.equal(normalizePhone(''), null);
+  assert.equal(formatPhone('51984931844'), '(51) 98493-1844');
+  assert.equal(formatPhone('5133334444'), '(51) 3333-4444');
+});
+
+test('campos obrigatórios, espaços não contam', () => {
+  assert.deepEqual(validateLead({ nome: '  ', whatsapp: '123', fazenda: '', rebanho: 'x', plano: 'Plus', periodo: 'mensal' }),
+    ['nome', 'whatsapp', 'fazenda', 'rebanho']);
+  assert.deepEqual(validateLead(ok), []);
+  assert.deepEqual(validateLead({ ...ok, whatsapp: '(51) 98493-1844' }), []);
+});
+
+test('mensagem do WhatsApp por plano e período', () => {
+  assert.equal(leadMessage({ ...ok, plano: 'Teste' }),
+    'Oi! Sou João, da fazenda Boa Vista. Temos 101 a 300 animais e quero começar o teste grátis. Meu WhatsApp: (51) 98493-1844.');
+  assert.equal(leadMessage({ ...ok, plano: 'Teste', periodo: 'anual' }).includes('(anual)'), false);
+  assert.match(leadMessage(ok), /quero conhecer o plano Plus\./);
+  assert.match(leadMessage({ ...ok, plano: 'Pro', periodo: 'anual' }), /quero conhecer o plano Pro \(anual\)\./);
+  assert.match(leadMessage({ ...ok, nome: '  João ', fazenda: ' Boa Vista  ' }), /^Oi! Sou João, da fazenda Boa Vista\./);
+  assert.ok(whatsappUrl(ok).startsWith('https://wa.me/5551984931844?text=Oi!%20Sou%20Jo%C3%A3o'));
+});
+
+test('saveLead pula sem endpoint, falha sem rejeitar e respeita o tempo-limite', async () => {
+  assert.equal(await saveLead(null, ok), 'skipped');
+  assert.equal(await saveLead('', ok), 'skipped');
+  assert.equal(await saveLead('https://x', ok, { fetchImpl: () => Promise.reject(new Error()) }), 'failed');
+  const start = Date.now();
+  assert.equal(await saveLead('https://x', ok, { fetchImpl: () => new Promise(() => {}), timeoutMs: 50 }), 'failed');
+  assert.ok(Date.now() - start < 500);
+  let sent;
+  assert.equal(await saveLead('https://x', ok, { fetchImpl: (url, init) => { sent = { url, ...init }; return Promise.resolve({}); } }), 'saved');
+  assert.equal(sent.url, 'https://x');
+  assert.equal(sent.method, 'POST');
+  assert.equal(sent.mode, 'no-cors');
+  assert.equal(sent.headers['Content-Type'], 'text/plain;charset=utf-8');
+  assert.deepEqual(JSON.parse(sent.body), { ...ok, whatsapp: '(51) 98493-1844' });
+});
