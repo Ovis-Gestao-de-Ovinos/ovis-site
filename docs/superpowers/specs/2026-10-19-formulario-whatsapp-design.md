@@ -35,7 +35,7 @@ Embaixo do botão, em letra pequena: **Usamos esses dados só para falar com voc
 
 ## Mensagem do WhatsApp
 
-> Oi! Sou {nome}, da fazenda {fazenda}. Temos {rebanho} animais e quero {começar o teste grátis | conhecer o plano Plus | conhecer o plano Pro}{ (anual)}. Meu WhatsApp: {whatsapp}.
+> Oi! Sou {nome}, da fazenda {fazenda}. Temos {rebanho} animais e quero {começar o teste grátis | conhecer o plano Plus | conhecer o plano Pro | ver uma demonstração do Ovis no computador}{ (anual)}.
 
 ## Planilha (o painel)
 

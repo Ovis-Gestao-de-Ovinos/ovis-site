@@ -1,5 +1,5 @@
 import { PLANS, money } from './pricing.js';
-import { formatPhone, normalizePhone, saveLead, validateLead, whatsappUrl } from './lead.js';
+import { formatPhone, normalizePhone, saveLead, validateLead, whatsappUrl } from './lead.js?v=2';
 
 const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
