@@ -162,3 +162,11 @@ test('material interno e demonstração não são publicados', () => {
   assert.doesNotMatch(sitemap, /desktop|docs/);
 });
 
+test('voltar ao topo aponta para um elemento que rola, e sem créditos de fotografia', () => {
+  // Âncora em elemento position: fixed não rola a página; o alvo de #inicio é a seção do topo.
+  assert.match(page, /<section id="inicio" class="hero"/);
+  assert.doesNotMatch(page, /<header[^>]*id="inicio"/);
+  assert.match(page, /<a class="to-top" href="#inicio"/);
+  assert.doesNotMatch(page, /Fotografia:|unsplash\.com/);
+});
+
