@@ -8,7 +8,7 @@ import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { subscriptionProducts } from '../pricing.js';
 
 const API = process.env.ABACATEPAY_API_URL ?? 'https://api.abacatepay.com/v2';
-const SITE = process.env.OVIS_SITE_URL ?? 'https://ovis-gestao-de-ovinos.github.io/ovis-site/';
+const SITE = process.env.OVIS_SITE_URL ?? 'https://ovisapp.com.br/';
 const OUT = new URL('../checkout-links.json', import.meta.url);
 
 function loadKey() {
