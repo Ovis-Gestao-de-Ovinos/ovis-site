@@ -22,7 +22,7 @@
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
   <link rel="preload" href="/assets/fonts/bebas-neue-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/site.css?v=21">
+  <link rel="stylesheet" href="/site.css?v=22">
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://ovisapp.com.br/calculadora-gmd/#page","url":"https://ovisapp.com.br/calculadora-gmd/","name":"Calculadora de GMD de cordeiros e ovinos","inLanguage":"pt-BR","isPartOf":{"@id":"https://ovisapp.com.br/#website"},"publisher":{"@id":"https://ovisapp.com.br/#organization"}},{"@type":"WebApplication","@id":"https://ovisapp.com.br/calculadora-gmd/#app","name":"Calculadora de GMD (ganho médio diário) de cordeiros e ovinos","url":"https://ovisapp.com.br/calculadora-gmd/","applicationCategory":"BusinessApplication","operatingSystem":"Qualquer navegador","inLanguage":"pt-BR","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"BRL"},"publisher":{"@id":"https://ovisapp.com.br/#organization"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ovis","item":"https://ovisapp.com.br/"},{"@type":"ListItem","position":2,"name":"Calculadora de GMD","item":"https://ovisapp.com.br/calculadora-gmd/"}]}]}</script>
 </head>
 <body>
@@ -53,6 +53,7 @@
         <div class="gmd-result" data-gmd-result aria-live="polite" hidden>
           <p class="gmd-value"><strong data-gmd-value></strong> <span data-gmd-unit>g por dia</span></p>
           <p data-gmd-detail></p>
+          <p class="gmd-ref">Médias de pesquisa na terminação: 118 g/dia a pasto sem suplementação, cerca de 170 g/dia a pasto com concentrado e 255 g/dia em confinamento. <a class="inline-link" href="#referencias">Ver referências</a></p>
         </div>
         <p class="gmd-error" data-gmd-error role="alert" hidden></p>
         <noscript><p class="gmd-error">A calculadora precisa de JavaScript. Pela fórmula abaixo, dá para fazer a conta à mão.</p></noscript>
@@ -63,9 +64,45 @@
       <p>Exemplo: um cordeiro pesava 32 kg e, 30 dias depois, 38,5 kg. Ele ganhou 6,5 kg em 30 dias: 6,5 ÷ 30 = 0,217 kg por dia, ou seja, <strong>217 g por dia</strong>.</p>
       <p>Se o peso final for menor que o inicial, o GMD fica negativo: o animal perdeu peso no período.</p>
 
+      <h2 id="referencias">Qual é um bom GMD para cordeiros?</h2>
+      <p>Não existe um número único. O GMD muda com a fase do cordeiro, o sistema de criação, a alimentação, a raça e o sexo. O melhor comparativo é o histórico do seu próprio rebanho. Como referência, estas são médias de pesquisas brasileiras:</p>
+      <div class="gmd-table-wrap">
+        <table class="gmd-table">
+          <caption>GMD médio de cordeiros na terminação, por sistema (Britez et al., 2016: 36 estudos, 1.422 cordeiros)</caption>
+          <thead><tr><th scope="col">Sistema</th><th scope="col">GMD médio</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Pasto sem suplementação</th><td>118 g/dia</td></tr>
+            <tr><th scope="row">Pasto com concentrado a 1% do peso vivo</th><td>168 g/dia</td></tr>
+            <tr><th scope="row">Pasto com concentrado a 1,5% do peso vivo</th><td>173 g/dia</td></tr>
+            <tr><th scope="row">Pasto com concentrado a 2% do peso vivo</th><td>176 g/dia</td></tr>
+            <tr><th scope="row">Confinamento</th><td>255 g/dia</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Antes do desmame o ganho costuma ser maior. Num estudo da UFSM com cordeiros Texel × Ideal em confinamento, o GMD foi de 336 g/dia do nascimento ao desmame (45 dias) e caiu para 176 g/dia do desmame ao abate (Pires et al., 2000). Por isso, compare cordeiros da mesma fase.</p>
+      <p>Essas médias são de pesquisa, não metas. Para definir o que esperar do seu rebanho, converse com o veterinário ou zootecnista que acompanha a propriedade.</p>
+
+      <h2>Como pesar para o GMD sair certo</h2>
+      <ul>
+        <li><strong>Mesma balança, sempre conferida.</strong> Trocar de balança entre as pesagens pode criar diferença que não é ganho de peso.</li>
+        <li><strong>Mesmas condições.</strong> O peso do animal muda com o que ele comeu e bebeu. Pese sempre no mesmo horário e na mesma situação, antes ou depois de comer. Em pesquisa, é comum pesar sem jejum ao longo do acompanhamento e fazer jejum de sólidos de 12 horas só na pesagem final (Pires et al., 2000).</li>
+        <li><strong>Intervalo de algumas semanas.</strong> Com poucos dias entre as pesagens, qualquer diferença pequena pesa muito na conta: 0,5 kg a mais em 3 dias dá 167 g/dia, enquanto o mesmo 0,5 kg em 21 dias dá 24 g/dia. No estudo da UFSM, os cordeiros eram pesados a cada 21 dias.</li>
+      </ul>
+
+      <h2>Como calcular o GMD do lote</h2>
+      <p>Calcule o GMD de cada animal e tire a média. Se todos foram pesados nas mesmas datas, dá no mesmo somar os pesos: <strong>(soma dos pesos finais − soma dos pesos iniciais) ÷ (número de animais × dias)</strong>. Exemplo: 10 cordeiros que somavam 320 kg e, 30 dias depois, 385 kg ganharam 65 kg; 65 ÷ (10 × 30) = 0,217 kg, ou 217 g por dia em média.</p>
+      <p>A média do lote esconde quem está ficando para trás. Por isso vale olhar também o GMD de cada animal.</p>
+
       <h2>No Ovis, o GMD sai sozinho</h2>
-      <p>No aplicativo Ovis, cada pesagem fica guardada na ficha do animal, e o GMD é calculado sozinho, animal por animal e por lote, sem conta no papel.</p>
+      <p>No aplicativo Ovis, cada pesagem fica guardada na ficha do animal, e o GMD é calculado sozinho, animal por animal e por lote, sem conta no papel. Dá para ver na hora quem está ganhando menos que o resto do lote.</p>
       <div class="thanks-actions" style="justify-content:flex-start;margin-top:24px"><a class="btn btn-solid" href="/#precos">Testar 14 dias grátis</a><a class="btn btn-ghost" href="/#produto">Ver a ficha do animal</a></div>
+
+      <h2>Fontes</h2>
+      <ul class="sources">
+        <li>BRITEZ, G. D. V. et al. Ganho médio diário, pesos e rendimentos de carcaça de cordeiros terminados a pasto com suplementação concentrada ou confinados: estudo meta-analítico. In: Workshop em Zootecnia e Produção Animal, 3., 2016, Dourados. <a class="inline-link" href="https://www.alice.cnptia.embrapa.br/alice/handle/doc/1060756" rel="noopener">Repositório Alice, Embrapa</a>.</li>
+        <li>PIRES, C. C. et al. Cria e terminação de cordeiros confinados. Ciência Rural, Santa Maria, v. 30, n. 5, p. 875-880, 2000. <a class="inline-link" href="https://www.redalyc.org/articulo.oa?id=33113579023" rel="noopener">Redalyc</a>.</li>
+      </ul>
+      <p class="fine">Conteúdo informativo, baseado nas fontes acima. Não substitui a orientação de um veterinário ou zootecnista. Última revisão: 20 de outubro de 2026.</p>
     </div>
   </main>
   <footer class="footer">
