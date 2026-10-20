@@ -11,6 +11,7 @@ for (const id of ['inicio', 'visao', 'produto', 'rotina', 'recursos', 'precos', 
 
 test('página usa identidade Ovis e ativos próprios', () => {
   assert.match(page, /O quadro branco/);
+  assert.match(page, /<h1[^>]*>\s*<span class="eyebrow"[^>]*>Ovis · Controle do rebanho ovino no celular/);
   assert.match(page, /produtores de ovinos e equipes de fazenda/);
   assert.match(page, /assets\/ovis-ficha\.webp/);
   assert.match(page, /assets\/sheep-flock\.webp/);
@@ -31,6 +32,7 @@ test('composição escura com tipografia de impacto e animações acessíveis', 
   for (const f of ['bebas-neue-latin', 'bebas-neue-latin-ext', 'inter-latin', 'inter-latin-ext']) assert.ok(existsSync(new URL(`../assets/fonts/${f}.woff2`, import.meta.url)));
   assert.match(page, /<link rel="preload" href="assets\/video\/hero\.jpg[^"]*" as="image" fetchpriority="high">/);
   assert.match(script, /addEventListener\('load', startHeroVideo/, 'vídeo do hero só baixa depois do load');
+  assert.match(script, /navigator\.connection\?\.saveData/, 'economia de dados fica só com o poster');
   assert.match(page, /src="script\.js\?v=\d+"/, "script versionado evita cache de versão antiga");
   assert.match(page, /data-scrub/);
   assert.match(page, /data-phone-scroll/);
@@ -94,7 +96,13 @@ test('SEO permanece coerente com a prévia', () => {
   assert.match(page, /<meta property="og:image"/);
   assert.match(page, /type="application\/ld\+json"/);
   assert.match(sitemap, /<loc>https:\/\/ovisapp\.com\.br\/<\/loc>/);
-  assert.doesNotMatch(page, /aggregateRating|"@type":"SoftwareApplication"/);
+  assert.doesNotMatch(page, /aggregateRating|"review"/, 'sem avaliações inventadas');
+  const ld = JSON.parse(page.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1]);
+  const types = ld['@graph'].map((n) => n['@type']);
+  assert.deepEqual(types, ['WebSite', 'Organization', 'SoftwareApplication']);
+  const app = ld['@graph'][2];
+  assert.equal(app.applicationCategory, 'BusinessApplication');
+  assert.deepEqual(app.offers.map((o) => [o.name, o.price, o.priceCurrency]), [['Plus', '309.90', 'BRL'], ['Pro', '359.90', 'BRL']]);
   const description = page.match(/<meta name="description" content="([^"]*)">/)[1];
   assert.ok(description.length <= 160, `descrição com ${description.length} caracteres`);
   assert.match(description, /14 dias grátis/);

@@ -103,7 +103,7 @@ window.addEventListener('resize', movePill);
 document.fonts?.ready.then(movePill);
 
 // Vídeo do hero: versão Full HD no computador e 720p em telas pequenas.
-// Com menos movimento, o vídeo não carrega e fica só o poster.
+// Com menos movimento ou economia de dados, o vídeo não carrega e fica só o poster.
 // O vídeo só começa a baixar depois da página carregada, para não disputar banda com o poster e o texto.
 const heroVideo = $('[data-hero-video]');
 function startHeroVideo() {
@@ -116,7 +116,9 @@ function startHeroVideo() {
     if (document.visibilityState === 'visible' && heroVideo.paused) heroVideo.play().catch(() => {});
   });
 }
-if (heroVideo && motion) {
+// Com economia de dados ligada no celular, fica só o poster.
+const saveData = navigator.connection?.saveData === true;
+if (heroVideo && motion && !saveData) {
   if (document.readyState === 'complete') startHeroVideo();
   else window.addEventListener('load', startHeroVideo, { once: true });
 }
