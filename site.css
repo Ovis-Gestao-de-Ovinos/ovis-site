@@ -381,6 +381,7 @@ html:not(.js) .billing input:checked + span { background: var(--accent); }
 .doc strong { color: var(--text); font-weight: 600; }
 .doc .fine { margin-top: 48px; }
 .team { list-style: none; padding: 0 !important; display: grid !important; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px !important; }
+.team li span { display: block; margin-top: 4px; color: var(--text-2); font-size: 14px; font-weight: 400; }
 .team li { padding: 16px 18px; border-radius: 18px; background: var(--surface); border: 1px solid var(--line); color: var(--text); font-weight: 500; }
 .facts { display: grid; grid-template-columns: max-content 1fr; gap: 8px 24px; margin-top: 12px; }
 .facts dt { color: var(--text-3); }

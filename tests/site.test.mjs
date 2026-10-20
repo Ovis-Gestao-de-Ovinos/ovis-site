@@ -143,7 +143,7 @@ test('páginas de confiança: privacidade e sobre', () => {
   }
   assert.match(priv, /LGPD/);
   for (const dado of ['nome', 'número de WhatsApp', 'nome da fazenda', 'quantos animais']) assert.ok(priv.includes(dado), dado);
-  for (const nome of ['Dartagnan', 'Lucas Moraes', 'Lucas Pereira', 'Gabriel Santanna', 'Carlos Eduardo']) assert.ok(sobre.includes(nome), nome);
+  for (const [nome, cargo] of [['Carlos Eduardo (Cadu)', 'CEO'], ['Dartagnan Romann', 'Co-CTO'], ['Lucas Moraes', 'Co-CTO'], ['Lucas Pereira', 'CCO'], ['Gabriel Santanna', 'CCO']]) assert.match(sobre, new RegExp(`<li>${nome.replace(/[()]/g, '\\$&')}<span>${cargo}`), nome);
   assert.match(page, /href="privacidade\/"/);
   assert.match(page, /href="sobre\/"/);
   const ld = JSON.parse(page.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1]);
