@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0a0e0b">
-  <meta name="description" content="Ovis: o controle do rebanho ovino no celular. Fichas, pesagens, vacinas e lotes anotados na hora, sem quadro branco nem caderno. 14 dias grátis. Plus a partir de R$ 309,90 e Pro a partir de R$ 359,90.">
+  <meta name="description" content="Ovis: controle do rebanho ovino no celular. Fichas, pesagens, vacinas e lotes anotados na hora, sem quadro branco nem caderno. Teste 14 dias grátis.">
   <title>Ovis | Controle do rebanho ovino no celular</title>
   <link rel="canonical" href="https://ovisapp.com.br/">
   <meta property="og:type" content="website">
@@ -18,14 +18,15 @@
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Ovis: seu rebanho ovino, animal por animal, sobre fotografia de ovelha no campo">
   <meta name="twitter:card" content="summary_large_image">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Ovis","url":"https://ovisapp.com.br/","inLanguage":"pt-BR","description":"Ovis, aplicativo de gestão de rebanhos ovinos para produtores e equipes de fazenda."}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://ovisapp.com.br/#website","name":"Ovis","url":"https://ovisapp.com.br/","inLanguage":"pt-BR","publisher":{"@id":"https://ovisapp.com.br/#organization"},"description":"Ovis, aplicativo de gestão de rebanhos ovinos para produtores e equipes de fazenda."},{"@type":"Organization","@id":"https://ovisapp.com.br/#organization","name":"Ovis","url":"https://ovisapp.com.br/","logo":"https://ovisapp.com.br/assets/icon.png","email":"ovisfinanceiro@gmail.com","contactPoint":{"@type":"ContactPoint","contactType":"customer service","telephone":"+55-51-98493-1844","email":"ovisfinanceiro@gmail.com","availableLanguage":"pt-BR","areaServed":"BR"},"legalName":"65.981.257 DARTAGNAN ROMANN DE MELLO","taxID":"65.981.257/0001-17","address":{"@type":"PostalAddress","addressLocality":"São Leopoldo","addressRegion":"RS","addressCountry":"BR"},"sameAs":["https://www.instagram.com/ovis.gestao/"]},{"@type":"SoftwareApplication","@id":"https://ovisapp.com.br/#app","name":"Ovis","url":"https://ovisapp.com.br/","applicationCategory":"BusinessApplication","description":"Controle do rebanho ovino no celular: ficha de cada animal, pesagens e ganho médio diário, reprodução, vacinas e vermífugos por lote.","inLanguage":"pt-BR","publisher":{"@id":"https://ovisapp.com.br/#organization"},"offers":[{"@type":"Offer","name":"Plus","price":"309.90","priceCurrency":"BRL","description":"A partir de R$ 309,90 por mês. Aplicativo no celular. O preço final depende do tamanho do rebanho. 14 dias grátis.","url":"https://ovisapp.com.br/#precos"},{"@type":"Offer","name":"Pro","price":"359.90","priceCurrency":"BRL","description":"A partir de R$ 359,90 por mês. Aplicativo e sistema no computador. O preço final depende do tamanho do rebanho. 14 dias grátis.","url":"https://ovisapp.com.br/#precos"}]}]}</script>
   <link rel="icon" href="assets/favicon.png?v=logo2" type="image/png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="site.css?v=13">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/bebas-neue-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/video/hero.avif?v=3" as="image" type="image/avif" fetchpriority="high">
+  <link rel="stylesheet" href="site.css?v=15">
   <script>document.documentElement.classList.add('js')</script>
-  <script type="module" src="script.js?v=14"></script>
+  <script type="module" src="script.js?v=17"></script>
 </head>
 <body>
   <a class="skip" href="#conteudo">Pular para o conteúdo</a>
@@ -47,10 +48,10 @@
   <main id="conteudo">
     <!-- HERO -->
     <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-photo" data-hero-photo><video poster="assets/video/hero.jpg?v=2" autoplay muted loop playsinline preload="none" aria-hidden="true" data-hero-video data-src="assets/video/hero.mp4?v=2" data-src-mobile="assets/video/hero-mobile.mp4?v=2"></video></div>
+      <div class="hero-photo" data-hero-photo><video poster="assets/video/hero.avif?v=3" autoplay muted loop playsinline preload="none" aria-hidden="true" data-hero-video data-src="assets/video/hero.mp4?v=2" data-src-mobile="assets/video/hero-mobile.mp4?v=2" data-src-av1="assets/video/hero-av1.mp4?v=3" data-src-mobile-av1="assets/video/hero-mobile-av1.mp4?v=3" data-src-hevc="assets/video/hero-hevc.mp4?v=3" data-src-mobile-hevc="assets/video/hero-mobile-hevc.mp4?v=3"></video></div>
       <div class="wrap hero-content">
-        <p class="eyebrow" data-rise>Ovis · Controle do rebanho no celular, para produtores de ovinos e equipes de fazenda.</p>
         <h1 id="hero-title" class="display hero-title" data-lines>
+          <span class="eyebrow" data-rise>Ovis · Controle do rebanho ovino no celular, para produtores de ovinos e equipes de fazenda.</span>
           <span class="line"><span>O quadro branco</span></span>
           <span class="line"><span>agora cabe no bolso<em>*</em></span></span>
         </h1>
@@ -248,7 +249,7 @@
         <label class="lead-trap" aria-hidden="true">Site<input name="site" type="text" tabindex="-1" autocomplete="off"></label>
         <p class="lead-error" data-lead-error role="alert" hidden></p>
         <button type="submit" class="btn btn-solid" data-lead-submit>Continuar no WhatsApp</button>
-        <p class="fine">Usamos esses dados só para falar com você sobre o Ovis.</p>
+        <p class="fine">Usamos esses dados só para falar com você sobre o Ovis. <a class="inline-link" href="privacidade/">Política de privacidade</a></p>
       </form>
     </dialog>
   </main>
@@ -257,11 +258,11 @@
     <div class="wrap footer-grid">
       <a class="brand" href="#inicio"><img src="assets/icon.png?v=logo2" width="30" height="30" alt=""><span>Ovis</span></a>
       <nav aria-label="Produto"><a href="#visao">Visão geral</a><a href="#produto">Ficha do animal</a><a href="#rotina">Manejos</a><a href="#recursos">Recursos</a></nav>
-      <nav aria-label="Ovis"><a href="#precos">Planos</a><a href="#perguntas">Dúvidas</a></nav>
-      <nav aria-label="Contato" class="footer-contact"><a href="https://wa.me/5551984931844" rel="noopener">WhatsApp (51) 98493-1844</a><a href="mailto:ovisfinanceiro@gmail.com">ovisfinanceiro@gmail.com</a><span class="footer-tag">Gestão de rebanhos ovinos.<br>Do pasto à palma da mão.</span></nav>
+      <nav aria-label="Ovis"><a href="#precos">Planos</a><a href="#perguntas">Dúvidas</a><a href="sobre/">Sobre</a><a href="privacidade/">Privacidade</a></nav>
+      <nav aria-label="Contato" class="footer-contact"><a href="https://wa.me/5551984931844" rel="noopener">WhatsApp (51) 98493-1844</a><a href="mailto:ovisfinanceiro@gmail.com">ovisfinanceiro@gmail.com</a><a href="https://www.instagram.com/ovis.gestao/" rel="noopener">Instagram @ovis.gestao</a><span class="footer-tag">Gestão de rebanhos ovinos.<br>Do pasto à palma da mão.</span></nav>
     </div>
     <div class="wrap footer-bottom">
-      <span>© <span id="year"></span> Ovis</span>
+      <span>© <span id="year"></span> Ovis · CNPJ 65.981.257/0001-17 · São Leopoldo, RS</span>
       <span>Fotografia: <a href="https://unsplash.com/photos/sheep-grazing-in-a-lush-green-pasture-with-rolling-hills-Rtr1WwcwkoU" rel="noopener noreferrer">Clovis Wood</a> · <a href="https://unsplash.com/photos/flock-of-sheep-grazing-in-a-green-grassy-field-1n4-qp6aYvw" rel="noopener noreferrer">Jiang Xiaopei</a></span>
     </div>
   </footer>

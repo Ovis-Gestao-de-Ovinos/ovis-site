@@ -1,0 +1,31 @@
+# Ovis
+
+> Ovis é um aplicativo de celular para controle de rebanhos ovinos, feito para produtores de ovinos e equipes de fazenda que hoje anotam tudo em quadro branco e caderno. Cada manejo é registrado na hora e fica guardado.
+
+- Site: https://ovisapp.com.br/
+- Idioma: português do Brasil
+- Contato: WhatsApp (51) 98493-1844
+- Empresa: 65.981.257 DARTAGNAN ROMANN DE MELLO, CNPJ 65.981.257/0001-17, São Leopoldo, RS
+- Sobre: https://ovisapp.com.br/sobre/
+- Privacidade: https://ovisapp.com.br/privacidade/
+- Instagram: https://www.instagram.com/ovis.gestao/
+
+## O que o Ovis faz
+
+- Ficha de cada animal: brinco, raça, idade, lote, peso atual, ganho médio diário (GMD), escore corporal e histórico de pesagens, reprodução e vacinas.
+- Manejos por lote: vacinação, vermifugação e pesagem, com o que está atrasado e o que vence hoje.
+- Reprodução: taxa de prenhez e cordeiros por matriz.
+- Registro genealógico: quais pesagens faltam para cada animal.
+- No plano Pro, os mesmos dados no computador, com os lotes organizados num mapa da propriedade.
+
+## Planos
+
+- 14 dias grátis, sem cartão.
+- Plus a partir de R$ 309,90 por mês: aplicativo no celular.
+- Pro a partir de R$ 359,90 por mês: aplicativo e sistema no computador.
+- O preço final depende do tamanho do rebanho e é combinado pelo WhatsApp.
+- Em breve: registro pelo WhatsApp e, no Pro, controle de estoque e financeiro.
+
+## Limitações atuais
+
+- O aplicativo precisa de internet para salvar os registros.

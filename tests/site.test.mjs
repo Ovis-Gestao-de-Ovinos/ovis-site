@@ -11,12 +11,14 @@ for (const id of ['inicio', 'visao', 'produto', 'rotina', 'recursos', 'precos', 
 
 test('página usa identidade Ovis e ativos próprios', () => {
   assert.match(page, /O quadro branco/);
+  assert.match(page, /<h1[^>]*>\s*<span class="eyebrow"[^>]*>Ovis · Controle do rebanho ovino no celular/);
   assert.match(page, /produtores de ovinos e equipes de fazenda/);
   assert.match(page, /assets\/ovis-ficha\.webp/);
   assert.match(page, /assets\/sheep-flock\.webp/);
-  assert.match(page, /<video poster="assets\/video\/hero\.jpg[^"]*" autoplay muted loop playsinline/);
+  assert.match(page, /<video poster="assets\/video\/hero\.avif[^"]*" autoplay muted loop playsinline/);
   assert.match(page, /data-src="assets\/video\/hero\.mp4[^"]*" data-src-mobile="assets\/video\/hero-mobile\.mp4/);
-  for (const f of ['hero.mp4', 'hero-mobile.mp4', 'hero.jpg']) assert.ok(existsSync(new URL(`../assets/video/${f}`, import.meta.url)));
+  for (const [attr, file] of [['data-src-av1', 'hero-av1.mp4'], ['data-src-mobile-av1', 'hero-mobile-av1.mp4'], ['data-src-hevc', 'hero-hevc.mp4'], ['data-src-mobile-hevc', 'hero-mobile-hevc.mp4']]) assert.match(page, new RegExp(`${attr}="assets/video/${file}`));
+  for (const f of ['hero.mp4', 'hero-mobile.mp4', 'hero-av1.mp4', 'hero-mobile-av1.mp4', 'hero-hevc.mp4', 'hero-mobile-hevc.mp4', 'hero.avif']) assert.ok(existsSync(new URL(`../assets/video/${f}`, import.meta.url)));
   assert.match(css, /--accent:/);
   assert.ok(existsSync(new URL('../assets/ovis-ficha.webp', import.meta.url)));
   assert.doesNotMatch(page, /Subscrr|Apple Watch|subscriptions/);
@@ -25,7 +27,15 @@ test('página usa identidade Ovis e ativos próprios', () => {
 test('composição escura com tipografia de impacto e animações acessíveis', () => {
   const script = readFileSync(new URL('../script.js', import.meta.url), 'utf8');
   assert.match(page, /href="site\.css(\?v=\d+)?"/);
-  assert.match(page, /Bebas\+Neue/);
+  assert.doesNotMatch(page, /fonts\.googleapis|fonts\.gstatic/, 'fontes hospedadas no próprio site');
+  assert.match(css, /@font-face \{ font-family: 'Bebas Neue'/);
+  assert.match(css, /@font-face \{ font-family: 'Inter'[^}]*font-weight: 400 700/);
+  for (const f of ['bebas-neue-latin', 'bebas-neue-latin-ext', 'inter-latin', 'inter-latin-ext']) assert.ok(existsSync(new URL(`../assets/fonts/${f}.woff2`, import.meta.url)));
+  assert.match(page, /<link rel="preload" href="assets\/video\/hero\.avif[^"]*" as="image" type="image\/avif" fetchpriority="high">/);
+  assert.ok(script.indexOf('av01.0.08M.08') > 0 && script.indexOf('av01.0.08M.08') < script.indexOf('hvc1.1.6.L120.90'), 'AV1 antes do HEVC');
+  assert.match(script, /canPlayType\(`video\/mp4; codecs=/);
+  assert.match(script, /addEventListener\('load', startHeroVideo/, 'vídeo do hero só baixa depois do load');
+  assert.match(script, /navigator\.connection\?\.saveData/, 'economia de dados fica só com o poster');
   assert.match(page, /src="script\.js\?v=\d+"/, "script versionado evita cache de versão antiga");
   assert.match(page, /data-scrub/);
   assert.match(page, /data-phone-scroll/);
@@ -89,5 +99,38 @@ test('SEO permanece coerente com a prévia', () => {
   assert.match(page, /<meta property="og:image"/);
   assert.match(page, /type="application\/ld\+json"/);
   assert.match(sitemap, /<loc>https:\/\/ovisapp\.com\.br\/<\/loc>/);
-  assert.doesNotMatch(page, /aggregateRating|"@type":"SoftwareApplication"/);
+  assert.doesNotMatch(page, /aggregateRating|"review"/, 'sem avaliações inventadas');
+  const ld = JSON.parse(page.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1]);
+  const types = ld['@graph'].map((n) => n['@type']);
+  assert.deepEqual(types, ['WebSite', 'Organization', 'SoftwareApplication']);
+  const app = ld['@graph'][2];
+  assert.equal(app.applicationCategory, 'BusinessApplication');
+  assert.deepEqual(app.offers.map((o) => [o.name, o.price, o.priceCurrency]), [['Plus', '309.90', 'BRL'], ['Pro', '359.90', 'BRL']]);
+  const description = page.match(/<meta name="description" content="([^"]*)">/)[1];
+  assert.ok(description.length <= 160, `descrição com ${description.length} caracteres`);
+  assert.match(description, /14 dias grátis/);
+  assert.match(page, /<link rel="apple-touch-icon" href="assets\/apple-touch-icon\.png">/);
+  assert.match(sitemap, /<lastmod>\d{4}-\d{2}-\d{2}<\/lastmod>/);
+  assert.ok(existsSync(new URL('../llms.txt', import.meta.url)));
+});
+
+test('páginas de confiança: privacidade e sobre', () => {
+  const priv = readFileSync(new URL('../privacidade/index.html', import.meta.url), 'utf8');
+  const sobre = readFileSync(new URL('../sobre/index.html', import.meta.url), 'utf8');
+  for (const html of [priv, sobre]) {
+    assert.match(html, /65\.981\.257\/0001-17/);
+    assert.match(html, /São Leopoldo, RS/);
+    assert.match(html, /<link rel="canonical" href="https:\/\/ovisapp\.com\.br\/(privacidade|sobre)\/">/);
+    assert.match(html, /href="\/site\.css\?v=\d+"/);
+  }
+  assert.match(priv, /LGPD/);
+  for (const dado of ['nome', 'número de WhatsApp', 'nome da fazenda', 'quantos animais']) assert.ok(priv.includes(dado), dado);
+  for (const nome of ['Dartagnan', 'Lucas Moraes', 'Lucas Pereira', 'Gabriel Santanna', 'Carlos Eduardo']) assert.ok(sobre.includes(nome), nome);
+  assert.match(page, /href="privacidade\/"/);
+  assert.match(page, /href="sobre\/"/);
+  const ld = JSON.parse(page.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1]);
+  assert.deepEqual(ld['@graph'][1].sameAs, ['https://www.instagram.com/ovis.gestao/']);
+  assert.equal(ld['@graph'][1].taxID, '65.981.257/0001-17');
+  const sitemap = readFileSync(new URL('../sitemap.xml', import.meta.url), 'utf8');
+  for (const p of ['sobre', 'privacidade']) assert.match(sitemap, new RegExp(`<loc>https://ovisapp\\.com\\.br/${p}/</loc>`));
 });
