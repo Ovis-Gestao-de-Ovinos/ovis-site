@@ -103,13 +103,18 @@ window.addEventListener('resize', movePill);
 document.fonts?.ready.then(movePill);
 
 // Vídeo do hero: versão Full HD no computador e 720p em telas pequenas.
+// Formato mais leve que o navegador toca: AV1 (Chrome, Android, Firefox), HEVC (Safari/iPhone) ou H.264.
+// As três versões têm a mesma qualidade medida (VMAF); só muda o tamanho do arquivo.
 // Com menos movimento ou economia de dados, o vídeo não carrega e fica só o poster.
 // O vídeo só começa a baixar depois da página carregada, para não disputar banda com o poster e o texto.
 const heroVideo = $('[data-hero-video]');
 function startHeroVideo() {
   const small = window.matchMedia('(max-width: 760px)').matches;
   heroVideo.preload = 'auto';
-  heroVideo.src = small ? heroVideo.dataset.srcMobile : heroVideo.dataset.src;
+  const { dataset } = heroVideo;
+  if (heroVideo.canPlayType(`video/mp4; codecs="${small ? 'av01.0.05M.08' : 'av01.0.08M.08'}"`)) heroVideo.src = small ? dataset.srcMobileAv1 : dataset.srcAv1;
+  else if (heroVideo.canPlayType(`video/mp4; codecs="${small ? 'hvc1.1.6.L93.90' : 'hvc1.1.6.L120.90'}"`)) heroVideo.src = small ? dataset.srcMobileHevc : dataset.srcHevc;
+  else heroVideo.src = small ? dataset.srcMobile : dataset.src;
   heroVideo.play().catch(() => {});
   // Navegadores adiam o autoplay em abas ocultas; retoma quando a aba aparece.
   document.addEventListener('visibilitychange', () => {

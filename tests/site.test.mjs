@@ -15,9 +15,10 @@ test('página usa identidade Ovis e ativos próprios', () => {
   assert.match(page, /produtores de ovinos e equipes de fazenda/);
   assert.match(page, /assets\/ovis-ficha\.webp/);
   assert.match(page, /assets\/sheep-flock\.webp/);
-  assert.match(page, /<video poster="assets\/video\/hero\.jpg[^"]*" autoplay muted loop playsinline/);
+  assert.match(page, /<video poster="assets\/video\/hero\.avif[^"]*" autoplay muted loop playsinline/);
   assert.match(page, /data-src="assets\/video\/hero\.mp4[^"]*" data-src-mobile="assets\/video\/hero-mobile\.mp4/);
-  for (const f of ['hero.mp4', 'hero-mobile.mp4', 'hero.jpg']) assert.ok(existsSync(new URL(`../assets/video/${f}`, import.meta.url)));
+  for (const [attr, file] of [['data-src-av1', 'hero-av1.mp4'], ['data-src-mobile-av1', 'hero-mobile-av1.mp4'], ['data-src-hevc', 'hero-hevc.mp4'], ['data-src-mobile-hevc', 'hero-mobile-hevc.mp4']]) assert.match(page, new RegExp(`${attr}="assets/video/${file}`));
+  for (const f of ['hero.mp4', 'hero-mobile.mp4', 'hero-av1.mp4', 'hero-mobile-av1.mp4', 'hero-hevc.mp4', 'hero-mobile-hevc.mp4', 'hero.avif']) assert.ok(existsSync(new URL(`../assets/video/${f}`, import.meta.url)));
   assert.match(css, /--accent:/);
   assert.ok(existsSync(new URL('../assets/ovis-ficha.webp', import.meta.url)));
   assert.doesNotMatch(page, /Subscrr|Apple Watch|subscriptions/);
@@ -30,7 +31,9 @@ test('composição escura com tipografia de impacto e animações acessíveis', 
   assert.match(css, /@font-face \{ font-family: 'Bebas Neue'/);
   assert.match(css, /@font-face \{ font-family: 'Inter'[^}]*font-weight: 400 700/);
   for (const f of ['bebas-neue-latin', 'bebas-neue-latin-ext', 'inter-latin', 'inter-latin-ext']) assert.ok(existsSync(new URL(`../assets/fonts/${f}.woff2`, import.meta.url)));
-  assert.match(page, /<link rel="preload" href="assets\/video\/hero\.jpg[^"]*" as="image" fetchpriority="high">/);
+  assert.match(page, /<link rel="preload" href="assets\/video\/hero\.avif[^"]*" as="image" type="image\/avif" fetchpriority="high">/);
+  assert.ok(script.indexOf('av01.0.08M.08') > 0 && script.indexOf('av01.0.08M.08') < script.indexOf('hvc1.1.6.L120.90'), 'AV1 antes do HEVC');
+  assert.match(script, /canPlayType\(`video\/mp4; codecs=/);
   assert.match(script, /addEventListener\('load', startHeroVideo/, 'vídeo do hero só baixa depois do load');
   assert.match(script, /navigator\.connection\?\.saveData/, 'economia de dados fica só com o poster');
   assert.match(page, /src="script\.js\?v=\d+"/, "script versionado evita cache de versão antiga");
