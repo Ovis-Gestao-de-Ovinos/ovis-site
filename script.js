@@ -102,19 +102,21 @@ window.addEventListener('pageshow', () => {
 window.addEventListener('resize', movePill);
 document.fonts?.ready.then(movePill);
 
-// Vídeo do hero: versão Full HD no computador e 720p em telas pequenas.
-// Formato mais leve que o navegador toca: AV1 (Chrome, Android, Firefox), HEVC (Safari/iPhone) ou H.264.
+// Vídeo do hero só no computador; no celular fica a foto (versão 1280×720), para poupar o plano de dados.
+// Formato mais leve que o navegador toca: AV1 (Chrome, Android, Firefox), HEVC (Safari) ou H.264.
 // As três versões têm a mesma qualidade medida (VMAF); só muda o tamanho do arquivo.
 // Com menos movimento ou economia de dados, o vídeo não carrega e fica só o poster.
 // O vídeo só começa a baixar depois da página carregada, para não disputar banda com o poster e o texto.
 const heroVideo = $('[data-hero-video]');
 function startHeroVideo() {
-  const small = window.matchMedia('(max-width: 760px)').matches;
+  if (window.matchMedia('(max-width: 760px)').matches) return;
   heroVideo.preload = 'auto';
   const { dataset } = heroVideo;
-  if (heroVideo.canPlayType(`video/mp4; codecs="${small ? 'av01.0.05M.08' : 'av01.0.08M.08'}"`)) heroVideo.src = small ? dataset.srcMobileAv1 : dataset.srcAv1;
-  else if (heroVideo.canPlayType(`video/mp4; codecs="${small ? 'hvc1.1.6.L93.90' : 'hvc1.1.6.L120.90'}"`)) heroVideo.src = small ? dataset.srcMobileHevc : dataset.srcHevc;
-  else heroVideo.src = small ? dataset.srcMobile : dataset.src;
+  if (heroVideo.canPlayType('video/mp4; codecs="av01.0.08M.08"')) heroVideo.src = dataset.srcAv1;
+  else if (heroVideo.canPlayType('video/mp4; codecs="hvc1.1.6.L120.90"')) heroVideo.src = dataset.srcHevc;
+  else heroVideo.src = dataset.src;
+  // O vídeo aparece por cima da foto só quando começa a tocar, sem piscar em preto.
+  heroVideo.addEventListener('playing', () => heroVideo.classList.add('is-playing'), { once: true });
   heroVideo.play().catch(() => {});
   // Navegadores adiam o autoplay em abas ocultas; retoma quando a aba aparece.
   document.addEventListener('visibilitychange', () => {
@@ -225,7 +227,7 @@ if (motion && 'IntersectionObserver' in window) {
 
     // Hero: a foto "abre" e o título sobe devagar.
     const h = clamp(y / vh);
-    heroPhoto.firstElementChild.style.setProperty('--hero-scale', String(1.12 - h * 0.12));
+    heroPhoto.style.setProperty('--hero-scale', String(1.12 - h * 0.12));
     heroTitle.style.setProperty('--hero-shift', `${h * -60}px`);
 
     // Frase: percorre as palavras enquanto a seção fica presa na tela.
