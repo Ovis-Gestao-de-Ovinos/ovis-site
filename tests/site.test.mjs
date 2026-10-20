@@ -177,6 +177,11 @@ test('calculadora de GMD publicada e ligada ao site', () => {
   for (const n of ['pesoInicial', 'dataInicial', 'pesoFinal', 'dataFinal']) assert.match(calc, new RegExp(`name="${n}"`));
   assert.match(calc, /import \{ computeGmd \} from '\/gmd\.js'/);
   assert.match(calc, /217 g por dia/);
+  // Valores de referência só com fonte citada (Britez et al. 2016; Pires et al. 2000).
+  for (const v of ['118 g/dia', '168 g/dia', '173 g/dia', '176 g/dia', '255 g/dia', '336 g/dia']) assert.ok(calc.includes(v), v);
+  assert.match(calc, /alice\.cnptia\.embrapa\.br\/alice\/handle\/doc\/1060756/);
+  assert.match(calc, /redalyc\.org\/articulo\.oa\?id=33113579023/);
+  assert.match(calc, /Não substitui a orientação de um veterinário ou zootecnista/);
   assert.match(calc, /"@type":"BreadcrumbList"/);
   assert.match(calc, /<h1[^>]*>Calculadora de GMD<span class="h1-sub">Ganho médio diário/);
   assert.match(calc, /"@type":"WebApplication"[^}]*"isAccessibleForFree":true/);

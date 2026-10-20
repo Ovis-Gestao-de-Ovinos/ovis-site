@@ -404,3 +404,13 @@ html:not(.js) .billing input:checked + span { background: var(--accent); }
 .gmd-result p + p { margin-top: 6px; color: var(--text-2); }
 .gmd-error { color: var(--red); font-weight: 500; margin: 0; }
 @media (max-width: 640px) { .gmd-calc { grid-template-columns: 1fr; padding: 18px; } }
+.gmd-result .gmd-ref { margin-top: 10px; font-size: 14px; }
+.gmd-table-wrap { overflow-x: auto; margin: 16px 0; }
+.gmd-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.gmd-table caption { text-align: left; color: var(--text-3); font-size: 13px; padding-bottom: 10px; caption-side: top; }
+.gmd-table th, .gmd-table td { padding: 12px 14px; border-bottom: 1px solid var(--line); text-align: left; font-weight: 400; color: var(--text-2); }
+.gmd-table thead th { color: var(--text); font-weight: 600; }
+.gmd-table td { color: var(--text); font-weight: 600; white-space: nowrap; text-align: right; }
+.gmd-table thead th:last-child { text-align: right; }
+.doc h2[id] { scroll-margin-top: 96px; }
+.sources { font-size: 14px; }
