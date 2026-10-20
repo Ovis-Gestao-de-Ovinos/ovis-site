@@ -31,7 +31,7 @@ function interest({ plano, periodo }) {
 }
 
 export function leadMessage(lead) {
-  return `Oi! Sou ${lead.nome.trim()}, da fazenda ${lead.fazenda.trim()}. Temos ${lead.rebanho} animais e quero ${interest(lead)}. Meu WhatsApp: ${formatPhone(normalizePhone(lead.whatsapp))}.`;
+  return `Oi! Sou ${lead.nome.trim()}, da fazenda ${lead.fazenda.trim()}. Temos ${lead.rebanho} animais e quero ${interest(lead)}.`;
 }
 
 export function whatsappUrl(lead) {
