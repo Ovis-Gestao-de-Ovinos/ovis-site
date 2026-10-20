@@ -1,6 +1,4 @@
 // Formulário de contato: o lead vai para a planilha da equipe e segue para o WhatsApp da Ovis.
-export const HERD_SIZES = ['até 100', '101 a 300', '301 a 1.000', 'mais de 1.000'];
-
 export const OVIS_WHATSAPP = '5551984931844';
 
 // Só dígitos com DDD, sem o 0 de longa distância nem o 55 do país; null se não sobrar um telefone brasileiro.
@@ -8,6 +6,12 @@ export function normalizePhone(raw) {
   let digits = String(raw ?? '').replace(/\D/g, '').replace(/^0+/, '');
   if (digits.length > 11 && digits.startsWith('55')) digits = digits.slice(2);
   return digits.length === 10 || digits.length === 11 ? digits : null;
+}
+
+// Número de animais digitado livre: "1.200", "1200" ou "1200 cabeças"; null se não houver número positivo.
+export function normalizeHerd(raw) {
+  const count = Number(String(raw ?? '').replace(/\D/g, ''));
+  return count > 0 ? count : null;
 }
 
 export function formatPhone(digits) {
@@ -20,7 +24,7 @@ export function validateLead(lead) {
   if (!lead.nome?.trim()) invalid.push('nome');
   if (!normalizePhone(lead.whatsapp)) invalid.push('whatsapp');
   if (!lead.fazenda?.trim()) invalid.push('fazenda');
-  if (!HERD_SIZES.includes(lead.rebanho)) invalid.push('rebanho');
+  if (!normalizeHerd(lead.rebanho)) invalid.push('rebanho');
   return invalid;
 }
 
@@ -31,7 +35,9 @@ function interest({ plano, periodo }) {
 }
 
 export function leadMessage(lead) {
-  return `Oi! Sou ${lead.nome.trim()}, da fazenda ${lead.fazenda.trim()}. Temos ${lead.rebanho} animais e quero ${interest(lead)}.`;
+  const count = normalizeHerd(lead.rebanho);
+  const herd = `${count.toLocaleString('pt-BR')} ${count === 1 ? 'animal' : 'animais'}`;
+  return `Oi! Sou ${lead.nome.trim()}, da fazenda ${lead.fazenda.trim()}. Temos ${herd} e quero ${interest(lead)}.`;
 }
 
 export function whatsappUrl(lead) {
@@ -42,7 +48,7 @@ export function whatsappUrl(lead) {
 // Nunca rejeita, para o WhatsApp abrir mesmo com a planilha fora do ar.
 export async function saveLead(endpoint, lead, { fetchImpl = fetch, timeoutMs = 4000 } = {}) {
   if (!endpoint) return 'skipped';
-  const body = JSON.stringify({ ...lead, whatsapp: formatPhone(normalizePhone(lead.whatsapp)) });
+  const body = JSON.stringify({ ...lead, whatsapp: formatPhone(normalizePhone(lead.whatsapp)), rebanho: normalizeHerd(lead.rebanho) });
   let timer;
   const timeout = new Promise((resolve) => { timer = setTimeout(() => resolve('failed'), timeoutMs); });
   const request = Promise.resolve()

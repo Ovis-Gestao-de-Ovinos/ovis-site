@@ -25,7 +25,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="site.css?v=13">
   <script>document.documentElement.classList.add('js')</script>
-  <script type="module" src="script.js?v=13"></script>
+  <script type="module" src="script.js?v=14"></script>
 </head>
 <body>
   <a class="skip" href="#conteudo">Pular para o conteúdo</a>
@@ -244,7 +244,7 @@
         <label>Seu nome<input name="nome" type="text" autocomplete="name" required></label>
         <label>WhatsApp com DDD<input name="whatsapp" type="tel" inputmode="numeric" autocomplete="tel" placeholder="(51) 99999-9999" required></label>
         <label>Nome da fazenda<input name="fazenda" type="text" autocomplete="organization" required></label>
-        <label>Tamanho do rebanho<select name="rebanho" required><option value="">Escolha</option><option>até 100</option><option>101 a 300</option><option>301 a 1.000</option><option>mais de 1.000</option></select></label>
+        <label>Quantos animais vocês têm?<input name="rebanho" type="text" inputmode="numeric" autocomplete="off" placeholder="Ex.: 300" required></label>
         <label class="lead-trap" aria-hidden="true">Site<input name="site" type="text" tabindex="-1" autocomplete="off"></label>
         <p class="lead-error" data-lead-error role="alert" hidden></p>
         <button type="submit" class="btn btn-solid" data-lead-submit>Continuar no WhatsApp</button>

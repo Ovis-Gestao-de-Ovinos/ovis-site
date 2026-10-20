@@ -27,7 +27,7 @@ A equipe libera o teste de 14 dias e combina o preço na conversa. Não tem cart
 | Nome | texto | obrigatório |
 | WhatsApp | telefone | obrigatório. Máscara `(51) 98493-1844`, aceita 10 ou 11 dígitos com DDD |
 | Nome da fazenda | texto | obrigatório |
-| Tamanho do rebanho | lista | obrigatório: **até 100**, **101 a 300**, **301 a 1.000**, **mais de 1.000** animais |
+| Quantos animais | número livre | obrigatório, maior que zero. Aceita "1.200", "1200" ou "1200 cabeças". A mensagem usa "1.200 animais" (ou "1 animal") e a planilha recebe o número |
 
 Além desses, vão campos escondidos, que a pessoa não vê: **plano** (Teste, Plus ou Pro), **período** (mensal ou anual, conforme a chave de período ativa) e um campo "isca" contra robôs. Se o campo isca vier preenchido, a planilha descarta o envio.
 
@@ -74,7 +74,7 @@ Tudo que fala de cartão, AbacatePay ou cobrança automática deixa de ser verda
 
 ## Minhas decisões (podem ser revistas)
 
-- Faixas do rebanho: até 100 / 101 a 300 / 301 a 1.000 / mais de 1.000.
+- Rebanho como número livre, a pedido da equipe (antes eram faixas).
 - Janela por cima da página (`<dialog>`) em vez de uma página separada.
 - Espera máxima de 4 segundos pela planilha. Depois disso, o WhatsApp abre de qualquer jeito.
 - Linha de privacidade embaixo do botão (LGPD básica).

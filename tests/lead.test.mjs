@@ -1,11 +1,19 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { HERD_SIZES, OVIS_WHATSAPP, normalizePhone, formatPhone, validateLead, leadMessage, whatsappUrl, saveLead } from '../lead.js';
+import { OVIS_WHATSAPP, normalizeHerd, normalizePhone, formatPhone, validateLead, leadMessage, whatsappUrl, saveLead } from '../lead.js';
 
-const ok = { nome: 'João', whatsapp: '51984931844', fazenda: 'Boa Vista', rebanho: '101 a 300', plano: 'Plus', periodo: 'mensal' };
+const ok = { nome: 'João', whatsapp: '51984931844', fazenda: 'Boa Vista', rebanho: '300', plano: 'Plus', periodo: 'mensal' };
 
-test('faixas do rebanho e WhatsApp da Ovis', () => {
-  assert.deepEqual(HERD_SIZES, ['até 100', '101 a 300', '301 a 1.000', 'mais de 1.000']);
+test('rebanho aceita número com ou sem ponto de milhar', () => {
+  assert.equal(normalizeHerd('300'), 300);
+  assert.equal(normalizeHerd(' 1.200 '), 1200);
+  assert.equal(normalizeHerd('1200 cabeças'), 1200);
+  assert.equal(normalizeHerd('0'), null);
+  assert.equal(normalizeHerd(''), null);
+  assert.equal(normalizeHerd('muitas'), null);
+});
+
+test('WhatsApp da Ovis', () => {
   assert.equal(OVIS_WHATSAPP, '5551984931844');
 });
 
@@ -30,9 +38,11 @@ test('campos obrigatórios, espaços não contam', () => {
 
 test('mensagem do WhatsApp por plano e período', () => {
   assert.equal(leadMessage({ ...ok, plano: 'Teste' }),
-    'Oi! Sou João, da fazenda Boa Vista. Temos 101 a 300 animais e quero começar o teste grátis.');
+    'Oi! Sou João, da fazenda Boa Vista. Temos 300 animais e quero começar o teste grátis.');
   assert.equal(leadMessage({ ...ok, plano: 'Teste', periodo: 'anual' }).includes('(anual)'), false);
   assert.match(leadMessage(ok), /quero conhecer o plano Plus\./);
+  assert.match(leadMessage({ ...ok, rebanho: '1200' }), /Temos 1\.200 animais/);
+  assert.match(leadMessage({ ...ok, rebanho: '1' }), /Temos 1 animal e/);
   assert.match(leadMessage({ ...ok, plano: 'Demonstração', periodo: 'anual' }), /quero ver uma demonstração do Ovis no computador\.$/);
   assert.match(leadMessage({ ...ok, plano: 'Pro', periodo: 'anual' }), /quero conhecer o plano Pro \(anual\)\./);
   assert.match(leadMessage({ ...ok, nome: '  João ', fazenda: ' Boa Vista  ' }), /^Oi! Sou João, da fazenda Boa Vista\./);
@@ -53,7 +63,7 @@ test('saveLead pula sem endpoint, falha sem rejeitar e respeita o tempo-limite',
   assert.equal(sent.mode, 'no-cors');
   assert.equal(sent.keepalive, true);
   assert.equal(sent.headers['Content-Type'], 'text/plain;charset=utf-8');
-  assert.deepEqual(JSON.parse(sent.body), { ...ok, whatsapp: '(51) 98493-1844' });
+  assert.deepEqual(JSON.parse(sent.body), { ...ok, whatsapp: '(51) 98493-1844', rebanho: 300 });
 });
 
 test('campo isca segue para a planilha, que descarta', async () => {
