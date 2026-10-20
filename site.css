@@ -56,7 +56,7 @@ h1, h2, h3, p { margin: 0; }
 .btn-ghost { border: 1px solid rgba(255, 255, 255, .28); background: rgba(10, 14, 11, .35); backdrop-filter: blur(10px); }
 .btn-ghost:hover { border-color: #fff; }
 .btn-sm { min-height: 40px; padding: 0 18px; font-size: 14px; }
-.link-arrow { display: inline-flex; gap: 8px; color: var(--accent); font-weight: 600; font-size: 15px; }
+.link-arrow { display: inline-flex; gap: 8px; padding: 0; border: 0; background: none; color: var(--accent); font-weight: 600; font-size: 15px; }
 .link-arrow span { transition: transform .3s var(--ease); }
 .link-arrow:hover span { transform: translateX(5px); }
 
