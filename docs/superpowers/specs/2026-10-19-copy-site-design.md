@@ -39,10 +39,9 @@ Legenda: **antes** → **depois**. Se uma seção não estiver listada, ela fica
 ### Hero
 
 - Eyebrow: **Ovis · Controle do rebanho no celular, para produtores de ovinos e equipes de fazenda.**
-- Título (3 linhas, para não deixar "bolso" sozinho):
+- Título (2 linhas; a fonte do hero foi reduzida para a segunda linha caber inteira):
   **O quadro branco**
-  **agora cabe**
-  **no bolso\***
+  **agora cabe no bolso\***
 - Nota: **\*e não apaga. Tudo anotado na hora, no celular.**
 - Botões: **Testar 14 dias grátis** · **Ver o aplicativo**
 
