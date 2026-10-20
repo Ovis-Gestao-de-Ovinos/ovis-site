@@ -360,3 +360,21 @@ html:not(.js) .billing input:checked + span { background: var(--accent); }
 .lead-close:hover { color: var(--text); background: var(--surface-2); }
 .lead-trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 .lead-error { color: var(--red); font-size: 13px; font-weight: 500; }
+
+/* Páginas de texto: privacidade e sobre */
+.doc { padding: 140px 0 96px; }
+.doc .wrap { max-width: 760px; }
+.doc h1 { font-size: clamp(56px, 9vw, 112px); margin-bottom: 20px; }
+.doc .doc-lead { color: var(--text-2); font-size: 19px; margin-bottom: 48px; }
+.doc h2 { font-size: 22px; font-weight: 600; margin: 44px 0 12px; }
+.doc p, .doc li { color: var(--text-2); }
+.doc p + p { margin-top: 12px; }
+.doc ul { padding-left: 20px; margin: 12px 0 0; display: grid; gap: 6px; }
+.doc strong { color: var(--text); font-weight: 600; }
+.doc .fine { margin-top: 48px; }
+.team { list-style: none; padding: 0 !important; display: grid !important; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px !important; }
+.team li { padding: 16px 18px; border-radius: 18px; background: var(--surface); border: 1px solid var(--line); color: var(--text); font-weight: 500; }
+.facts { display: grid; grid-template-columns: max-content 1fr; gap: 8px 24px; margin-top: 12px; }
+.facts dt { color: var(--text-3); }
+.facts dd { margin: 0; color: var(--text); }
+@media (max-width: 640px) { .facts { grid-template-columns: 1fr; gap: 2px; } .facts dd { margin-bottom: 10px; } }

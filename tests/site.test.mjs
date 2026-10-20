@@ -110,3 +110,24 @@ test('SEO permanece coerente com a prévia', () => {
   assert.match(sitemap, /<lastmod>\d{4}-\d{2}-\d{2}<\/lastmod>/);
   assert.ok(existsSync(new URL('../llms.txt', import.meta.url)));
 });
+
+test('páginas de confiança: privacidade e sobre', () => {
+  const priv = readFileSync(new URL('../privacidade/index.html', import.meta.url), 'utf8');
+  const sobre = readFileSync(new URL('../sobre/index.html', import.meta.url), 'utf8');
+  for (const html of [priv, sobre]) {
+    assert.match(html, /65\.981\.257\/0001-17/);
+    assert.match(html, /São Leopoldo, RS/);
+    assert.match(html, /<link rel="canonical" href="https:\/\/ovisapp\.com\.br\/(privacidade|sobre)\/">/);
+    assert.match(html, /href="\/site\.css\?v=\d+"/);
+  }
+  assert.match(priv, /LGPD/);
+  for (const dado of ['nome', 'número de WhatsApp', 'nome da fazenda', 'quantos animais']) assert.ok(priv.includes(dado), dado);
+  for (const nome of ['Dartagnan', 'Lucas Moraes', 'Lucas Pereira', 'Gabriel Santanna', 'Carlos Eduardo']) assert.ok(sobre.includes(nome), nome);
+  assert.match(page, /href="privacidade\/"/);
+  assert.match(page, /href="sobre\/"/);
+  const ld = JSON.parse(page.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1]);
+  assert.deepEqual(ld['@graph'][1].sameAs, ['https://www.instagram.com/ovis.gestao/']);
+  assert.equal(ld['@graph'][1].taxID, '65.981.257/0001-17');
+  const sitemap = readFileSync(new URL('../sitemap.xml', import.meta.url), 'utf8');
+  for (const p of ['sobre', 'privacidade']) assert.match(sitemap, new RegExp(`<loc>https://ovisapp\\.com\\.br/${p}/</loc>`));
+});
