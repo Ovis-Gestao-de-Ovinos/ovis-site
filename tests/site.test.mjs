@@ -178,6 +178,15 @@ test('calculadora de GMD publicada e ligada ao site', () => {
   assert.match(calc, /import \{ computeGmd \} from '\/gmd\.js'/);
   assert.match(calc, /217 g por dia/);
   assert.match(calc, /"@type":"BreadcrumbList"/);
+  assert.match(calc, /<h1[^>]*>Calculadora de GMD<span class="h1-sub">Ganho médio diário/);
+  assert.match(calc, /"@type":"WebApplication"[^}]*"isAccessibleForFree":true/);
+  assert.match(calc, /"offers":\{"@type":"Offer","price":"0","priceCurrency":"BRL"\}/);
+  for (const f of ['../calculadora-gmd/index.html', '../sobre/index.html', '../privacidade/index.html']) {
+    const html = readFileSync(new URL(f, import.meta.url), 'utf8');
+    const canonical = html.match(/<link rel="canonical" href="([^"]+)">/)[1];
+    assert.ok(html.includes(`<meta property="og:url" content="${canonical}">`), `og:url igual ao canonical em ${f}`);
+    for (const tag of ['og:title', 'og:description', 'og:image']) assert.match(html, new RegExp(`<meta property="${tag}" content="[^"]+">`), `${tag} em ${f}`);
+  }
   assert.match(page, /href="calculadora-gmd\/"/);
   assert.match(readFileSync(new URL('../sitemap.xml', import.meta.url), 'utf8'), /<loc>https:\/\/ovisapp\.com\.br\/calculadora-gmd\/<\/loc>/);
   assert.ok(readFileSync(new URL('../llms.txt', import.meta.url), 'utf8').includes('](https://ovisapp.com.br/calculadora-gmd/)'));
