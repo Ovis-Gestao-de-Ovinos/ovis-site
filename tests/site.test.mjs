@@ -112,7 +112,10 @@ test('SEO permanece coerente com a prévia', () => {
   assert.match(description, /14 dias grátis/);
   assert.match(page, /<link rel="apple-touch-icon" href="assets\/apple-touch-icon\.png">/);
   assert.match(sitemap, /<lastmod>\d{4}-\d{2}-\d{2}<\/lastmod>/);
-  assert.ok(existsSync(new URL('../llms.txt', import.meta.url)));
+  const llms = readFileSync(new URL('../llms.txt', import.meta.url), 'utf8');
+  assert.match(llms, /^# Ovis$/m, 'llms.txt com H1');
+  assert.match(llms, /^> /m, 'llms.txt com resumo em citação');
+  for (const url of ['https://ovisapp.com.br/', 'https://ovisapp.com.br/sobre/', 'https://ovisapp.com.br/privacidade/']) assert.ok(llms.includes(`](${url})`), `link Markdown para ${url}`);
 });
 
 test('páginas de confiança: privacidade e sobre', () => {
