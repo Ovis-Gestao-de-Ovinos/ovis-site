@@ -10,7 +10,7 @@ for (const id of ['inicio', 'visao', 'produto', 'rotina', 'recursos', 'precos', 
 }
 
 test('página usa identidade Ovis e ativos próprios', () => {
-  assert.match(page, /Seu rebanho ovino,/);
+  assert.match(page, /O quadro branco/);
   assert.match(page, /produtores de ovinos e equipes de fazenda/);
   assert.match(page, /assets\/ovis-ficha\.webp/);
   assert.match(page, /assets\/sheep-flock\.webp/);
@@ -57,7 +57,8 @@ test('contratação passa pelo checkout da AbacatePay sem expor chave', () => {
   assert.match(page, /data-checkout-period="monthly"/);
   assert.match(script, /checkout-links\.json/);
   assert.match(page, /dados simulados/i);
-  assert.match(page, /confirmados na contratação/i);
+  assert.match(page, /confirmado na contratação/i);
+  assert.doesNotMatch(page, /Mais escolhido/, 'sem clientes ainda, nenhum plano é o mais escolhido');
   assert.match(page, /AbacatePay/);
   assert.ok('devMode' in links && 'Plus' in links && 'Pro' in links);
   for (const url of [links.Plus, links.Pro].flatMap((p) => Object.values(p))) {
