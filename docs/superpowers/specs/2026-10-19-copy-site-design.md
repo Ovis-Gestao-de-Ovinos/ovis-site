@@ -47,7 +47,7 @@ Legenda: **antes** → **depois**. Se uma seção não estiver listada, ela fica
 
 ### Frase que acende com o scroll
 
-> O quadro branco apaga. O caderno molha, rasga e fica no bolso de alguém. E na hora de saber se o lote Aurora já tomou vermífugo, ninguém tem certeza. **Com o Ovis, anotou no celular, ficou guardado.**
+> O quadro branco apaga. O caderno molha, rasga e fica no bolso de alguém. E na hora de saber se o lote já tomou vermífugo, ninguém tem certeza. **Com o Ovis, anotou no celular, ficou guardado.**
 
 ### Visão geral (celular rolando)
 
