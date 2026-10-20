@@ -29,6 +29,9 @@ test('composição escura com tipografia de impacto e animações acessíveis', 
   assert.match(page, /href="site\.css(\?v=\d+)?"/);
   assert.doesNotMatch(page, /fonts\.googleapis|fonts\.gstatic/, 'fontes hospedadas no próprio site');
   assert.match(css, /@font-face \{ font-family: 'Bebas Neue'/);
+  assert.match(css, /\.hero-title \.line > span \{ white-space: nowrap; \}/, 'título não quebra linha enquanto a fonte carrega');
+  for (const face of ['Impact', 'Narrow', 'Arial']) assert.match(css, new RegExp(`font-family: 'Bebas Neue Reserva ${face}'; src: local\\([^;]+; size-adjust: [0-9.]+%`));
+  assert.match(css, /--display: 'Bebas Neue', 'Bebas Neue Reserva Impact'/);
   assert.match(css, /@font-face \{ font-family: 'Inter'[^}]*font-weight: 400 700/);
   for (const f of ['bebas-neue-latin', 'bebas-neue-latin-ext', 'inter-latin', 'inter-latin-ext']) assert.ok(existsSync(new URL(`../assets/fonts/${f}.woff2`, import.meta.url)));
   assert.match(script, /matchMedia\('\(max-width: 760px\)'\)\.matches\) return/, 'sem vídeo no celular');
