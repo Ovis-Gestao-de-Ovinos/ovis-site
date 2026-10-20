@@ -352,3 +352,4 @@ html:not(.js) .billing input:checked + span { background: var(--accent); }
 .lead-close { position: absolute; top: 14px; right: 14px; width: 40px; height: 40px; border-radius: 50%; color: var(--text-2); font-size: 24px; line-height: 1; }
 .lead-close:hover { color: var(--text); background: var(--surface-2); }
 .lead-trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.lead-error { color: var(--red); font-size: 13px; font-weight: 500; }

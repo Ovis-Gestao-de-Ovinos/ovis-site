@@ -72,11 +72,18 @@ leadForm.addEventListener('submit', async (event) => {
   const submit = $('[data-lead-submit]', leadForm);
   if (submit.disabled) return;
   const field = (name) => leadForm.elements[name].value;
-  // Campo isca: só robôs preenchem.
-  if (field('site')) return;
-  const lead = { nome: field('nome'), whatsapp: field('whatsapp'), fazenda: field('fazenda'), rebanho: field('rebanho'), ...leadPlan };
+  // O campo isca vai junto e a planilha descarta: um autopreenchimento não pode travar o contato.
+  const lead = { nome: field('nome'), whatsapp: field('whatsapp'), fazenda: field('fazenda'), rebanho: field('rebanho'), site: field('site'), ...leadPlan };
   const invalid = validateLead(lead);
-  ['nome', 'whatsapp', 'fazenda', 'rebanho'].forEach((name) => leadForm.elements[name].toggleAttribute('aria-invalid', invalid.includes(name)));
+  ['nome', 'whatsapp', 'fazenda', 'rebanho'].forEach((name) => {
+    if (invalid.includes(name)) leadForm.elements[name].setAttribute('aria-invalid', 'true');
+    else leadForm.elements[name].removeAttribute('aria-invalid');
+  });
+  const error = $('[data-lead-error]', leadForm);
+  error.hidden = !invalid.length;
+  error.textContent = invalid.includes('whatsapp') && invalid.length === 1
+    ? 'Confira o WhatsApp: DDD e número, como (51) 99999-9999.'
+    : 'Preencha os campos marcados.';
   if (invalid.length) {
     leadForm.elements[invalid[0]].focus();
     return;

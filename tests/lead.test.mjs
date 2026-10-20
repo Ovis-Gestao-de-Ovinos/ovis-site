@@ -14,6 +14,8 @@ test('telefone aceita máscara, +55 e espaços', () => {
   assert.equal(normalizePhone('+55 51 98493 1844'), '51984931844');
   assert.equal(normalizePhone('51 3333-4444'), '5133334444');
   assert.equal(normalizePhone('98493-1844'), null);
+  assert.equal(normalizePhone('051 98493-1844'), '51984931844');
+  assert.equal(normalizePhone('0 51 3333-4444'), '5133334444');
   assert.equal(normalizePhone(''), null);
   assert.equal(formatPhone('51984931844'), '(51) 98493-1844');
   assert.equal(formatPhone('5133334444'), '(51) 3333-4444');
@@ -48,6 +50,13 @@ test('saveLead pula sem endpoint, falha sem rejeitar e respeita o tempo-limite',
   assert.equal(sent.url, 'https://x');
   assert.equal(sent.method, 'POST');
   assert.equal(sent.mode, 'no-cors');
+  assert.equal(sent.keepalive, true);
   assert.equal(sent.headers['Content-Type'], 'text/plain;charset=utf-8');
   assert.deepEqual(JSON.parse(sent.body), { ...ok, whatsapp: '(51) 98493-1844' });
+});
+
+test('campo isca segue para a planilha, que descarta', async () => {
+  let body;
+  await saveLead('https://x', { ...ok, site: 'robô' }, { fetchImpl: (url, init) => { body = JSON.parse(init.body); return Promise.resolve({}); } });
+  assert.equal(body.site, 'robô');
 });

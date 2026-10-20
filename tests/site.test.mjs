@@ -55,6 +55,10 @@ test('contratação passa por formulário, planilha e WhatsApp', () => {
   assert.match(page, /<dialog id="lead-dialog"/);
   for (const n of ['nome', 'whatsapp', 'fazenda', 'rebanho']) assert.match(page, new RegExp(`name="${n}"[^>]*required`));
   assert.match(page, /Usamos esses dados só para falar com você sobre o Ovis/);
+  assert.match(page, /<p class="lead-error" data-lead-error role="alert" hidden>/);
+  assert.match(script, /setAttribute\('aria-invalid', 'true'\)/, 'aria-invalid vazio vale false para leitor de tela');
+  assert.doesNotMatch(script, /if \(field\('site'\)\) return/, 'campo isca não pode travar o envio no navegador');
+  assert.doesNotMatch(page, /nada é cobrado hoje/);
   assert.match(script, /lead-config\.json/);
   assert.doesNotMatch(page + script, /AbacatePay|cobrança automática|checkout-links/);
   assert.match(page, /dados simulados/i);

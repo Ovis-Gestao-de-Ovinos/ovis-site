@@ -3,9 +3,9 @@ export const HERD_SIZES = ['até 100', '101 a 300', '301 a 1.000', 'mais de 1.00
 
 export const OVIS_WHATSAPP = '5551984931844';
 
-// Só dígitos com DDD, sem o 55 do país; null se não sobrar um telefone brasileiro.
+// Só dígitos com DDD, sem o 0 de longa distância nem o 55 do país; null se não sobrar um telefone brasileiro.
 export function normalizePhone(raw) {
-  let digits = String(raw ?? '').replace(/\D/g, '');
+  let digits = String(raw ?? '').replace(/\D/g, '').replace(/^0+/, '');
   if (digits.length > 11 && digits.startsWith('55')) digits = digits.slice(2);
   return digits.length === 10 || digits.length === 11 ? digits : null;
 }
@@ -45,7 +45,7 @@ export async function saveLead(endpoint, lead, { fetchImpl = fetch, timeoutMs = 
   let timer;
   const timeout = new Promise((resolve) => { timer = setTimeout(() => resolve('failed'), timeoutMs); });
   const request = Promise.resolve()
-    .then(() => fetchImpl(endpoint, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body }))
+    .then(() => fetchImpl(endpoint, { method: 'POST', mode: 'no-cors', keepalive: true, headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body }))
     .then(() => 'saved', () => 'failed');
   try {
     return await Promise.race([request, timeout]);
