@@ -49,23 +49,22 @@ test('planos novos substituem tabela antiga sem promessa de compra ou desconto',
   assert.doesNotMatch(page, /Basic|R\$ 259,90|herd-size|price-results/i);
 });
 
-test('contratação passa pelo checkout da AbacatePay sem expor chave', () => {
+test('contratação passa por formulário, planilha e WhatsApp', () => {
   const script = readFileSync(new URL('../script.js', import.meta.url), 'utf8');
-  const links = JSON.parse(readFileSync(new URL('../checkout-links.json', import.meta.url), 'utf8'));
-  assert.match(page, /data-checkout="Plus"/);
-  assert.match(page, /data-checkout="Pro"/);
-  assert.match(page, /data-checkout-period="monthly"/);
-  assert.match(script, /checkout-links\.json/);
+  for (const p of ['Teste', 'Plus', 'Pro']) assert.match(page, new RegExp(`data-lead="${p}"`));
+  assert.match(page, /<dialog id="lead-dialog"/);
+  for (const n of ['nome', 'whatsapp', 'fazenda', 'rebanho']) assert.match(page, new RegExp(`name="${n}"[^>]*required`));
+  assert.match(page, /Usamos esses dados só para falar com você sobre o Ovis/);
+  assert.match(page, /<p class="lead-error" data-lead-error role="alert" hidden>/);
+  assert.match(script, /setAttribute\('aria-invalid', 'true'\)/, 'aria-invalid vazio vale false para leitor de tela');
+  assert.doesNotMatch(script, /if \(field\('site'\)\) return/, 'campo isca não pode travar o envio no navegador');
+  assert.doesNotMatch(page, /nada é cobrado hoje/);
+  assert.match(script, /lead-config\.json/);
+  assert.doesNotMatch(page + script, /AbacatePay|cobrança automática|checkout-links/);
   assert.match(page, /dados simulados/i);
-  assert.match(page, /confirmado na contratação/i);
+  assert.match(page, /confirmado na conversa/i);
   assert.doesNotMatch(page, /Mais escolhido/, 'sem clientes ainda, nenhum plano é o mais escolhido');
-  assert.match(page, /AbacatePay/);
-  assert.ok('devMode' in links && 'Plus' in links && 'Pro' in links);
-  for (const url of [links.Plus, links.Pro].flatMap((p) => Object.values(p))) {
-    assert.match(url, /^https:\/\/[^/]*abacatepay\.com\//);
-  }
-  const tracked = page + script + JSON.stringify(links);
-  assert.doesNotMatch(tracked, /abc_(dev|prod)_|sk_/, 'chave de API nunca vai para o site');
+  assert.doesNotMatch(page + script, /abc_(dev|prod)_|sk_/, 'chave de API nunca vai para o site');
   assert.match(readFileSync(new URL('../.gitignore', import.meta.url), 'utf8'), /^\.env$/m);
   assert.ok(existsSync(new URL('../obrigado.html', import.meta.url)));
 });

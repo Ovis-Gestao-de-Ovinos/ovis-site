@@ -22,9 +22,23 @@ A página apresenta 14 dias grátis, Plus a partir de R$ 309,90/mês e Pro a par
 
 Não usamos a tabela antiga por faixa nem presumimos os recursos e limites de cada plano. As condições comerciais ainda precisam ser confirmadas antes da contratação.
 
-## Contratação (AbacatePay)
+## Contato (formulário → planilha → WhatsApp)
 
-Os botões dos planos levam a checkouts de assinatura hospedados pela AbacatePay. Cada plano tem um produto mensal e um anual, todos com 14 dias grátis (`trialDays`): o cliente cadastra o cartão, paga R$ 0,00 hoje e a primeira cobrança acontece no fim do teste. Depois do pagamento, a AbacatePay redireciona para `obrigado.html`.
+Por enquanto o site não cobra: o preço depende do tamanho do rebanho e é combinado na conversa. Os botões dos planos (`data-lead="Teste|Plus|Pro"`) abrem um formulário com nome, WhatsApp, nome da fazenda e tamanho do rebanho. Ao enviar, o contato vai para uma planilha do Google e, em seguida, o site abre o WhatsApp da Ovis com a mensagem pronta. Se a planilha não responder em 4 segundos ou estiver fora do ar, o WhatsApp abre do mesmo jeito; a mensagem leva todos os dados. A lógica fica em `lead.js` (testada em `tests/lead.test.mjs`).
+
+A planilha recebe os dados por um Google Apps Script (`scripts/leads-apps-script.gs`), que grava uma linha por contato na aba `Contatos`. Para ligar:
+
+1. Crie uma planilha no Google Drive da equipe.
+2. Na planilha, abra **Extensões → Apps Script**, apague o conteúdo e cole `scripts/leads-apps-script.gs`. Salve.
+3. Clique em **Implantar → Nova implantação**, tipo **App da Web**, executar como **Eu** e acesso **Qualquer pessoa**. Autorize quando o Google pedir.
+4. Copie a URL do app da web (termina em `/exec`) para `lead-config.json`: `{ "endpoint": "https://script.google.com/macros/s/…/exec" }`.
+5. Publique o site e envie o formulário uma vez: a linha deve aparecer na aba `Contatos`.
+
+Com `endpoint` vazio, o formulário pula a planilha e só abre o WhatsApp. O envio usa `no-cors` (o Apps Script não responde CORS), então o site não consegue confirmar a gravação: confira a planilha depois de cada mudança no script. Ao alterar o script, crie uma nova versão em **Implantar → Gerenciar implantações** para a URL continuar a mesma.
+
+### Checkout da AbacatePay (desligado)
+
+O site não usa mais o checkout, mas o código fica no repositório para quando a cobrança online voltar: `scripts/abacatepay-setup.mjs`, `pricing.js`, `checkout-links.json` e `obrigado.html`. Para religar, os botões precisam voltar a apontar para os links de `checkout-links.json`. Cada plano tem um produto mensal e um anual, todos com 14 dias grátis (`trialDays`): o cliente cadastra o cartão, paga R$ 0,00 hoje e a primeira cobrança acontece no fim do teste. Depois do pagamento, a AbacatePay redireciona para `obrigado.html`.
 
 Os links ficam em `checkout-links.json`, gerado por
 
@@ -35,7 +49,7 @@ node scripts/abacatepay-setup.mjs
 
 O script lê os preços de `pricing.js`, cria ou reaproveita os produtos (pelo `externalId`) e mantém um checkout pendente para cada plano e período.
 
-**Limitação conhecida:** apesar de a documentação da AbacatePay dizer que um checkout de assinatura gera várias assinaturas, na prática ele fica `PAID` depois do primeiro pagamento e deixa de aceitar novos clientes (links de pagamento reutilizáveis não aceitam produtos com `cycle`). Enquanto não houver um backend criando um checkout por clique, rode o script de novo depois de cada assinatura: ele reaproveita os checkouts ainda `PENDING` e recria os pagos. A chave precisa das permissões `PRODUCT:CREATE`, `PRODUCT:READ`, `SUBSCRIPTION:CREATE` e `SUBSCRIPTION:READ`. Com chave de Dev mode, o site mostra o aviso de ambiente de teste. Para produção, gere a chave de produção, rode o script de novo e publique o `checkout-links.json` atualizado. Sem links configurados, os botões levam às dúvidas.
+**Limitação conhecida:** apesar de a documentação da AbacatePay dizer que um checkout de assinatura gera várias assinaturas, na prática ele fica `PAID` depois do primeiro pagamento e deixa de aceitar novos clientes (links de pagamento reutilizáveis não aceitam produtos com `cycle`). Enquanto não houver um backend criando um checkout por clique, rode o script de novo depois de cada assinatura: ele reaproveita os checkouts ainda `PENDING` e recria os pagos. A chave precisa das permissões `PRODUCT:CREATE`, `PRODUCT:READ`, `SUBSCRIPTION:CREATE` e `SUBSCRIPTION:READ`. Para produção, gere a chave de produção, rode o script de novo e publique o `checkout-links.json` atualizado.
 
 Liberar o acesso no app depois do pagamento é responsabilidade do backend do app, via webhooks `subscription.completed`, `subscription.renewed` e `subscription.cancelled`.
 
@@ -59,6 +73,6 @@ node --check script.js
 ## Próximos passos antes de contratar
 
 - Confirmar diferenças de recursos, limites de rebanho e regras dos 14 dias entre Plus e Pro.
-- Definir um destino real de cadastro/contratação para os CTAs antes de prometer ativação automática.
+- Publicar o Apps Script da planilha de contatos e preencher `lead-config.json`.
 - Atualizar as capturas do app mobile quando suas telas mudarem.
 - Conectar domínio próprio, se disponível.
