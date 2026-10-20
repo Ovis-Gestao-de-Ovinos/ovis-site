@@ -25,7 +25,12 @@ test('página usa identidade Ovis e ativos próprios', () => {
 test('composição escura com tipografia de impacto e animações acessíveis', () => {
   const script = readFileSync(new URL('../script.js', import.meta.url), 'utf8');
   assert.match(page, /href="site\.css(\?v=\d+)?"/);
-  assert.match(page, /Bebas\+Neue/);
+  assert.doesNotMatch(page, /fonts\.googleapis|fonts\.gstatic/, 'fontes hospedadas no próprio site');
+  assert.match(css, /@font-face \{ font-family: 'Bebas Neue'/);
+  assert.match(css, /@font-face \{ font-family: 'Inter'[^}]*font-weight: 400 700/);
+  for (const f of ['bebas-neue-latin', 'bebas-neue-latin-ext', 'inter-latin', 'inter-latin-ext']) assert.ok(existsSync(new URL(`../assets/fonts/${f}.woff2`, import.meta.url)));
+  assert.match(page, /<link rel="preload" href="assets\/video\/hero\.jpg[^"]*" as="image" fetchpriority="high">/);
+  assert.match(script, /addEventListener\('load', startHeroVideo/, 'vídeo do hero só baixa depois do load');
   assert.match(page, /src="script\.js\?v=\d+"/, "script versionado evita cache de versão antiga");
   assert.match(page, /data-scrub/);
   assert.match(page, /data-phone-scroll/);
@@ -90,4 +95,10 @@ test('SEO permanece coerente com a prévia', () => {
   assert.match(page, /type="application\/ld\+json"/);
   assert.match(sitemap, /<loc>https:\/\/ovisapp\.com\.br\/<\/loc>/);
   assert.doesNotMatch(page, /aggregateRating|"@type":"SoftwareApplication"/);
+  const description = page.match(/<meta name="description" content="([^"]*)">/)[1];
+  assert.ok(description.length <= 160, `descrição com ${description.length} caracteres`);
+  assert.match(description, /14 dias grátis/);
+  assert.match(page, /<link rel="apple-touch-icon" href="assets\/apple-touch-icon\.png">/);
+  assert.match(sitemap, /<lastmod>\d{4}-\d{2}-\d{2}<\/lastmod>/);
+  assert.ok(existsSync(new URL('../llms.txt', import.meta.url)));
 });

@@ -104,8 +104,9 @@ document.fonts?.ready.then(movePill);
 
 // Vídeo do hero: versão Full HD no computador e 720p em telas pequenas.
 // Com menos movimento, o vídeo não carrega e fica só o poster.
+// O vídeo só começa a baixar depois da página carregada, para não disputar banda com o poster e o texto.
 const heroVideo = $('[data-hero-video]');
-if (heroVideo && motion) {
+function startHeroVideo() {
   const small = window.matchMedia('(max-width: 760px)').matches;
   heroVideo.preload = 'auto';
   heroVideo.src = small ? heroVideo.dataset.srcMobile : heroVideo.dataset.src;
@@ -114,6 +115,10 @@ if (heroVideo && motion) {
   document.addEventListener('visibilitychange', () => {
     if (document.visibilityState === 'visible' && heroVideo.paused) heroVideo.play().catch(() => {});
   });
+}
+if (heroVideo && motion) {
+  if (document.readyState === 'complete') startHeroVideo();
+  else window.addEventListener('load', startHeroVideo, { once: true });
 }
 
 // Manejos de demonstração: concluir/desfazer.
