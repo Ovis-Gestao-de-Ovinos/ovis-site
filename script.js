@@ -1,5 +1,5 @@
 import { timeLeft } from './launch.js';
-import { formatPhone, normalizePhone, saveLead, validateLead, whatsappUrl } from './lead.js?v=4';
+import { formatPhone, normalizePhone, saveLead, validateLead, whatsappUrl } from './lead.js?v=5';
 
 const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
