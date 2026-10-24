@@ -13,7 +13,7 @@ Empresa: 65.981.257 DARTAGNAN ROMANN DE MELLO, CNPJ 65.981.257/0001-17, São Leo
 - [Sobre a Ovis](https://ovisapp.com.br/sobre/): quem faz a Ovis, como começou e dados da empresa.
 - [Política de privacidade](https://ovisapp.com.br/privacidade/): quais dados o formulário de contato coleta, para quê e como pedir acesso ou exclusão.
 
-## O que o Ovis faz
+## O que a Ovis faz
 
 - Ficha de cada animal: brinco, raça, idade, lote, peso atual, ganho médio diário (GMD), escore corporal e histórico de pesagens, reprodução e vacinas.
 - Manejos por lote: vacinação, vermifugação e pesagem, com o que está atrasado e o que vence hoje.

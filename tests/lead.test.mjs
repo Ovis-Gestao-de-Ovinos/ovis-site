@@ -43,7 +43,7 @@ test('mensagem do WhatsApp por plano e período', () => {
   assert.match(leadMessage(ok), /quero conhecer o plano Plus\./);
   assert.match(leadMessage({ ...ok, rebanho: '1200' }), /Temos 1\.200 animais/);
   assert.match(leadMessage({ ...ok, rebanho: '1' }), /Temos 1 animal e/);
-  assert.match(leadMessage({ ...ok, plano: 'Demonstração', periodo: 'anual' }), /quero ver uma demonstração do Ovis no computador\.$/);
+  assert.match(leadMessage({ ...ok, plano: 'Demonstração', periodo: 'anual' }), /quero ver uma demonstração da Ovis no computador\.$/);
   assert.match(leadMessage({ ...ok, plano: 'Pro', periodo: 'anual' }), /quero conhecer o plano Pro \(anual\)\./);
   assert.match(leadMessage({ ...ok, plano: 'Lista', periodo: '' }), /quero entrar na lista de espera do lançamento do app\.$/);
   assert.match(leadMessage({ ...ok, nome: '  João ', fazenda: ' Boa Vista  ' }), /^Oi! Sou João, da fazenda Boa Vista\./);
