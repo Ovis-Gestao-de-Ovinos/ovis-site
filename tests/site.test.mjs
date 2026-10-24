@@ -67,7 +67,7 @@ test('contagem regressiva do lançamento substitui os planos', () => {
   assert.match(page, /<time datetime="2026-11-14T00:00-03:00">14 de novembro<\/time>/);
   for (const unit of ['days', 'hours', 'minutes', 'seconds']) assert.match(page, new RegExp(`data-unit="${unit}"`));
   assert.match(page, /role="timer"/);
-  assert.match(page, /<div data-launch-after hidden>[\s\S]*O Ovis já está disponível/, 'depois da data vira aviso');
+  assert.match(page, /<div data-launch-after hidden>[\s\S]*A Ovis já está disponível/, 'depois da data vira aviso');
   assert.match(page, /data-lead="Lista"[^>]*>Entrar na lista de espera/);
   assert.match(script, /from '\.\/launch\.js'/);
   assert.match(css, /html:not\(\.js\) \.countdown \{ display: none; \}/, 'sem JavaScript fica só a data');

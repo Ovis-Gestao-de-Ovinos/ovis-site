@@ -18,7 +18,7 @@ A página usa uma única folha, `site.css`: tema escuro, títulos em Bebas Neue,
 
 ## Lançamento e lista de espera
 
-O app é lançado em 14 de novembro de 2026, à meia-noite de Brasília. Até lá, a seção `#lancamento` (que substituiu os planos) mostra a contagem regressiva e o botão "Entrar na lista de espera", que abre o mesmo formulário de contato com o plano `Lista`: o contato vai para a planilha e o WhatsApp abre com a mensagem pronta. Quando a contagem chega a zero, a seção troca para "O Ovis já está disponível" com o botão do teste grátis, e os botões do topo, do hero e do encerramento passam a dizer "Testar 14 dias grátis". A data e a conta ficam em `launch.js` (testado em `tests/launch.test.mjs`). Sem JavaScript, aparece só a data.
+O app é lançado em 14 de novembro de 2026, à meia-noite de Brasília. Até lá, a seção `#lancamento` (que substituiu os planos) mostra a contagem regressiva e o botão "Entrar na lista de espera", que abre o mesmo formulário de contato com o plano `Lista`: o contato vai para a planilha e o WhatsApp abre com a mensagem pronta. Quando a contagem chega a zero, a seção troca para "A Ovis já está disponível" com o botão do teste grátis, e os botões do topo, do hero e do encerramento passam a dizer "Testar 14 dias grátis". A data e a conta ficam em `launch.js` (testado em `tests/launch.test.mjs`). Sem JavaScript, aparece só a data.
 
 Os preços continuam em `pricing.js`, na FAQ, no JSON-LD e no `llms.txt`, mas não aparecem mais em cards na página. A Plus começa em R$ 309,90/mês e a Pro em R$ 359,90/mês, com 15% de desconto no anual.
 
