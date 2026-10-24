@@ -23,13 +23,14 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="preload" href="assets/fonts/bebas-neue-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="site.css?v=22">
-  <link rel="modulepreload" href="script.js?v=18">
-  <link rel="modulepreload" href="pricing.js">
-  <link rel="modulepreload" href="lead.js?v=3">
+  <link rel="stylesheet" href="site.css?v=23">
+  <link rel="modulepreload" href="script.js?v=19">
+  <link rel="modulepreload" href="launch.js">
+  <link rel="modulepreload" href="lead.js?v=4">
   <link rel="preload" href="lead-config.json" as="fetch" crossorigin>
   <script>document.documentElement.classList.add('js')</script>
-  <script type="module" src="script.js?v=18"></script>
+  <script src="analytics.js?v=1" defer></script>
+  <script type="module" src="script.js?v=19"></script>
 </head>
 <body>
   <a class="skip" href="#conteudo">Pular para o conteúdo</a>
@@ -38,12 +39,12 @@
     <div class="wrap nav-inner">
       <a class="brand" href="#inicio" aria-label="Ovis, voltar ao início"><img src="assets/icon.png?v=logo2" width="30" height="30" alt=""><span>Ovis</span></a>
       <nav class="nav-links" aria-label="Navegação principal">
-        <a href="#visao">Visão geral</a><a href="#produto">Ficha</a><a href="#rotina">Manejos</a><a href="#recursos">Recursos</a><a href="#precos">Planos</a><a href="#perguntas">Dúvidas</a>
+        <a href="#visao">Visão geral</a><a href="#produto">Ficha</a><a href="#rotina">Manejos</a><a href="#recursos">Recursos</a><a href="#lancamento">Lançamento</a><a href="#perguntas">Dúvidas</a>
       </nav>
-      <a class="btn btn-solid btn-sm" href="#precos">Teste grátis</a>
+      <a class="btn btn-solid btn-sm" href="#lancamento" data-launch-cta>Lista de espera</a>
       <details class="nav-mobile">
         <summary aria-label="Abrir navegação"><span></span><span></span></summary>
-        <nav aria-label="Navegação mobile"><a href="#visao">Visão geral</a><a href="#produto">Ficha</a><a href="#rotina">Manejos</a><a href="#recursos">Recursos</a><a href="#precos">Planos</a><a href="#perguntas">Dúvidas</a></nav>
+        <nav aria-label="Navegação mobile"><a href="#visao">Visão geral</a><a href="#produto">Ficha</a><a href="#rotina">Manejos</a><a href="#recursos">Recursos</a><a href="#lancamento">Lançamento</a><a href="#perguntas">Dúvidas</a></nav>
       </details>
     </div>
   </header>
@@ -60,7 +61,7 @@
         </h1>
         <p class="hero-note" data-rise>*e não apaga. Tudo anotado na hora, no celular.</p>
         <div class="hero-actions" data-rise>
-          <a class="btn btn-solid" href="#precos">Testar 14 dias grátis</a>
+          <a class="btn btn-solid" href="#lancamento" data-launch-cta>Entrar na lista de espera</a>
           <a class="btn btn-ghost" href="#visao">Ver o aplicativo</a>
         </div>
       </div>
@@ -121,7 +122,7 @@
               <li>Aviso do que falta pesar para o registro genealógico</li>
               <li>Anotações do campo guardadas junto do animal</li>
             </ul>
-            <a class="link-arrow" href="#precos" data-rise>Testar com o seu rebanho <span aria-hidden="true">→</span></a>
+            <a class="link-arrow" href="#lancamento" data-rise>Testar com o seu rebanho <span aria-hidden="true">→</span></a>
           </div>
         </div>
       </div>
@@ -169,42 +170,35 @@
       </div>
     </section>
 
-    <!-- PRICING -->
-    <section id="precos" class="pricing" aria-labelledby="pricing-title">
+    <!-- LANÇAMENTO -->
+    <section id="lancamento" class="launch" aria-labelledby="launch-title" data-launch>
       <div class="wrap">
-        <p class="kicker center" data-rise>Planos</p>
-        <h2 id="pricing-title" class="display section-title center" data-lines>
-          <span class="line"><span>Comece grátis.</span></span>
-          <span class="line"><span>Cresça com o plano certo.</span></span>
-        </h2>
-        <fieldset class="billing" data-rise>
-          <legend class="sr-only">Escolha o período</legend>
-          <span class="billing-pill" aria-hidden="true"></span>
-          <label><input type="radio" name="billing" value="monthly" checked><span>Mensal</span></label>
-          <label><input type="radio" name="billing" value="annual"><span>Anual <em>15% de desconto</em></span></label>
-        </fieldset>
-        <div class="plans">
-          <article class="plan" data-rise>
-            <div class="plan-head"><h3>Teste</h3><p class="price-prefix">comece com</p><p class="plan-price">14 <small>dias grátis</small></p><p class="annual-equivalent">sem cartão, sem pagar nada</p></div>
-            <p class="plan-desc">Use o Ovis com o seu rebanho por 14 dias sem pagar nada. O teste começa no Plus mensal.</p>
-            <button type="button" class="btn btn-ghost" data-lead="Teste">Começar teste grátis</button>
-            <p class="plan-trial">Sem cartão. A gente combina pelo WhatsApp.</p>
-          </article>
-          <article class="plan plan-featured" data-rise>
-            <span class="plan-badge">Para começar</span>
-            <div class="plan-head"><h3>Plus</h3><p class="price-prefix">a partir de</p><p class="plan-price" data-plan-price="Plus">R$ 309,90 <small>/ mês</small></p><p class="annual-equivalent" data-plan-equivalent="Plus">cobrado todo mês</p></div>
-            <p class="plan-desc">Para levar a organização do rebanho à rotina da fazenda.</p>
-            <button type="button" class="btn btn-solid" data-lead="Plus">Assinar o Plus</button>
-            <p class="plan-trial">14 dias grátis. Preço combinado pelo tamanho do rebanho.</p>
-          </article>
-          <article class="plan" data-rise>
-            <div class="plan-head"><h3>Pro</h3><p class="price-prefix">a partir de</p><p class="plan-price" data-plan-price="Pro">R$ 359,90 <small>/ mês</small></p><p class="annual-equivalent" data-plan-equivalent="Pro">cobrado todo mês</p></div>
-            <p class="plan-desc">Para operações que querem evoluir o acompanhamento do rebanho.</p>
-            <button type="button" class="btn btn-ghost" data-lead="Pro">Assinar o Pro</button>
-            <p class="plan-trial">14 dias grátis. Preço combinado pelo tamanho do rebanho.</p>
-          </article>
+        <div data-launch-before>
+          <p class="kicker center" data-rise>Lançamento · <time datetime="2026-11-14T00:00-03:00">14 de novembro</time></p>
+          <h2 id="launch-title" class="display section-title center" data-lines>
+            <span class="line"><span>O Ovis chega</span></span>
+            <span class="line"><span>em 14 de novembro.</span></span>
+          </h2>
+          <div class="countdown" role="timer" aria-label="Contagem regressiva para o lançamento em 14 de novembro" data-countdown data-rise>
+            <div><span data-unit="days">00</span><small>dias</small></div>
+            <div><span data-unit="hours">00</span><small>horas</small></div>
+            <div><span data-unit="minutes">00</span><small>minutos</small></div>
+            <div><span data-unit="seconds">00</span><small>segundos</small></div>
+          </div>
+          <p class="launch-copy center" data-rise>Entre na lista de espera: no dia do lançamento a gente te chama no WhatsApp e libera os 14 dias grátis pra testar com o seu rebanho.</p>
+          <div class="launch-actions" data-rise>
+            <button type="button" class="btn btn-solid" data-lead="Lista">Entrar na lista de espera</button>
+            <p class="fine">Sem cartão e sem compromisso. A gente fala com você pelo WhatsApp.</p>
+          </div>
         </div>
-        <p class="fine center pricing-note" data-rise>Todos os planos começam com 14 dias grátis, sem cartão. Você preenche o formulário, fala com a gente pelo WhatsApp e a gente libera o acesso. No anual, o total equivale a 12 mensalidades com 15% de desconto. “A partir de” é o valor de entrada: o preço final depende do tamanho do rebanho e é confirmado na conversa.</p>
+        <div data-launch-after hidden>
+          <p class="kicker center">Lançamento</p>
+          <h2 class="display section-title center">O Ovis já está disponível.</h2>
+          <p class="launch-copy center">Teste 14 dias com o seu rebanho, sem cartão e sem pagar nada. Você preenche o formulário e a gente libera o acesso pelo WhatsApp.</p>
+          <div class="launch-actions">
+            <button type="button" class="btn btn-solid" data-lead="Teste">Começar teste grátis</button>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -233,8 +227,8 @@
       <div class="wrap">
         <h2 id="closing-title" class="display closing-title" data-scrub-color>Nada se perde.</h2>
         <div class="closing-row">
-          <p data-rise>Do pasto pro celular, na hora. Teste 14 dias sem pagar nada.</p>
-          <a class="btn btn-solid" href="#precos" data-rise>Testar 14 dias grátis</a>
+          <p data-rise>Do pasto pro celular, na hora. Chega em 14 de novembro.</p>
+          <a class="btn btn-solid" href="#lancamento" data-rise data-launch-cta>Entrar na lista de espera</a>
         </div>
       </div>
     </section>
@@ -261,7 +255,7 @@
     <div class="wrap footer-grid">
       <a class="brand" href="#inicio"><img src="assets/icon.png?v=logo2" width="30" height="30" alt=""><span>Ovis</span></a>
       <nav aria-label="Produto"><a href="#visao">Visão geral</a><a href="#produto">Ficha do animal</a><a href="#rotina">Manejos</a><a href="#recursos">Recursos</a><a href="calculadora-gmd/">Calculadora de GMD</a></nav>
-      <nav aria-label="Ovis"><a href="#precos">Planos</a><a href="#perguntas">Dúvidas</a><a href="sobre/">Sobre</a><a href="privacidade/">Privacidade</a></nav>
+      <nav aria-label="Ovis"><a href="#lancamento">Lançamento</a><a href="#perguntas">Dúvidas</a><a href="sobre/">Sobre</a><a href="privacidade/">Privacidade</a></nav>
       <nav aria-label="Contato" class="footer-contact"><a href="https://wa.me/5551984931844" rel="noopener">WhatsApp (51) 98493-1844</a><a href="mailto:ovisfinanceiro@gmail.com">ovisfinanceiro@gmail.com</a><a href="https://www.instagram.com/ovis.gestao/" rel="noopener">Instagram @ovis.gestao</a><span class="footer-tag">Gestão de rebanhos ovinos.<br>Do pasto à palma da mão.</span></nav>
     </div>
     <div class="wrap footer-bottom">

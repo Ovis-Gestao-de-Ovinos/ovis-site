@@ -1,5 +1,5 @@
-import { PLANS, money } from './pricing.js';
-import { formatPhone, normalizePhone, saveLead, validateLead, whatsappUrl } from './lead.js?v=3';
+import { timeLeft } from './launch.js';
+import { formatPhone, normalizePhone, saveLead, validateLead, whatsappUrl } from './lead.js?v=4';
 
 const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
@@ -8,43 +8,28 @@ const motion = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 $('#year').textContent = new Date().getFullYear();
 $$('.nav-mobile nav a').forEach((link) => link.addEventListener('click', () => { $('.nav-mobile').open = false; }));
 
-// Preços: alternância mensal/anual com pílula deslizante.
-const billing = $('.billing');
-function movePill() {
-  const label = $('input:checked', billing)?.closest('label');
-  if (!label) return;
-  billing.style.setProperty('--pill-x', `${label.offsetLeft}px`);
-  billing.style.setProperty('--pill-w', `${label.offsetWidth}px`);
-}
-
-function renderPrices(animate = false) {
-  const annual = $('input[name="billing"]:checked')?.value === 'annual';
-  for (const plan of PLANS) {
-    const price = $(`[data-plan-price="${plan.name}"]`);
-    const equivalent = $(`[data-plan-equivalent="${plan.name}"]`);
-    const cadence = document.createElement('small');
-    cadence.textContent = annual ? '/ ano' : '/ mês';
-    price.replaceChildren(document.createTextNode(`${money(annual ? plan.annualCents : plan.fromCents)} `), cadence);
-    // A linha existe nos dois períodos para os cards não mudarem de altura na troca.
-    equivalent.classList.toggle('is-annual', annual);
-    equivalent.textContent = annual ? `${money(Math.round(plan.annualCents / 12))} por mês, equivalente no anual` : 'cobrado todo mês';
-    if (animate && motion) {
-      price.classList.remove('is-swapping');
-      void price.offsetWidth;
-      price.classList.add('is-swapping');
-    }
+// Lançamento: contagem regressiva até 14/11; quando chega a zero, a seção vira o convite para o teste.
+const launch = $('[data-launch]');
+const pad = (n) => String(n).padStart(2, '0');
+function tickLaunch() {
+  const left = timeLeft();
+  if (!left) {
+    clearInterval(launchTimer);
+    $('[data-launch-before]', launch).hidden = true;
+    $('[data-launch-after]', launch).hidden = false;
+    $$('[data-launch-cta]').forEach((cta) => { cta.textContent = 'Testar 14 dias grátis'; });
+    return;
   }
-  movePill();
+  for (const [unit, value] of Object.entries(left)) $(`[data-unit="${unit}"]`, launch).textContent = pad(value);
 }
+const launchTimer = setInterval(tickLaunch, 1000);
+tickLaunch();
 
-$$('input[name="billing"]').forEach((radio) => radio.addEventListener('change', () => renderPrices(true)));
-renderPrices();
-
-// Contato: os botões dos planos abrem o formulário; o lead vai para a planilha e segue para o WhatsApp.
+// Contato: os botões da lista de espera, do teste e da demonstração abrem o formulário; o lead vai para a planilha e segue para o WhatsApp.
 const leadDialog = $('#lead-dialog');
 const leadForm = $('[data-lead-form]', leadDialog);
-const leadPlanNames = { Teste: 'Teste grátis de 14 dias', Plus: 'Plano Plus', Pro: 'Plano Pro', Demonstração: 'Demonstração no computador' };
-let leadPlan = { plano: 'Teste', periodo: 'mensal' };
+const leadPlanNames = { Lista: 'Lista de espera do lançamento', Teste: 'Teste grátis de 14 dias', Demonstração: 'Demonstração no computador' };
+let leadPlan = { plano: 'Lista', periodo: '' };
 let leadEndpoint = null;
 fetch('lead-config.json', { cache: 'no-cache' })
   .then((res) => (res.ok ? res.json() : null))
@@ -52,10 +37,10 @@ fetch('lead-config.json', { cache: 'no-cache' })
   .catch(() => {});
 
 $$('[data-lead]').forEach((button) => button.addEventListener('click', () => {
-  const annual = $('input[name="billing"]:checked')?.value === 'annual';
   const plano = button.dataset.lead;
-  leadPlan = { plano, periodo: annual && (plano === 'Plus' || plano === 'Pro') ? 'anual' : 'mensal' };
-  $('[data-lead-plan]', leadDialog).textContent = leadPlan.periodo === 'anual' ? `${leadPlanNames[plano]} · anual` : leadPlanNames[plano];
+  leadPlan = { plano, periodo: '' };
+  $('[data-lead-plan]', leadDialog).textContent = leadPlanNames[plano];
+  window.gtag?.('event', 'abrir_formulario', { plano });
   leadDialog.showModal();
 }));
 $('[data-lead-close]', leadDialog).addEventListener('click', () => leadDialog.close());
@@ -90,6 +75,8 @@ leadForm.addEventListener('submit', async (event) => {
   }
   submit.disabled = true;
   submit.textContent = 'Abrindo o WhatsApp…';
+  // O beacon garante que o evento sai antes de a página trocar para o WhatsApp.
+  window.gtag?.('event', 'generate_lead', { plano: lead.plano, transport_type: 'beacon' });
   await saveLead(leadEndpoint && `${leadEndpoint}?origem=${encodeURIComponent(location.href)}`, lead);
   location.href = whatsappUrl(lead);
 });
@@ -99,8 +86,6 @@ window.addEventListener('pageshow', () => {
   submit.disabled = false;
   submit.textContent = 'Continuar no WhatsApp';
 });
-window.addEventListener('resize', movePill);
-document.fonts?.ready.then(movePill);
 
 // Vídeo do hero só no computador; no celular fica a foto (versão 1280×720), para poupar o plano de dados.
 // Formato mais leve que o navegador toca: AV1 (Chrome, Android, Firefox), HEVC (Safari) ou H.264.

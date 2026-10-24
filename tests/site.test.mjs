@@ -5,7 +5,7 @@ import { readFileSync, existsSync } from 'node:fs';
 const page = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 const css = readFileSync(new URL('../site.css', import.meta.url), 'utf8');
 
-for (const id of ['inicio', 'visao', 'produto', 'rotina', 'recursos', 'precos', 'perguntas', 'estado']) {
+for (const id of ['inicio', 'visao', 'produto', 'rotina', 'recursos', 'lancamento', 'perguntas', 'estado']) {
   test(`navegação tem seção ${id}`, () => assert.match(page, new RegExp(`id="${id}"`)));
 }
 
@@ -48,7 +48,7 @@ test('composição escura com tipografia de impacto e animações acessíveis', 
   // Os módulos importados pelo script entram na fila junto com ele, sem esperar o script baixar.
   const version = (re) => (page.match(re) || [])[0];
   assert.equal(version(/modulepreload" href="script\.js\?v=\d+/)?.split('href="')[1], version(/src="script\.js\?v=\d+/)?.split('src="')[1], 'modulepreload na mesma versão do script');
-  assert.match(page, /<link rel="modulepreload" href="pricing\.js">/);
+  assert.match(page, /<link rel="modulepreload" href="launch\.js">/);
   const leadImport = script.match(/from '\.\/(lead\.js[^']*)'/)[1];
   assert.ok(page.includes(`<link rel="modulepreload" href="${leadImport}">`), `modulepreload de ${leadImport}`);
   assert.match(page, /data-scrub/);
@@ -62,20 +62,45 @@ test('composição escura com tipografia de impacto e animações acessíveis', 
   }
 });
 
-test('planos novos substituem tabela antiga sem promessa de compra ou desconto', () => {
-  assert.match(page, /14 dias grátis/);
-  assert.match(page, /R\$ 309,90/);
-  assert.match(page, /R\$ 359,90/);
-  assert.match(page, /a partir de/);
-  assert.match(page, /15% de desconto/);
-  assert.match(page, /Mensal/);
-  assert.match(page, /Anual/);
+test('contagem regressiva do lançamento substitui os planos', () => {
+  const script = readFileSync(new URL('../script.js', import.meta.url), 'utf8');
+  assert.match(page, /<time datetime="2026-11-14T00:00-03:00">14 de novembro<\/time>/);
+  for (const unit of ['days', 'hours', 'minutes', 'seconds']) assert.match(page, new RegExp(`data-unit="${unit}"`));
+  assert.match(page, /role="timer"/);
+  assert.match(page, /<div data-launch-after hidden>[\s\S]*O Ovis já está disponível/, 'depois da data vira aviso');
+  assert.match(page, /data-lead="Lista"[^>]*>Entrar na lista de espera/);
+  assert.match(script, /from '\.\/launch\.js'/);
+  assert.match(css, /html:not\(\.js\) \.countdown \{ display: none; \}/, 'sem JavaScript fica só a data');
+  assert.doesNotMatch(page, /href="#precos"|data-plan-price|name="billing"/);
   assert.doesNotMatch(page, /Basic|R\$ 259,90|herd-size|price-results/i);
+  for (const other of ['sobre/index.html', 'calculadora-gmd/index.html', 'privacidade/index.html']) {
+    assert.doesNotMatch(readFileSync(new URL(`../${other}`, import.meta.url), 'utf8'), /\/#precos/, `${other} sem link para os planos`);
+  }
+});
+
+test('GA4 começa sem cookies e só grava depois do aceite', () => {
+  const ga = readFileSync(new URL('../analytics.js', import.meta.url), 'utf8');
+  const script = readFileSync(new URL('../script.js', import.meta.url), 'utf8');
+  const privacy = readFileSync(new URL('../privacidade/index.html', import.meta.url), 'utf8');
+  assert.match(ga, /var GA_ID = '(G-[A-Z0-9]+)?';/);
+  assert.match(ga, /analytics_storage: lerEscolha\(\) === 'aceito' \? 'granted' : 'denied'/);
+  for (const ad of ['ad_storage', 'ad_user_data', 'ad_personalization']) assert.match(ga, new RegExp(`${ad}: 'denied'`));
+  assert.ok(ga.indexOf("gtag('consent', 'default'") < ga.indexOf("gtag('config'"), 'consentimento antes do config');
+  assert.match(ga, /addEventListener\('load', carregarGtag\)/, 'gtag.js só depois do load');
+  assert.match(page, /<script src="analytics\.js\?v=\d+" defer><\/script>/);
+  for (const other of ['sobre/index.html', 'calculadora-gmd/index.html', 'privacidade/index.html']) {
+    assert.match(readFileSync(new URL(`../${other}`, import.meta.url), 'utf8'), /<script src="\/analytics\.js\?v=\d+" defer><\/script>/, other);
+  }
+  assert.match(script, /gtag\?\.\('event', 'generate_lead'/);
+  assert.match(css, /\.cookie-notice \{ position: fixed; right: 20px; bottom: 20px;/, 'aviso no canto da tela');
+  assert.match(privacy, /Cookies e Google Analytics/);
+  assert.match(privacy, /data-cookies-reabrir/);
+  assert.doesNotMatch(privacy, /não usa cookies de rastreamento/);
 });
 
 test('contratação passa por formulário, planilha e WhatsApp', () => {
   const script = readFileSync(new URL('../script.js', import.meta.url), 'utf8');
-  for (const p of ['Teste', 'Plus', 'Pro', 'Demonstração']) assert.match(page, new RegExp(`data-lead="${p}"`));
+  for (const p of ['Lista', 'Teste', 'Demonstração']) assert.match(page, new RegExp(`data-lead="${p}"`));
   assert.match(page, /<dialog id="lead-dialog"/);
   for (const n of ['nome', 'whatsapp', 'fazenda', 'rebanho']) assert.match(page, new RegExp(`name="${n}"[^>]*required`));
   assert.match(page, /<input name="rebanho" type="text" inputmode="numeric"/);
@@ -88,7 +113,6 @@ test('contratação passa por formulário, planilha e WhatsApp', () => {
   assert.match(script, /lead-config\.json/);
   assert.doesNotMatch(page + script, /AbacatePay|cobrança automática|checkout-links/);
   assert.match(page, /dados simulados/i);
-  assert.match(page, /confirmado na conversa/i);
   assert.doesNotMatch(page, /Mais escolhido/, 'sem clientes ainda, nenhum plano é o mais escolhido');
   assert.doesNotMatch(page + script, /abc_(dev|prod)_|sk_/, 'chave de API nunca vai para o site');
   assert.match(readFileSync(new URL('../.gitignore', import.meta.url), 'utf8'), /^\.env$/m);
