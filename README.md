@@ -16,11 +16,17 @@ A marca foi fornecida pela equipe Ovis. `assets/ovis-ficha.webp` é uma captura 
 
 A página usa uma única folha, `site.css`: tema escuro, títulos em Bebas Neue, texto em Inter e verde Ovis como cor de destaque. A composição segue o ritmo do subscrr.app — hero fotográfico, frase que acende com o scroll, celular com a tela rolando, ficha do animal, manejos interativos, trilho de recursos, ponte fotográfica, planos, FAQ e encerramento.
 
-## Preços e simulador
+## Lançamento e lista de espera
 
-A página apresenta 14 dias grátis, Plus a partir de R$ 309,90/mês e Pro a partir de R$ 359,90/mês. A alternância anual mostra o total de 12 mensalidades com 15% de desconto: R$ 3.160,98/ano e R$ 3.670,98/ano, respectivamente. O equivalente mensal do anual é informativo.
+O app é lançado em 14 de novembro de 2026, à meia-noite de Brasília. Até lá, a seção `#lancamento` (que substituiu os planos) mostra a contagem regressiva e o botão "Entrar na lista de espera", que abre o mesmo formulário de contato com o plano `Lista`: o contato vai para a planilha e o WhatsApp abre com a mensagem pronta. Quando a contagem chega a zero, a seção troca para "O Ovis já está disponível" com o botão do teste grátis, e os botões do topo, do hero e do encerramento passam a dizer "Testar 14 dias grátis". A data e a conta ficam em `launch.js` (testado em `tests/launch.test.mjs`). Sem JavaScript, aparece só a data.
 
-Não usamos a tabela antiga por faixa nem presumimos os recursos e limites de cada plano. As condições comerciais ainda precisam ser confirmadas antes da contratação.
+Os preços continuam em `pricing.js`, na FAQ, no JSON-LD e no `llms.txt`, mas não aparecem mais em cards na página. A Plus começa em R$ 309,90/mês e a Pro em R$ 359,90/mês, com 15% de desconto no anual.
+
+## Google Analytics 4 e cookies
+
+`analytics.js` (carregado com `defer` em todas as páginas) liga o GA4 com o modo de consentimento, no mesmo modelo do site da Favo: começa com `analytics_storage` negado e sem cookies, mostra um aviso no canto da tela e só grava os cookies `_ga` se a pessoa aceitar. A escolha fica no `localStorage` em `ovis-cookies`, e o botão "Rever a escolha de cookies" da política de privacidade reabre o aviso. O `gtag.js` só baixa depois do evento `load`. O formulário envia os eventos `abrir_formulario` e `generate_lead`, com o plano escolhido.
+
+O ID de medição fica na constante `GA_ID` do `analytics.js`. Com ela vazia, nada carrega e nenhum aviso aparece. No GA4, marque `generate_lead` como evento principal e deixe a retenção de dados em 14 meses, como diz a política de privacidade.
 
 ## Contato (formulário → planilha → WhatsApp)
 

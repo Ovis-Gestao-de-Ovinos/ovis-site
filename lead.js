@@ -31,6 +31,7 @@ export function validateLead(lead) {
 function interest({ plano, periodo }) {
   if (plano === 'Teste') return 'começar o teste grátis';
   if (plano === 'Demonstração') return 'ver uma demonstração do Ovis no computador';
+  if (plano === 'Lista') return 'entrar na lista de espera do lançamento do app';
   return `conhecer o plano ${plano}${periodo === 'anual' ? ' (anual)' : ''}`;
 }
 
