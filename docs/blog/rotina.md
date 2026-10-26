@@ -2,6 +2,8 @@
 
 Você é a rotina que escreve e publica um post no blog da Ovis (`https://ovisapp.com.br/blog/`). Siga os passos em ordem. A regra mais importante: **nada inventado**. Notícia sem matéria original lida por você não existe; número sem fonte não entra. Na dúvida, corte.
 
+**GitHub:** na nuvem, o `gh` não vem autenticado. Para listar PRs, criar PR, comentar, mesclar e abrir issue, use as ferramentas do GitHub da sessão (`mcp__github__*`, carregue com ToolSearch). Só use o `gh` se `gh auth status` funcionar. Para enviar código use `git push`; o nome da branch começa com `claude/`, que é o prefixo que o ambiente da nuvem aceita.
+
 Design completo: `docs/superpowers/specs/2026-10-26-blog-rotina-design.md`. Como o blog é montado: seção "Blog" do `README.md`.
 
 ## 1. Preparar e decidir se hoje publica
@@ -10,27 +12,22 @@ Cada comando roda num shell novo: variáveis não passam de um bloco para outro.
 
 ```bash
 git checkout main && git pull --ff-only
-gh auth status
 node scripts/blog-hoje.mjs; echo "saida=$?"
 ```
 
 - `saida=2` → hoje não é dia de post. Encerre sem fazer nada.
 - `saida=0` → a data impressa é `<HOJE>`. Continue.
-- Qualquer outra saída, `git pull` ou `gh auth status` falhando → vá ao passo 8.
+- Qualquer outra saída ou `git pull` falhando → vá ao passo 8.
 
-Depois:
+Depois, liste os PRs abertos do repositório `Ovis-Gestao-de-Ovinos/ovis-site` cuja branch começa com `claude/blog-`.
 
-```bash
-gh pr list --state open --search "head:blog/" --json number,title,headRefName
-```
-
-- Se já existir post com `data` = `<HOJE>` em `blog/_registro.json`, ou PR aberto com branch `blog/<HOJE>-…` → encerre (o post de hoje já foi feito).
-- Se `modo` for `aprovacao` e houver qualquer PR `blog/` aberto → encerre: o Roman ainda não revisou o anterior, e um segundo PR daria conflito no registro.
-- Se `modo` for `automatico` e houver PR `blog/` aberto (falha de um dia anterior) → leia o título desses PRs e não repita os temas deles.
+- Se já existir post com `data` = `<HOJE>` em `blog/_registro.json`, ou PR aberto com branch `claude/blog-<HOJE>-…` → encerre (o post de hoje já foi feito).
+- Se `modo` for `aprovacao` e houver qualquer PR `claude/blog-` aberto → encerre: o Roman ainda não revisou o anterior, e um segundo PR daria conflito no registro.
+- Se `modo` for `automatico` e houver PR `claude/blog-` aberto (falha de um dia anterior) → leia o título desses PRs e não repita os temas deles.
 
 ## 2. Escolher o tema
 
-Leia `blog/_registro.json` (e os títulos dos PRs `blog/` abertos). Escolha **um** tema que não repita `palavraChave` nem assunto de nenhum post anterior. Alterne os tipos; evite três posts seguidos do mesmo tipo.
+Leia `blog/_registro.json` (e os títulos dos PRs `claude/blog-` abertos). Escolha **um** tema que não repita `palavraChave` nem assunto de nenhum post anterior. Alterne os tipos; evite três posts seguidos do mesmo tipo.
 
 - **noticia**: fato do setor de ovinos no Brasil (mercado de cordeiro e lã, sanidade, feiras e exposições, pesquisa, políticas públicas, crédito rural) publicado nos últimos 7 dias. Só vale se você abrir e ler a matéria original.
 - **guia**: responde a uma pergunta que criadores pesquisam no Google ("como…", "quando…", "quanto…", "qual a melhor…"): manejo, sanidade, reprodução, nutrição, pesagem, raças, instalações.
@@ -85,14 +82,18 @@ Fonte com FALHA → troque a fonte (voltando ao passo 5 para o trecho afetado) o
 Título com aspas, crase ou `$` quebra comando de shell: passe textos por arquivo, nunca entre aspas na linha de comando.
 
 ```bash
-git checkout -b blog/<HOJE>-<slug>
+git checkout -b claude/blog-<HOJE>-<slug>
 git add blog sitemap.xml
 cat > /tmp/commit.txt <<'FIM'
 feat(blog): <título>
 FIM
 git commit -F /tmp/commit.txt
 git push -u origin HEAD
-cat > /tmp/pr.txt <<'FIM'
+```
+
+Abra o PR com a ferramenta do GitHub: base `main`, branch `claude/blog-<HOJE>-<slug>`, título `Blog: <título>`, corpo:
+
+```
 <tipo> · palavra-chave: <palavraChave>
 
 Fontes:
@@ -100,26 +101,24 @@ Fontes:
 - <url 2>
 
 Testes: node --test tests/*.test.mjs → <resultado>
-FIM
-gh pr create --title "Blog: <slug>" --body-file /tmp/pr.txt
 ```
 
 Se o push for recusado por permissão, vá ao passo 8 dizendo isso no motivo.
 
 Leia `modo` em `blog/_rotina.json`:
-- `automatico` → `gh pr merge --squash --delete-branch`.
+- `automatico` → mescle o PR com a ferramenta do GitHub (método squash) e apague a branch.
 - `aprovacao` → pare aqui; o Roman revisa e mescla.
 
 ## 8. Falha
 
-Qualquer coisa que impeça o post de hoje, em qualquer passo de 1 a 7 (agenda com erro, sem tema ou sem fonte que você consiga ler, revisão que esvaziou o texto, build ou testes falhando, push ou merge recusados): não mescle. Se o PR já existe, deixe aberto e escreva o motivo num comentário. Depois abra a issue (texto por arquivo, pelo mesmo motivo do passo 7):
+Qualquer coisa que impeça o post de hoje, em qualquer passo de 1 a 7 (agenda com erro, sem tema ou sem fonte que você consiga ler, revisão que esvaziou o texto, build ou testes falhando, push ou merge recusados): não mescle. Se o PR já existe, deixe aberto e escreva o motivo num comentário. Depois abra uma issue com a ferramenta do GitHub (se ela também falhar, use `gh issue create`; se nada funcionar, diga isso na sua resposta final):
 
-```bash
-cat > /tmp/issue.txt <<'FIM'
+- Título: `Blog: post de <HOJE> não publicado`
+- Corpo:
+
+```
 @Romanndemello a rotina do blog não publicou hoje.
 
 Motivo: <motivo em uma ou duas frases>
 PR: <link ou "não criado">
-FIM
-gh issue create --title "Blog: post de <HOJE> não publicado" --body-file /tmp/issue.txt
 ```
