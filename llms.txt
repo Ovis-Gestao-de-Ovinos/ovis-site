@@ -10,6 +10,7 @@ Empresa: 65.981.257 DARTAGNAN ROMANN DE MELLO, CNPJ 65.981.257/0001-17, São Leo
 - [Planos e preços](https://ovisapp.com.br/#precos): 14 dias grátis sem cartão; planos Plus e Pro.
 - [Dúvidas frequentes](https://ovisapp.com.br/#perguntas): teste grátis, desconto anual, diferença entre Plus e Pro, internet, pagamento e cancelamento.
 - [Calculadora de GMD](https://ovisapp.com.br/calculadora-gmd/): calcula o ganho médio diário (GMD) de cordeiros e ovinos a partir de duas pesagens; explica a fórmula, o GMD do lote, como pesar e traz médias de referência de pesquisas brasileiras, com fontes.
+- [Blog da Ovis](https://ovisapp.com.br/blog/): notícias da ovinocultura, guias de manejo e curiosidades, sempre com fontes.
 - [Sobre a Ovis](https://ovisapp.com.br/sobre/): quem faz a Ovis, como começou e dados da empresa.
 - [Política de privacidade](https://ovisapp.com.br/privacidade/): quais dados o formulário de contato coleta, para quê e como pedir acesso ou exclusão.
 
