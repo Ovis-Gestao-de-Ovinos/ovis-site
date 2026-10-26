@@ -80,3 +80,11 @@ test('atualizarSitemap substitui só as entradas do blog', () => {
   assert.match(out, /<loc>https:\/\/ovisapp\.com\.br\/blog\/vermifugacao-de-ovinos\/<\/loc>/);
   assert.equal(atualizarSitemap(out, [post], '2026-10-27'), out);
 });
+
+test('precisaAvisoVet pega termos comuns de sanidade', () => {
+  for (const t of ['Medicação do lote', 'anti-helmíntico', 'ivermectina 0,2 mg/kg', 'aplicar o carrapaticida', 'banho de imersão contra sarna', 'antiparasitário injetável']) assert.equal(precisaAvisoVet(t), true, t);
+});
+
+test('renderPost: aviso também quando só o título fala de remédio', () => {
+  assert.match(renderPost({ ...post, titulo: 'Ivermectina em ovinos: quando usar' }, '<p>Texto neutro.</p>'), /aviso-vet/);
+});

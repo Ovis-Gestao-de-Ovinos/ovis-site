@@ -67,7 +67,7 @@ Tudo em JavaScript puro (`script.js`), sem biblioteca: títulos sobem de uma má
 
 O blog fica em `/blog/` e é escrito por uma rotina agendada do Claude Code (instruções em `docs/blog/rotina.md`). Cada post é um item em `blog/_registro.json` (slug, data, tipo, título, descrição, palavra-chave e fontes) mais o miolo do texto em `blog/_corpos/<slug>.html`. O comando `node scripts/blog-build.mjs` gera `blog/<slug>/index.html`, a lista em `blog/index.html` e as entradas do blog no `sitemap.xml`; nunca edite essas páginas à mão. Os arquivos que começam com `_` não são publicados (`_config.yml`). O aviso de consultar um veterinário entra sozinho quando o texto fala de remédio, dose, vacina, vermífugo ou tratamento (`scripts/blog-lib.mjs`). `node scripts/blog-fontes.mjs <slug>` confere se as fontes do post abrem.
 
-A rotina publica todo dia nos 14 dias a partir do primeiro post e depois só às terças e sextas. Em `blog/_rotina.json`, `"modo": "automatico"` faz a rotina mesclar o PR do post sozinha depois dos testes; `"modo": "aprovacao"` deixa o PR aberto para revisão. Quando um post não sai, a rotina abre uma issue no GitHub mencionando o Roman.
+A rotina publica todo dia nos 14 dias a partir do primeiro post e depois só às terças e sextas. `node scripts/blog-hoje.mjs` responde se hoje é dia de post (saída 0) ou não (saída 2); qualquer outra saída é erro e vira issue. Em `blog/_rotina.json`, `"modo": "automatico"` faz a rotina mesclar o PR do post sozinha depois dos testes; `"modo": "aprovacao"` deixa o PR aberto para revisão. Quando um post não sai, a rotina abre uma issue no GitHub mencionando o Roman.
 
 ## SEO e descoberta por buscadores
 

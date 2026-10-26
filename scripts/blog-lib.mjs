@@ -11,7 +11,8 @@ export function deveRodarHoje(hojeISO, { inicio }) {
   return [2, 5].includes(utc(hojeISO).getUTCDay());
 }
 
-const RADICAIS_VET = ['remedio', 'medicament', 'dose', 'dosage', 'vermifug', 'vermicid', 'vacin', 'antibiot', 'tratament', 'aplicacao'];
+// Na dúvida, inclui: aviso a mais não faz mal, aviso a menos fere a regra do blog.
+const RADICAIS_VET = ['remedio', 'medica', 'dose', 'dosage', 'vermifug', 'vermicid', 'helmint', 'ivermectin', 'antiparasit', 'carrapat', 'sarna', 'vacin', 'antibiot', 'injet', 'tratament', 'aplicacao', 'aplicar', 'mg/kg', 'ml/kg'];
 const semAcento = (s) => s.normalize('NFD').replace(/\p{M}/gu, '');
 
 // Texto que fala de remédio, dose ou tratamento leva o aviso do veterinário.
@@ -119,7 +120,7 @@ export function renderPost(post, corpoHtml) {
       { '@type': 'ListItem', position: 3, name: post.titulo, item: url },
     ] },
   ] };
-  const aviso = precisaAvisoVet(corpoHtml) ? `\n      <aside class="aviso-vet" role="note">${AVISO_VET}</aside>` : '';
+  const aviso = precisaAvisoVet(`${post.titulo} ${post.descricao} ${corpoHtml}`) ? `\n      <aside class="aviso-vet" role="note">${AVISO_VET}</aside>` : '';
   const fontes = post.fontes.map((f) => `        <li><a class="inline-link" href="${escapeHtml(f.url)}" rel="noopener">${escapeHtml(f.titulo)}</a></li>`).join('\n');
   const main = `      <p class="kicker"><a class="inline-link" href="/blog/">Blog</a> · ${TIPOS[post.tipo]}</p>
       <h1 class="display post-title">${escapeHtml(post.titulo)}</h1>
