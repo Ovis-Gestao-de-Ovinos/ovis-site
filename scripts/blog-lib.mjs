@@ -122,7 +122,7 @@ export function renderPost(post, corpoHtml) {
   const aviso = precisaAvisoVet(corpoHtml) ? `\n      <aside class="aviso-vet" role="note">${AVISO_VET}</aside>` : '';
   const fontes = post.fontes.map((f) => `        <li><a class="inline-link" href="${escapeHtml(f.url)}" rel="noopener">${escapeHtml(f.titulo)}</a></li>`).join('\n');
   const main = `      <p class="kicker"><a class="inline-link" href="/blog/">Blog</a> · ${TIPOS[post.tipo]}</p>
-      <h1 class="display">${escapeHtml(post.titulo)}</h1>
+      <h1 class="display post-title">${escapeHtml(post.titulo)}</h1>
       <p class="fine">Publicado em <time datetime="${post.data}">${dataExtenso(post.data)}</time> pela <a class="inline-link" href="/sobre/">equipe Ovis</a>.</p>${aviso}
       <div class="post-body">
 ${corpoHtml.trim()}

@@ -407,6 +407,7 @@ html:not(.js) .countdown { display: none; }
 .post-list a:hover { color: var(--accent); }
 .post-list p { margin: 0; }
 .aviso-vet { margin: 28px 0 8px; padding: 16px 20px; border-left: 3px solid var(--accent); border-radius: 0 12px 12px 0; background: var(--surface); color: var(--text); font-size: 15px; }
+.doc h1.post-title { font-size: clamp(40px, 6vw, 72px); }
 .post-body h2 { scroll-margin-top: 96px; }
 .post-body a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
 .post-ovis { margin-top: 44px; padding-top: 24px; border-top: 1px solid var(--line); }
