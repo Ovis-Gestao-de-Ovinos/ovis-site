@@ -143,8 +143,8 @@ test('SEO permanece coerente com a prévia', () => {
   assert.deepEqual(types, ['WebSite', 'Organization', 'SoftwareApplication']);
   const app = ld['@graph'][2];
   assert.equal(app.applicationCategory, 'BusinessApplication');
-  assert.deepEqual(app.offers.map((o) => [o.name, o.price, o.priceCurrency]), [['Plus', '309.90', 'BRL'], ['Pro', '359.90', 'BRL']]);
-  for (const offer of app.offers) assert.deepEqual([offer.priceSpecification['@type'], offer.priceSpecification.unitCode, offer.priceSpecification.minPrice], ['UnitPriceSpecification', 'MON', offer.price]);
+  assert.equal(app.offers, undefined, 'preços fora do JSON-LD');
+  assert.doesNotMatch(page, /R\$ ?\d/, 'nenhum valor em reais na página');
   const description = page.match(/<meta name="description" content="([^"]*)">/)[1];
   assert.ok(description.length <= 160, `descrição com ${description.length} caracteres`);
   assert.match(description, /14 dias grátis/);
@@ -153,6 +153,7 @@ test('SEO permanece coerente com a prévia', () => {
   const llms = readFileSync(new URL('../llms.txt', import.meta.url), 'utf8');
   assert.match(llms, /^# Ovis$/m, 'llms.txt com H1');
   assert.match(llms, /^> /m, 'llms.txt com resumo em citação');
+  assert.doesNotMatch(llms, /R\$ ?\d/, 'nenhum valor em reais no llms.txt');
   for (const url of ['https://ovisapp.com.br/', 'https://ovisapp.com.br/sobre/', 'https://ovisapp.com.br/privacidade/']) assert.ok(llms.includes(`](${url})`), `link Markdown para ${url}`);
 });
 
