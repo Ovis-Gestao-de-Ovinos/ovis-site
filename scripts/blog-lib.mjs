@@ -52,7 +52,7 @@ const jsonLd = (obj) => `<script type="application/ld+json">${JSON.stringify(obj
 // Mais novo primeiro; no mesmo dia, o que entrou depois no registro vem antes.
 const ordenar = (posts) => posts.map((p, i) => [p, i]).sort(([a, i], [b, j]) => b.data.localeCompare(a.data) || j - i).map(([p]) => p);
 
-function pagina({ titulo, descricao, url, ogType, ld, main }) {
+function pagina({ titulo, descricao, url, ogType, ld, topo, classe, main }) {
   const t = escapeHtml(titulo), d = escapeHtml(descricao);
   return `<!doctype html>
 <html lang="pt-BR">
@@ -75,7 +75,7 @@ function pagina({ titulo, descricao, url, ogType, ld, main }) {
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
   <link rel="preload" href="/assets/fonts/bebas-neue-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/site.css?v=24">
+  <link rel="stylesheet" href="/site.css?v=25">
   <script src="/analytics.js?v=1" defer></script>
   ${jsonLd(ld)}
 </head>
@@ -86,7 +86,8 @@ function pagina({ titulo, descricao, url, ogType, ld, main }) {
       <a class="btn btn-solid btn-sm" style="margin-left:auto" href="/#lancamento">Lista de espera</a>
     </div>
   </header>
-  <main class="doc">
+${topo}
+  <main class="${classe}">
     <div class="wrap">
 ${main}
     </div>
@@ -110,6 +111,21 @@ ${main}
 
 const ORG = { '@id': `${SITE}/#organization` };
 
+const FOTOS = ['/assets/sheep-flock.webp', '/assets/sheep-pasture.webp'];
+
+// Foto do topo do post: sempre a mesma para o mesmo slug, alternando entre as fotos do site.
+export function fotoDoPost(slug) {
+  const soma = [...slug].reduce((n, c) => n + c.charCodeAt(0), 0);
+  return FOTOS[soma % FOTOS.length];
+}
+
+export function tempoLeitura(html) {
+  const palavras = html.replace(/<[^>]*>/g, ' ').split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.ceil(palavras / 200));
+}
+
+const tag = (tipo) => `<span class="tag tag-${tipo}">${TIPOS[tipo]}</span>`;
+
 export function renderPost(post, corpoHtml) {
   const url = `${SITE}/blog/${post.slug}/`;
   const ld = { '@context': 'https://schema.org', '@graph': [
@@ -120,21 +136,36 @@ export function renderPost(post, corpoHtml) {
       { '@type': 'ListItem', position: 3, name: post.titulo, item: url },
     ] },
   ] };
-  const aviso = precisaAvisoVet(`${post.titulo} ${post.descricao} ${corpoHtml}`) ? `\n      <aside class="aviso-vet" role="note">${AVISO_VET}</aside>` : '';
-  const fontes = post.fontes.map((f) => `        <li><a class="inline-link" href="${escapeHtml(f.url)}" rel="noopener">${escapeHtml(f.titulo)}</a></li>`).join('\n');
-  const main = `      <p class="kicker"><a class="inline-link" href="/blog/">Blog</a> · ${TIPOS[post.tipo]}</p>
+  const topo = `  <section class="post-hero" style="--foto:url(${fotoDoPost(post.slug)})">
+    <div class="wrap post-hero-inner">
+      <p class="post-crumbs"><a href="/blog/">← Blog da Ovis</a></p>
+      ${tag(post.tipo)}
       <h1 class="display post-title">${escapeHtml(post.titulo)}</h1>
-      <p class="fine">Publicado em <time datetime="${post.data}">${dataExtenso(post.data)}</time> pela <a class="inline-link" href="/sobre/">equipe Ovis</a>.</p>${aviso}
-      <div class="post-body">
+      <p class="post-lead">${escapeHtml(post.descricao)}</p>
+      <p class="post-meta"><time datetime="${post.data}">${dataExtenso(post.data)}</time><span>${tempoLeitura(corpoHtml)} min de leitura</span><span>por <a href="/sobre/">equipe Ovis</a></span></p>
+    </div>
+  </section>`;
+  const aviso = precisaAvisoVet(`${post.titulo} ${post.descricao} ${corpoHtml}`) ? `\n      <aside class="aviso-vet" role="note"><strong>Atenção</strong>${AVISO_VET}</aside>` : '';
+  const fontes = post.fontes.map((f) => `          <li><a href="${escapeHtml(f.url)}" rel="noopener">${escapeHtml(f.titulo)}</a></li>`).join('\n');
+  const main = `${aviso}
+      <article class="post-body">
 ${corpoHtml.trim()}
-      </div>
+      </article>
 
-      <h2>Fontes</h2>
-      <ul class="sources">
+      <section class="post-fontes">
+        <h2>Fontes</h2>
+        <ul>
 ${fontes}
-      </ul>
-      <p class="post-ovis">A Ovis é o controle do rebanho ovino no celular: pesagens, vacinas e manejos anotados na hora, sem quadro branco nem caderno. <a class="inline-link" href="/#lancamento">Conheça a Ovis</a>.</p>`;
-  return pagina({ titulo: `${post.titulo} | Blog da Ovis`, descricao: post.descricao, url, ogType: 'article', ld, main });
+        </ul>
+      </section>
+      <aside class="post-cta">
+        <p class="post-cta-kicker">Ovis</p>
+        <p class="post-cta-title">O quadro branco agora cabe no bolso.</p>
+        <p>A Ovis é o controle do rebanho ovino no celular: pesagens, vacinas e manejos anotados na hora, sem quadro branco nem caderno.</p>
+        <a class="btn btn-solid" href="/#lancamento">Conheça a Ovis</a>
+      </aside>
+      <p class="post-voltar"><a href="/blog/">← Ver todos os posts</a></p>`;
+  return pagina({ titulo: `${post.titulo} | Blog da Ovis`, descricao: post.descricao, url, ogType: 'article', ld, topo, classe: 'post', main });
 }
 
 export function renderIndex(posts) {
@@ -147,14 +178,26 @@ export function renderIndex(posts) {
       { '@type': 'ListItem', position: 2, name: 'Blog', item: url },
     ] },
   ] };
-  const itens = lista.length
-    ? `      <ol class="post-list">\n${lista.map((p) => `        <li><a href="/blog/${p.slug}/">${escapeHtml(p.titulo)}</a><span class="fine">${TIPOS[p.tipo]} · <time datetime="${p.data}">${dataExtenso(p.data)}</time></span><p>${escapeHtml(p.descricao)}</p></li>`).join('\n')}\n      </ol>`
-    : '      <p>Os primeiros posts chegam em breve.</p>';
-  const main = `      <p class="kicker">Blog da Ovis</p>
-      <h1 class="display">Blog<span class="h1-sub">Notícias, guias e curiosidades da criação de ovinos</span></h1>
-      <p class="doc-lead">O que está acontecendo na ovinocultura e dicas práticas de manejo, sempre com as fontes.</p>
-${itens}`;
-  return pagina({ titulo: 'Blog da Ovis | Notícias e dicas de ovinocultura', descricao: 'Notícias da ovinocultura, guias de manejo e curiosidades sobre a criação de ovinos, escritos pela equipe Ovis com fontes citadas.', url, ogType: 'website', ld, main });
+  const topo = `  <section class="blog-hero">
+    <div class="wrap blog-hero-inner">
+      <p class="kicker">Blog da Ovis</p>
+      <h1 class="display">Do pasto<br>pra página.</h1>
+      <p class="blog-hero-lead">Notícias da ovinocultura, guias de manejo e curiosidades da criação de ovinos. Sempre com as fontes.</p>
+    </div>
+  </section>`;
+  const cartao = (p, i) => `        <a href="/blog/${p.slug}/" class="post-card${i === 0 ? ' post-card-destaque' : ''}">
+          <span class="post-card-foto" style="--foto:url(${fotoDoPost(p.slug)})"></span>
+          <span class="post-card-texto">
+            ${tag(p.tipo)}
+            <span class="post-card-titulo">${escapeHtml(p.titulo)}</span>
+            <span class="post-card-desc">${escapeHtml(p.descricao)}</span>
+            <time datetime="${p.data}">${dataExtenso(p.data)}</time>
+          </span>
+        </a>`;
+  const main = lista.length
+    ? `      <div class="post-grid">\n${lista.map(cartao).join('\n')}\n      </div>`
+    : '      <p class="blog-vazio">Os primeiros posts chegam em breve.</p>';
+  return pagina({ titulo: 'Blog da Ovis | Notícias e dicas de ovinocultura', descricao: 'Notícias da ovinocultura, guias de manejo e curiosidades sobre a criação de ovinos, escritos pela equipe Ovis com fontes citadas.', url, ogType: 'website', ld, topo, classe: 'blog', main });
 }
 
 // Troca todas as entradas /blog/ do sitemap pelas atuais, na ordem do índice.
