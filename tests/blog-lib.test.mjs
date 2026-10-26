@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { deveRodarHoje, precisaAvisoVet, validarPost, escapeHtml } from '../scripts/blog-lib.mjs';
+import { deveRodarHoje, precisaAvisoVet, validarPost, escapeHtml, renderPost, renderIndex, atualizarSitemap } from '../scripts/blog-lib.mjs';
 
 test('deveRodarHoje: sem início publica', () => assert.equal(deveRodarHoje('2026-10-27', { inicio: null }), true));
 
@@ -35,3 +35,48 @@ test('validarPost aponta cada erro', () => {
 });
 
 test('escapeHtml', () => assert.equal(escapeHtml(`"A" & <b>'`), '&quot;A&quot; &amp; &lt;b&gt;&#39;'));
+
+const post = { slug: 'vermifugacao-de-ovinos', data: '2026-10-27', tipo: 'guia', titulo: 'Vermifugação de ovinos: "quando" & como', descricao: 'd'.repeat(100), palavraChave: 'vermifugação', fontes: [{ titulo: 'Embrapa', url: 'https://www.embrapa.br/x' }] };
+
+test('renderPost: SEO, escape e JSON-LD', () => {
+  const html = renderPost(post, '<p>Vermifugar o lote.</p>');
+  assert.match(html, /<link rel="canonical" href="https:\/\/ovisapp\.com\.br\/blog\/vermifugacao-de-ovinos\/">/);
+  assert.match(html, /<meta property="og:url" content="https:\/\/ovisapp\.com\.br\/blog\/vermifugacao-de-ovinos\/">/);
+  assert.match(html, /<title>Vermifugação de ovinos: &quot;quando&quot; &amp; como \| Blog da Ovis<\/title>/);
+  const ld = JSON.parse(html.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1]);
+  const art = ld['@graph'].find((n) => n['@type'] === 'BlogPosting');
+  assert.equal(art.headline, post.titulo);
+  assert.equal(art.datePublished, '2026-10-27');
+  assert.equal(art.publisher['@id'], 'https://ovisapp.com.br/#organization');
+  assert.deepEqual(art.citation, ['https://www.embrapa.br/x']);
+  assert.ok(ld['@graph'].some((n) => n['@type'] === 'BreadcrumbList'));
+  assert.match(html, /Consulte um médico veterinário antes de aplicar qualquer medicamento ou tratamento\./);
+  assert.match(html, /<time datetime="2026-10-27">27 de outubro de 2026<\/time>/);
+  assert.match(html, /<h2>Fontes<\/h2>/);
+  assert.match(html, /href="\/#lancamento"/);
+  assert.match(html, /href="\/blog\/"/);
+});
+
+test('renderPost: notícia vira NewsArticle e sem aviso quando não precisa', () => {
+  const html = renderPost({ ...post, tipo: 'noticia', titulo: 'Feira de ovinos em Esteio' }, '<p>Feira.</p>');
+  assert.match(html, /"@type":"NewsArticle"/);
+  assert.doesNotMatch(html, /aviso-vet/);
+});
+
+test('renderIndex ordena por data e, no empate, o último do registro primeiro', () => {
+  const a = { ...post, slug: 'a', data: '2026-10-27' }, b = { ...post, slug: 'b', data: '2026-10-28' }, c = { ...post, slug: 'c', data: '2026-10-28' };
+  const html = renderIndex([a, b, c]);
+  assert.deepEqual([...html.matchAll(/<a href="\/blog\/([a-z]+)\/"/g)].map((m) => m[1]), ['c', 'b', 'a']);
+  assert.match(html, /<link rel="canonical" href="https:\/\/ovisapp\.com\.br\/blog\/">/);
+  assert.match(renderIndex([]), /Os primeiros posts chegam em breve\./);
+});
+
+test('atualizarSitemap substitui só as entradas do blog', () => {
+  const xml = '<urlset>\n  <url>\n    <loc>https://ovisapp.com.br/</loc>\n    <lastmod>2026-10-19</lastmod>\n  </url>\n  <url>\n    <loc>https://ovisapp.com.br/blog/velho/</loc>\n    <lastmod>2026-01-01</lastmod>\n  </url>\n</urlset>\n';
+  const out = atualizarSitemap(xml, [post], '2026-10-27');
+  assert.match(out, /<loc>https:\/\/ovisapp\.com\.br\/<\/loc>/);
+  assert.doesNotMatch(out, /blog\/velho/);
+  assert.match(out, /<loc>https:\/\/ovisapp\.com\.br\/blog\/<\/loc>\s*<lastmod>2026-10-27<\/lastmod>/);
+  assert.match(out, /<loc>https:\/\/ovisapp\.com\.br\/blog\/vermifugacao-de-ovinos\/<\/loc>/);
+  assert.equal(atualizarSitemap(out, [post], '2026-10-27'), out);
+});
