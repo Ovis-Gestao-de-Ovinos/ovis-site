@@ -1,1 +1,20 @@
-[]
+[
+  {
+    "slug": "escore-de-condicao-corporal-ovinos",
+    "data": "2026-10-26",
+    "tipo": "guia",
+    "titulo": "Escore de condição corporal em ovinos: como avaliar",
+    "descricao": "Aprenda a apalpar o lombo da ovelha, usar a mão como régua para dar a nota de 1 a 5 e saber quando avaliar o escore do rebanho.",
+    "palavraChave": "escore de condição corporal ovinos",
+    "fontes": [
+      {
+        "titulo": "Embrapa Pecuária Sul: Comunicado Técnico 102, Alternativas para aferir e utilizar os escores de condição corporal",
+        "url": "https://www.infoteca.cnptia.embrapa.br/infoteca/bitstream/doc/1114724/1/COT102online.pdf"
+      },
+      {
+        "titulo": "Embrapa Pecuária Sudeste: Circular Técnica 57, Escore da condição corporal e sua aplicação no manejo reprodutivo de ruminantes",
+        "url": "https://www.infoteca.cnptia.embrapa.br/infoteca/bitstream/doc/48744/1/CircularTecnica57.pdf"
+      }
+    ]
+  }
+]
