@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { deveRodarHoje, precisaAvisoVet, validarPost, escapeHtml, renderPost, renderIndex, atualizarSitemap } from '../scripts/blog-lib.mjs';
+import { deveRodarHoje, precisaAvisoVet, validarPost, escapeHtml, renderPost, renderIndex, atualizarSitemap, tempoLeitura, fotoDoPost } from '../scripts/blog-lib.mjs';
 
 test('deveRodarHoje: sem início publica', () => assert.equal(deveRodarHoje('2026-10-27', { inicio: null }), true));
 
@@ -87,4 +87,32 @@ test('precisaAvisoVet pega termos comuns de sanidade', () => {
 
 test('renderPost: aviso também quando só o título fala de remédio', () => {
   assert.match(renderPost({ ...post, titulo: 'Ivermectina em ovinos: quando usar' }, '<p>Texto neutro.</p>'), /aviso-vet/);
+});
+
+test('tempoLeitura: 200 palavras por minuto, arredondando para cima, mínimo 1', () => {
+  assert.equal(tempoLeitura(`<p>${'palavra '.repeat(450)}</p>`), 3);
+  assert.equal(tempoLeitura('<p>curto</p>'), 1);
+});
+
+test('fotoDoPost é estável e usa uma foto do site', () => {
+  assert.equal(fotoDoPost('abc'), fotoDoPost('abc'));
+  assert.match(fotoDoPost('abc'), /^\/assets\/sheep-(flock|pasture)\.webp$/);
+});
+
+test('renderPost: topo com foto, selo do tipo, resumo e tempo de leitura', () => {
+  const html = renderPost(post, `<p>${'palavra '.repeat(450)}</p>`);
+  assert.match(html, /<section class="post-hero" style="--foto:url\(\/assets\/sheep-(flock|pasture)\.webp\)">/);
+  assert.match(html, /<span class="tag tag-guia">Guia<\/span>/);
+  assert.match(html, /<p class="post-lead">d{100}<\/p>/);
+  assert.match(html, /3 min de leitura/);
+  assert.match(html, /<aside class="post-cta">[^]*href="\/#lancamento"/);
+});
+
+test('renderIndex: cartões com selo do tipo e o mais novo em destaque', () => {
+  const a = { ...post, slug: 'a', data: '2026-10-27', tipo: 'noticia' }, b = { ...post, slug: 'b', data: '2026-10-28' };
+  const html = renderIndex([a, b]);
+  assert.match(html, /<a href="\/blog\/b\/" class="post-card post-card-destaque">/);
+  assert.match(html, /<a href="\/blog\/a\/" class="post-card">/);
+  assert.match(html, /<span class="tag tag-noticia">Notícia<\/span>/);
+  assert.match(html, /<section class="blog-hero">/);
 });
