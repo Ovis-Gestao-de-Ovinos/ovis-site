@@ -399,3 +399,15 @@ html:not(.js) .countdown { display: none; }
 .gmd-table thead th:last-child { text-align: right; }
 .doc h2[id] { scroll-margin-top: 96px; }
 .sources { font-size: 14px; }
+
+/* Blog */
+.post-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0; }
+.post-list li { padding: 24px 0; border-top: 1px solid var(--line); display: grid; gap: 6px; }
+.post-list a { color: var(--text); font-size: 20px; font-weight: 600; line-height: 1.3; }
+.post-list a:hover { color: var(--accent); }
+.post-list p { margin: 0; }
+.aviso-vet { margin: 28px 0 8px; padding: 16px 20px; border-left: 3px solid var(--accent); border-radius: 0 12px 12px 0; background: var(--surface); color: var(--text); font-size: 15px; }
+.doc h1.post-title { font-size: clamp(40px, 6vw, 72px); }
+.post-body h2 { scroll-margin-top: 96px; }
+.post-body a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.post-ovis { margin-top: 44px; padding-top: 24px; border-top: 1px solid var(--line); }

@@ -8,3 +8,6 @@ exclude:
   - vendor
   - README.md
   - checkout-links.json
+  - blog/_registro.json
+  - blog/_rotina.json
+  - blog/_corpos
