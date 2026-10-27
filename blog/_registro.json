@@ -16,5 +16,27 @@
         "url": "https://www.infoteca.cnptia.embrapa.br/infoteca/bitstream/doc/48744/1/CircularTecnica57.pdf"
       }
     ]
+  },
+  {
+    "slug": "famacha-ovinos-verminose",
+    "data": "2026-10-27",
+    "tipo": "guia",
+    "titulo": "Método FAMACHA: como usar contra a verminose em ovinos",
+    "descricao": "Veja como o FAMACHA usa a cor da pálpebra do ovino para decidir quem precisa de vermífugo e como isso pode reduzir o gasto com remédio.",
+    "palavraChave": "método famacha ovinos",
+    "fontes": [
+      {
+        "titulo": "Embrapa Caprinos: Avaliação de métodos de controle de endoparasitoses gastrintestinais em rebanho ovino",
+        "url": "https://www.alice.cnptia.embrapa.br/alice/bitstream/doc/533882/1/AACAvaliacaodemetodos.pdf"
+      },
+      {
+        "titulo": "Embrapa Caprinos: Estimativa de custo do método FAMACHA no controle de verminoses gastrintestinais em pequenos ruminantes",
+        "url": "https://www.alice.cnptia.embrapa.br/alice/bitstream/doc/533907/1/AACEstimativasdecusto.pdf"
+      },
+      {
+        "titulo": "CIIC 2013: Estudo de fatores ambientais que afetam os escores visuais de FAMACHA em ovinos da raça Santa Inês",
+        "url": "https://www.cnpm.embrapa.br/projetos/ciic2016/resumo2013/RE13304.pdf"
+      }
+    ]
   }
 ]
