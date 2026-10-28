@@ -38,5 +38,23 @@
         "url": "https://www.cnpm.embrapa.br/projetos/ciic2016/resumo2013/RE13304.pdf"
       }
     ]
+  },
+  {
+    "slug": "podridao-dos-cascos-ovinos",
+    "data": "2026-10-28",
+    "tipo": "guia",
+    "titulo": "Podridão dos cascos em ovinos: como prevenir e tratar",
+    "descricao": "Entenda o que causa a podridão dos cascos nos ovinos, como reconhecer os sinais e como usar casqueamento e pedilúvio para prevenir, segundo a Embrapa.",
+    "palavraChave": "podridão dos cascos ovinos",
+    "fontes": [
+      {
+        "titulo": "Embrapa Caprinos: Pododermatite em caprinos e ovinos",
+        "url": "https://www.infoteca.cnptia.embrapa.br/infoteca/bitstream/doc/530447/1/CNPC2005Pododermatite.pdf"
+      },
+      {
+        "titulo": "Embrapa Roraima: Podridão dos cascos em ovinos e caprinos",
+        "url": "https://ainfo.cnptia.embrapa.br/digital/bitstream/doc/691472/1/PODRIDAO-CASCOS-OVINOS-E-CAPRINOS-RR-SET-07-convertido.pdf"
+      }
+    ]
   }
 ]
