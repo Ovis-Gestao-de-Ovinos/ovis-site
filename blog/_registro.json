@@ -56,5 +56,23 @@
         "url": "https://ainfo.cnptia.embrapa.br/digital/bitstream/doc/691472/1/PODRIDAO-CASCOS-OVINOS-E-CAPRINOS-RR-SET-07-convertido.pdf"
       }
     ]
+  },
+  {
+    "slug": "origem-da-raca-santa-ines",
+    "data": "2026-10-29",
+    "tipo": "curiosidade",
+    "titulo": "Origem da raça Santa Inês: de onde veio o ovino sem lã",
+    "descricao": "Descubra, segundo a Embrapa, de onde veio a Santa Inês, quais raças entraram na sua formação e onde ela ganhou espaço no Brasil.",
+    "palavraChave": "origem da raça Santa Inês",
+    "fontes": [
+      {
+        "titulo": "Emepa e Embrapa Caprinos: Ovinos Santa Inês, Estado de Arte e Perspectivas",
+        "url": "https://www.alice.cnptia.embrapa.br/alice/bitstream/doc/529936/1/AACOvinosSantaInes.pdf"
+      },
+      {
+        "titulo": "Embrapa Caprinos: Melhoramento genético em caprinos e ovinos no Brasil, importância do padrão racial",
+        "url": "https://www.alice.cnptia.embrapa.br/alice/bitstream/doc/913003/1/AAC-Melhoramento-genetico.pdf"
+      }
+    ]
   }
 ]
