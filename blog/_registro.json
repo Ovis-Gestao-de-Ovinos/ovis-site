@@ -74,5 +74,27 @@
         "url": "https://www.alice.cnptia.embrapa.br/alice/bitstream/doc/913003/1/AAC-Melhoramento-genetico.pdf"
       }
     ]
+  },
+  {
+    "slug": "gene-prolificidade-ovelhas-fecge",
+    "data": "2026-10-30",
+    "tipo": "curiosidade",
+    "titulo": "Variante FecGE: o que faz algumas ovelhas terem mais cordeiros",
+    "descricao": "A Embrapa achou em ovelhas Santa Inês uma variante de gene ligada a mais cordeiros por parto. Veja o que a pesquisa mostra e os cuidados.",
+    "palavraChave": "prolificidade ovelhas gene",
+    "fontes": [
+      {
+        "titulo": "Embrapa Recursos Genéticos e Biotecnologia: folder Genotipagem para prolificidade em ovinos (2013)",
+        "url": "https://www.infoteca.cnptia.embrapa.br/infoteca/bitstream/doc/1042481/1/FOLDERGENOTIPAGEMPARAGRAFICA.pdf"
+      },
+      {
+        "titulo": "SEMADESC-MS: Técnica aumenta números de nascimentos dos ovinos (texto da Embrapa, 2016)",
+        "url": "https://www.semadesc.ms.gov.br/?p=8264"
+      },
+      {
+        "titulo": "Rodrigues et al., Animals 2026: Assessment of a Reduced SNP Panel Targeting Prolificacy and Coat Color Genes in Brazilian Sheep Breeds",
+        "url": "https://www.alice.cnptia.embrapa.br/alice/bitstream/doc/1188412/1/Assessment-of-a-Reduced-SNP-Panel.2026.pdf"
+      }
+    ]
   }
 ]
