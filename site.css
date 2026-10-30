@@ -445,6 +445,8 @@ html:not(.js) .countdown { display: none; }
 .post-meta { display: flex; flex-wrap: wrap; gap: 6px 18px; color: var(--text-2); font-size: 14px; }
 .post-meta > * + *::before { content: "·"; margin-right: 18px; color: var(--text-3); }
 .post-meta a { color: var(--text); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(255, 255, 255, .3); }
+.post-foto-credito { margin: 0; color: var(--text-3); font-size: 12px; }
+.post-foto-credito a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
 .post { padding: 8px 0 110px; }
 .post .wrap { max-width: 760px; }
 .aviso-vet { display: grid; gap: 4px; margin: 0 0 40px; padding: 18px 22px; border: 1px solid rgba(240, 163, 71, .35); border-radius: 18px; background: rgba(240, 163, 71, .08); color: var(--text); font-size: 15px; line-height: 1.5; }

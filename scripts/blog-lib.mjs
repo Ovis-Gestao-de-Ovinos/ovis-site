@@ -34,6 +34,8 @@ export function validarPost(post) {
   if (d < 70 || d > 160) erros.push(`descrição com ${d} caracteres (70 a 160)`);
   const fontes = post.fontes ?? [];
   if (!fontes.length || fontes.some((f) => !f.titulo || !/^https:\/\//.test(f.url ?? ''))) erros.push('fontes ausentes ou sem https');
+  const f = post.foto;
+  if (f && (!/^\/assets\/blog\/[a-z0-9-]+\.jpg$/.test(f.arquivo ?? '') || !f.autor || !f.licenca || !/^https:\/\//.test(f.origem ?? ''))) erros.push('foto sem arquivo em /assets/blog/, autor, licença ou origem https');
   return erros;
 }
 
@@ -52,7 +54,7 @@ const jsonLd = (obj) => `<script type="application/ld+json">${JSON.stringify(obj
 // Mais novo primeiro; no mesmo dia, o que entrou depois no registro vem antes.
 const ordenar = (posts) => posts.map((p, i) => [p, i]).sort(([a, i], [b, j]) => b.data.localeCompare(a.data) || j - i).map(([p]) => p);
 
-function pagina({ titulo, descricao, url, ogType, ld, topo, classe, main }) {
+function pagina({ titulo, descricao, url, ogType, ld, topo, classe, main, imagem = OG_IMAGE }) {
   const t = escapeHtml(titulo), d = escapeHtml(descricao);
   return `<!doctype html>
 <html lang="pt-BR">
@@ -69,13 +71,13 @@ function pagina({ titulo, descricao, url, ogType, ld, topo, classe, main }) {
   <meta property="og:title" content="${t}">
   <meta property="og:description" content="${d}">
   <meta property="og:url" content="${url}">
-  <meta property="og:image" content="${OG_IMAGE}">
+  <meta property="og:image" content="${imagem}">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/assets/favicon.png?v=logo2" type="image/png">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
   <link rel="preload" href="/assets/fonts/bebas-neue-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/site.css?v=25">
+  <link rel="stylesheet" href="/site.css?v=26">
   <script src="/analytics.js?v=1" defer></script>
   ${jsonLd(ld)}
 </head>
@@ -113,11 +115,15 @@ const ORG = { '@id': `${SITE}/#organization` };
 
 const FOTOS = ['/assets/sheep-flock.webp', '/assets/sheep-pasture.webp'];
 
-// Foto do topo do post: sempre a mesma para o mesmo slug, alternando entre as fotos do site.
-export function fotoDoPost(slug) {
-  const soma = [...slug].reduce((n, c) => n + c.charCodeAt(0), 0);
+// Foto do topo do post: a do registro (escolhida pelo assunto); sem ela, uma das fotos do site, sempre a mesma para o mesmo slug.
+export function fotoDoPost(post) {
+  if (post.foto) return post.foto.arquivo;
+  const soma = [...post.slug].reduce((n, c) => n + c.charCodeAt(0), 0);
   return FOTOS[soma % FOTOS.length];
 }
+
+// Licenças CC pedem crédito com autor, licença e link para a origem.
+const creditoFoto = (f) => f ? `\n      <p class="post-foto-credito">Foto: <a href="${escapeHtml(f.origem)}" rel="noopener">${escapeHtml(f.autor)}</a>, ${escapeHtml(f.licenca)}, via Wikimedia Commons</p>` : '';
 
 export function tempoLeitura(html) {
   const palavras = html.replace(/<[^>]*>/g, ' ').split(/\s+/).filter(Boolean).length;
@@ -128,21 +134,22 @@ const tag = (tipo) => `<span class="tag tag-${tipo}">${TIPOS[tipo]}</span>`;
 
 export function renderPost(post, corpoHtml) {
   const url = `${SITE}/blog/${post.slug}/`;
+  const imagem = `${SITE}${fotoDoPost(post)}`;
   const ld = { '@context': 'https://schema.org', '@graph': [
-    { '@type': post.tipo === 'noticia' ? 'NewsArticle' : 'BlogPosting', '@id': `${url}#post`, headline: post.titulo, description: post.descricao, datePublished: post.data, dateModified: post.data, inLanguage: 'pt-BR', author: ORG, publisher: ORG, mainEntityOfPage: url, image: OG_IMAGE, keywords: post.palavraChave, citation: post.fontes.map((f) => f.url) },
+    { '@type': post.tipo === 'noticia' ? 'NewsArticle' : 'BlogPosting', '@id': `${url}#post`, headline: post.titulo, description: post.descricao, datePublished: post.data, dateModified: post.data, inLanguage: 'pt-BR', author: ORG, publisher: ORG, mainEntityOfPage: url, image: imagem, keywords: post.palavraChave, citation: post.fontes.map((f) => f.url) },
     { '@type': 'BreadcrumbList', itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Ovis', item: `${SITE}/` },
       { '@type': 'ListItem', position: 2, name: 'Blog', item: `${SITE}/blog/` },
       { '@type': 'ListItem', position: 3, name: post.titulo, item: url },
     ] },
   ] };
-  const topo = `  <section class="post-hero" style="--foto:url(${fotoDoPost(post.slug)})">
+  const topo = `  <section class="post-hero" style="--foto:url(${fotoDoPost(post)})">
     <div class="wrap post-hero-inner">
       <p class="post-crumbs"><a href="/blog/">← Blog da Ovis</a></p>
       ${tag(post.tipo)}
       <h1 class="display post-title">${escapeHtml(post.titulo)}</h1>
       <p class="post-lead">${escapeHtml(post.descricao)}</p>
-      <p class="post-meta"><time datetime="${post.data}">${dataExtenso(post.data)}</time><span>${tempoLeitura(corpoHtml)} min de leitura</span><span>por <a href="/sobre/">equipe Ovis</a></span></p>
+      <p class="post-meta"><time datetime="${post.data}">${dataExtenso(post.data)}</time><span>${tempoLeitura(corpoHtml)} min de leitura</span><span>por <a href="/sobre/">equipe Ovis</a></span></p>${creditoFoto(post.foto)}
     </div>
   </section>`;
   const aviso = precisaAvisoVet(`${post.titulo} ${post.descricao} ${corpoHtml}`) ? `\n      <aside class="aviso-vet" role="note"><strong>Atenção</strong>${AVISO_VET}</aside>` : '';
@@ -165,7 +172,7 @@ ${fontes}
         <a class="btn btn-solid" href="/#lancamento">Conheça a Ovis</a>
       </aside>
       <p class="post-voltar"><a href="/blog/">← Ver todos os posts</a></p>`;
-  return pagina({ titulo: `${post.titulo} | Blog da Ovis`, descricao: post.descricao, url, ogType: 'article', ld, topo, classe: 'post', main });
+  return pagina({ titulo: `${post.titulo} | Blog da Ovis`, descricao: post.descricao, url, ogType: 'article', ld, topo, classe: 'post', main, imagem });
 }
 
 export function renderIndex(posts) {
@@ -186,7 +193,7 @@ export function renderIndex(posts) {
     </div>
   </section>`;
   const cartao = (p, i) => `        <a href="/blog/${p.slug}/" class="post-card${i === 0 ? ' post-card-destaque' : ''}">
-          <span class="post-card-foto" style="--foto:url(${fotoDoPost(p.slug)})"></span>
+          <span class="post-card-foto" style="--foto:url(${fotoDoPost(p)})"></span>
           <span class="post-card-texto">
             ${tag(p.tipo)}
             <span class="post-card-titulo">${escapeHtml(p.titulo)}</span>

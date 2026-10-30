@@ -15,7 +15,13 @@
         "titulo": "Embrapa Pecuária Sudeste: Circular Técnica 57, Escore da condição corporal e sua aplicação no manejo reprodutivo de ruminantes",
         "url": "https://www.infoteca.cnptia.embrapa.br/infoteca/bitstream/doc/48744/1/CircularTecnica57.pdf"
       }
-    ]
+    ],
+    "foto": {
+      "arquivo": "/assets/blog/escore-de-condicao-corporal-ovinos.jpg",
+      "autor": "USDAgov",
+      "licenca": "Public domain",
+      "origem": "https://commons.wikimedia.org/wiki/File:Navajo_Tech_U_Education_and_Research_for_Animal_Care_and_Human_Health_(20190909-OPPE-LSC-1813).jpg"
+    }
   },
   {
     "slug": "famacha-ovinos-verminose",
@@ -37,7 +43,13 @@
         "titulo": "CIIC 2013: Estudo de fatores ambientais que afetam os escores visuais de FAMACHA em ovinos da raça Santa Inês",
         "url": "https://www.cnpm.embrapa.br/projetos/ciic2016/resumo2013/RE13304.pdf"
       }
-    ]
+    ],
+    "foto": {
+      "arquivo": "/assets/blog/famacha-ovinos-verminose.jpg",
+      "autor": "Pinkmountaingoat",
+      "licenca": "CC0",
+      "origem": "https://commons.wikimedia.org/wiki/File:Women_checking_a_sheep%27s_FAMACHA.png"
+    }
   },
   {
     "slug": "podridao-dos-cascos-ovinos",
@@ -55,7 +67,13 @@
         "titulo": "Embrapa Roraima: Podridão dos cascos em ovinos e caprinos",
         "url": "https://ainfo.cnptia.embrapa.br/digital/bitstream/doc/691472/1/PODRIDAO-CASCOS-OVINOS-E-CAPRINOS-RR-SET-07-convertido.pdf"
       }
-    ]
+    ],
+    "foto": {
+      "arquivo": "/assets/blog/podridao-dos-cascos-ovinos.jpg",
+      "autor": "Geoff Charles",
+      "licenca": "CC BY-SA 4.0",
+      "origem": "https://commons.wikimedia.org/wiki/File:Sharp_knife_and_a_firm_heart_is_what%27s_needed_to_treat_and_trim_sheep%27s_feet_(1480837).jpg"
+    }
   },
   {
     "slug": "origem-da-raca-santa-ines",
@@ -73,7 +91,13 @@
         "titulo": "Embrapa Caprinos: Melhoramento genético em caprinos e ovinos no Brasil, importância do padrão racial",
         "url": "https://www.alice.cnptia.embrapa.br/alice/bitstream/doc/913003/1/AAC-Melhoramento-genetico.pdf"
       }
-    ]
+    ],
+    "foto": {
+      "arquivo": "/assets/blog/origem-da-raca-santa-ines.jpg",
+      "autor": "Agriculturasp",
+      "licenca": "CC BY 2.0",
+      "origem": "https://commons.wikimedia.org/wiki/File:Ovinos_Santa_Ines.jpg"
+    }
   },
   {
     "slug": "gene-prolificidade-ovelhas-fecge",
@@ -95,6 +119,12 @@
         "titulo": "Rodrigues et al., Animals 2026: Assessment of a Reduced SNP Panel Targeting Prolificacy and Coat Color Genes in Brazilian Sheep Breeds",
         "url": "https://www.alice.cnptia.embrapa.br/alice/bitstream/doc/1188412/1/Assessment-of-a-Reduced-SNP-Panel.2026.pdf"
       }
-    ]
+    ],
+    "foto": {
+      "arquivo": "/assets/blog/gene-prolificidade-ovelhas-fecge.jpg",
+      "autor": "Pam",
+      "licenca": "CC BY 2.0",
+      "origem": "https://commons.wikimedia.org/wiki/File:Romney_sheep,_ewe_with_triplet_lambs_in_New_Zealand.jpg"
+    }
   }
 ]

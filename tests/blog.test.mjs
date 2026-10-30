@@ -43,7 +43,7 @@ test('modo da rotina é válido', () => {
 test('blog no footer, no llms.txt, e o que é interno fora do Jekyll', () => {
   for (const f of ['index.html', 'sobre/index.html', 'privacidade/index.html', 'calculadora-gmd/index.html']) {
     assert.match(read(f), /<nav aria-label="Ovis">.*?href="\/?blog\/">Blog<\/a>/, f);
-    assert.match(read(f), /site\.css\?v=25/, `${f}: versão do CSS`);
+    assert.match(read(f), /site\.css\?v=26/, `${f}: versão do CSS`);
   }
   assert.ok(read('llms.txt').includes('](https://ovisapp.com.br/blog/)'));
   for (const p of ['blog/_registro.json', 'blog/_rotina.json', 'blog/_corpos']) assert.ok(read('_config.yml').includes(`  - ${p}\n`), p);

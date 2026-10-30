@@ -94,9 +94,27 @@ test('tempoLeitura: 200 palavras por minuto, arredondando para cima, mínimo 1',
   assert.equal(tempoLeitura('<p>curto</p>'), 1);
 });
 
-test('fotoDoPost é estável e usa uma foto do site', () => {
-  assert.equal(fotoDoPost('abc'), fotoDoPost('abc'));
-  assert.match(fotoDoPost('abc'), /^\/assets\/sheep-(flock|pasture)\.webp$/);
+test('fotoDoPost: sem foto no registro, é estável e usa uma foto do site', () => {
+  assert.equal(fotoDoPost({ slug: 'abc' }), fotoDoPost({ slug: 'abc' }));
+  assert.match(fotoDoPost({ slug: 'abc' }), /^\/assets\/sheep-(flock|pasture)\.webp$/);
+});
+
+const foto = { arquivo: '/assets/blog/vermifugacao-de-ovinos.jpg', autor: 'Fulano & Cia', licenca: 'CC BY-SA 4.0', origem: 'https://commons.wikimedia.org/wiki/File:X.jpg' };
+
+test('validarPost: foto precisa de arquivo em /assets/blog/, autor, licença e origem https', () => {
+  assert.deepEqual(validarPost({ ...post, foto }), []);
+  for (const ruim of [{ ...foto, arquivo: '/assets/x.jpg' }, { ...foto, autor: '' }, { ...foto, licenca: undefined }, { ...foto, origem: 'http://x' }]) {
+    assert.equal(validarPost({ ...post, foto: ruim }).length, 1, JSON.stringify(ruim));
+  }
+});
+
+test('renderPost com foto: topo, og:image, JSON-LD e crédito com licença', () => {
+  const html = renderPost({ ...post, foto }, '<p>texto</p>');
+  assert.match(html, /<section class="post-hero" style="--foto:url\(\/assets\/blog\/vermifugacao-de-ovinos\.jpg\)">/);
+  assert.match(html, /<meta property="og:image" content="https:\/\/ovisapp\.com\.br\/assets\/blog\/vermifugacao-de-ovinos\.jpg">/);
+  assert.match(html, /"image":"https:\/\/ovisapp\.com\.br\/assets\/blog\/vermifugacao-de-ovinos\.jpg"/);
+  assert.match(html, /<p class="post-foto-credito">Foto: <a href="https:\/\/commons\.wikimedia\.org\/wiki\/File:X\.jpg" rel="noopener">Fulano &amp; Cia<\/a>, CC BY-SA 4\.0, via Wikimedia Commons<\/p>/);
+  assert.doesNotMatch(renderPost(post, '<p>texto</p>'), /post-foto-credito/);
 });
 
 test('renderPost: topo com foto, selo do tipo, resumo e tempo de leitura', () => {
