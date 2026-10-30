@@ -63,6 +63,23 @@ Acrescente o post **ao fim** de `blog/_registro.json`:
 
 Se `inicio` em `blog/_rotina.json` for `null`, grave a data de hoje nele.
 
+### Foto do topo
+
+Todo post leva uma foto ligada ao assunto, tirada do Wikimedia Commons (licença livre, com crédito automático). Busque em inglês, sempre com uma palavra de ovino (`sheep`, `ewe`, `lamb`, `ram`) e o assunto, e tente variações curtas se vier pouco:
+
+```bash
+node scripts/blog-foto.mjs buscar "sheep hoof"
+node scripts/blog-foto.mjs buscar "ewe lambs"
+```
+
+A busca é ruidosa: traz montanha, carneiro selvagem, cabra e cidade com o mesmo nome. Antes de escolher, baixe a prévia (`curl -sL -o /tmp/previa.jpg "<url da prévia>"`) e **olhe a imagem** (ferramenta Read). Ela só serve se mostrar ovinos domésticos de forma clara e combinar com o tema (casco para casco, cordeiros para parto ou prolificidade, a raça quando o post é sobre raça); sem pessoas em destaque que não tenham a ver com a criação, sem texto ou marca d'água. Escolhida, grave:
+
+```bash
+node scripts/blog-foto.mjs usar <slug> "File:<nome exato do arquivo>"
+```
+
+Isso salva `assets/blog/<slug>.jpg` e põe `foto` (arquivo, autor, licença, origem) no registro. Não repita foto de post anterior. Se nada servir depois de umas cinco buscas, siga sem foto: o build usa uma foto genérica do site.
+
 ## 5. Revisão separada
 
 Chame um subagente novo, passando só o caminho do corpo, o `titulo`, a `descricao` e a lista de fontes, com esta tarefa: "Para cada afirmação factual deste texto, do título e da descrição (número, data, nome, dose, prazo, fato de notícia), abra a fonte e diga se ela sustenta exatamente o que está escrito. Liste as que não sustentam." Remova ou corrija cada item apontado, inclusive no título e na descrição do registro. Se, depois disso, o texto ficar sem substância ou abaixo do tamanho mínimo, **pare**: vá ao passo 8 (falha).
@@ -83,7 +100,7 @@ Título com aspas, crase ou `$` quebra comando de shell: passe textos por arquiv
 
 ```bash
 git checkout -b claude/blog-<HOJE>-<slug>
-git add blog sitemap.xml
+git add blog assets/blog sitemap.xml
 cat > /tmp/commit.txt <<'FIM'
 feat(blog): <título>
 FIM
