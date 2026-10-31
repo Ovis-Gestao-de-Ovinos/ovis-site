@@ -126,5 +126,29 @@
       "licenca": "CC BY 2.0",
       "origem": "https://commons.wikimedia.org/wiki/File:Romney_sheep,_ewe_with_triplet_lambs_in_New_Zealand.jpg"
     }
+  },
+  {
+    "slug": "desmame-de-cordeiros-idade-e-peso",
+    "data": "2026-10-31",
+    "tipo": "guia",
+    "titulo": "Desmame de cordeiros: com quantos dias e quantos quilos?",
+    "descricao": "Veja a idade de desmame indicada por pesquisadores da Embrapa Caprinos, quanto os cordeiros pesaram em estudo no Semiárido e o manejo das ovelhas.",
+    "palavraChave": "desmame de cordeiros",
+    "fontes": [
+      {
+        "titulo": "Nordeste Rural (Embrapa Caprinos): Produção de cordeiros",
+        "url": "https://www.infoteca.cnptia.embrapa.br/infoteca/bitstream/doc/926609/1/MidiaProducaodecordeiros.pdf"
+      },
+      {
+        "titulo": "Barros et al., Pesquisa Agropecuária Brasileira 2004: Características de crescimento de cordeiros F1 para abate no Semi-Árido do Nordeste do Brasil",
+        "url": "https://apct.sede.embrapa.br/pab/article/download/6842/3898/22290"
+      }
+    ],
+    "foto": {
+      "arquivo": "/assets/blog/desmame-de-cordeiros-idade-e-peso.jpg",
+      "autor": "Russel Wills",
+      "licenca": "CC BY-SA 2.0",
+      "origem": "https://commons.wikimedia.org/wiki/File:Ewe_suckling_twin_lambs_-_geograph.org.uk_-_3427304.jpg"
+    }
   }
 ]
