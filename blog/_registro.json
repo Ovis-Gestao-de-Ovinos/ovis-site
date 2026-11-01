@@ -150,5 +150,25 @@
       "licenca": "CC BY-SA 2.0",
       "origem": "https://commons.wikimedia.org/wiki/File:Ewe_suckling_twin_lambs_-_geograph.org.uk_-_3427304.jpg"
     }
+  },
+  {
+    "slug": "cuidados-com-cordeiro-recem-nascido",
+    "data": "2026-11-01",
+    "tipo": "guia",
+    "titulo": "Cuidados com o cordeiro recém-nascido: o que fazer primeiro",
+    "descricao": "Umbigo, colostro nas primeiras 6 horas, frio e vacinas: veja o passo a passo da Embrapa para cuidar do cordeiro recém-nascido.",
+    "palavraChave": "cuidados com cordeiro recém-nascido",
+    "fontes": [
+      {
+        "titulo": "Embrapa Pecuária Sudeste: Cuidados com o cordeiro (Circular Técnica 73, 2015)",
+        "url": "https://www.infoteca.cnptia.embrapa.br/infoteca/bitstream/doc/1047798/1/Circular73CuidadosCordeiroCGPE.pdf"
+      }
+    ],
+    "foto": {
+      "arquivo": "/assets/blog/cuidados-com-cordeiro-recem-nascido.jpg",
+      "autor": "Rene Cortin",
+      "licenca": "CC BY-SA 4.0",
+      "origem": "https://commons.wikimedia.org/wiki/File:Newborn_lamb.jpg"
+    }
   }
 ]
