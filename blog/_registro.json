@@ -170,5 +170,25 @@
       "licenca": "CC BY-SA 4.0",
       "origem": "https://commons.wikimedia.org/wiki/File:Newborn_lamb.jpg"
     }
+  },
+  {
+    "slug": "origem-da-ovelha-morada-nova",
+    "data": "2026-11-02",
+    "tipo": "curiosidade",
+    "titulo": "Ovelha Morada Nova: de onde veio a ovelha sem lã do Nordeste?",
+    "descricao": "A origem da ovelha Morada Nova ainda é um mistério. Veja como a raça foi descoberta em 1937 e o que a Embrapa diz sobre ela.",
+    "palavraChave": "ovelha Morada Nova",
+    "fontes": [
+      {
+        "titulo": "Embrapa Caprinos: Raça Morada Nova: origem, características e perspectivas (Documentos 75, 2008)",
+        "url": "https://www.infoteca.cnptia.embrapa.br/bitstream/doc/533728/1/doc75.pdf"
+      }
+    ],
+    "foto": {
+      "arquivo": "/assets/blog/origem-da-ovelha-morada-nova.jpg",
+      "autor": "Agriculturasp",
+      "licenca": "CC BY 2.0",
+      "origem": "https://commons.wikimedia.org/wiki/File:Ovinos_Morada_Nova.jpg"
+    }
   }
 ]
