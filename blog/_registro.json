@@ -190,5 +190,29 @@
       "licenca": "CC BY 2.0",
       "origem": "https://commons.wikimedia.org/wiki/File:Ovinos_Morada_Nova.jpg"
     }
+  },
+  {
+    "slug": "tosquia-de-ovinos-quando-fazer",
+    "data": "2026-11-03",
+    "tipo": "guia",
+    "titulo": "Quando tosquiar ovelhas: a melhor época e os cuidados",
+    "descricao": "Veja o que a Embrapa diz sobre a época da tosquia: antes da monta, antes do parto ou no verão, e quais cuidados tomar depois.",
+    "palavraChave": "quando tosquiar ovelhas",
+    "fontes": [
+      {
+        "titulo": "Embrapa CNPO: O \"efeito tosquia\" na produção ovina: uma revisão (Circular Técnica 3, 1989)",
+        "url": "https://www.infoteca.cnptia.embrapa.br/infoteca/bitstream/doc/218723/1/OEFEITOTOSQUIANAPRODUCAO.pdf"
+      },
+      {
+        "titulo": "Embrapa Semiárido: Principais clostridioses dos ovinos e caprinos: sinais clínicos e medidas preventivas (Comunicado Técnico 144)",
+        "url": "https://www.infoteca.cnptia.embrapa.br/infoteca/bitstream/doc/883794/1/ComunicadoTecnico144.pdf"
+      }
+    ],
+    "foto": {
+      "arquivo": "/assets/blog/tosquia-de-ovinos-quando-fazer.jpg",
+      "autor": "Jamain",
+      "licenca": "CC BY-SA 3.0",
+      "origem": "https://commons.wikimedia.org/wiki/File:Sheep_shearing_J2.jpg"
+    }
   }
 ]
