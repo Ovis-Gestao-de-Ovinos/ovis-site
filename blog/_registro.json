@@ -214,5 +214,29 @@
       "licenca": "CC BY-SA 3.0",
       "origem": "https://commons.wikimedia.org/wiki/File:Sheep_shearing_J2.jpg"
     }
+  },
+  {
+    "slug": "terminacao-de-cordeiros-confinamento-ou-pasto",
+    "data": "2026-11-05",
+    "tipo": "guia",
+    "titulo": "Terminação de cordeiros: confinamento ou pasto, qual compensa?",
+    "descricao": "Veja como terminar cordeiros para o abate: peso e prazo no confinamento, o que muda na verminose e quando cada sistema compensa.",
+    "palavraChave": "terminação de cordeiros",
+    "fontes": [
+      {
+        "titulo": "Embrapa: Terminação de cordeiros em confinamento: avaliação dos impactos econômicos, sociais e ambientais",
+        "url": "https://www.alice.cnptia.embrapa.br/alice/bitstream/doc/865712/1/CNPC2010Terminacao.pdf"
+      },
+      {
+        "titulo": "UFPR/Revista O Berro nº 71: Terminação de cordeiros a pasto e em confinamento",
+        "url": "https://www.infoteca.cnptia.embrapa.br/infoteca/bitstream/doc/154440/1/Terminacao-de-cordeiros-a-pasto-e-em-confinamento.pdf"
+      }
+    ],
+    "foto": {
+      "arquivo": "/assets/blog/terminacao-de-cordeiros-confinamento-ou-pasto.jpg",
+      "autor": "Unuaiga",
+      "licenca": "CC BY-SA 4.0",
+      "origem": "https://commons.wikimedia.org/wiki/File:Moutons_dans_leur_%C3%A9table_06.jpg"
+    }
   }
 ]
