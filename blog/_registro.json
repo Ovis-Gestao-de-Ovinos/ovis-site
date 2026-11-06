@@ -238,5 +238,29 @@
       "licenca": "CC BY-SA 4.0",
       "origem": "https://commons.wikimedia.org/wiki/File:Moutons_dans_leur_%C3%A9table_06.jpg"
     }
+  },
+  {
+    "slug": "enterotoxemia-ovinos-como-prevenir",
+    "data": "2026-11-06",
+    "tipo": "guia",
+    "titulo": "Enterotoxemia em ovinos: sinais, causas e como prevenir",
+    "descricao": "Veja os sinais da enterotoxemia, o que favorece a doença e como a vacina e o manejo ajudam a proteger cordeiros e ovelhas do seu rebanho.",
+    "palavraChave": "enterotoxemia em ovinos",
+    "fontes": [
+      {
+        "titulo": "Embrapa Semiárido: Principais clostridioses dos ovinos e caprinos: sinais clínicos e medidas preventivas (Comunicado Técnico 144)",
+        "url": "https://www.infoteca.cnptia.embrapa.br/infoteca/bitstream/doc/883794/1/ComunicadoTecnico144.pdf"
+      },
+      {
+        "titulo": "Embrapa Caprinos e Ovinos: Manejo eficaz na vacinação de ovinos e caprinos",
+        "url": "https://www.infoteca.cnptia.embrapa.br/infoteca/bitstream/doc/1124927/1/CNPC-2020-Manejo.pdf"
+      }
+    ],
+    "foto": {
+      "arquivo": "/assets/blog/enterotoxemia-ovinos-como-prevenir.jpg",
+      "autor": "Brooke from Oakland, CA, USA",
+      "licenca": "CC BY 2.0",
+      "origem": "https://commons.wikimedia.org/wiki/File:Jacob_ewe_nursing_a_lamb.jpg"
+    }
   }
 ]
