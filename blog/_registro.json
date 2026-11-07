@@ -262,5 +262,33 @@
       "licenca": "CC BY 2.0",
       "origem": "https://commons.wikimedia.org/wiki/File:Jacob_ewe_nursing_a_lamb.jpg"
     }
+  },
+  {
+    "slug": "sal-mineral-para-ovinos-cobre",
+    "data": "2026-11-07",
+    "tipo": "guia",
+    "titulo": "Sal mineral para ovinos: por que o sal de bovino pode matar",
+    "descricao": "Alguns sais para bovinos têm cobre demais para ovelhas. Veja como a intoxicação acontece, dois casos reais no Brasil e como proteger o rebanho.",
+    "palavraChave": "sal mineral para ovinos",
+    "fontes": [
+      {
+        "titulo": "Embrapa Gado de Corte: Intoxicação crônica por cobre em ovinos (Comunicado Técnico 14, 1982)",
+        "url": "https://www.infoteca.cnptia.embrapa.br/infoteca/bitstream/doc/321838/1/COT14.pdf"
+      },
+      {
+        "titulo": "Barbosa et al.: Intoxicação crônica por cobre em ovinos no Estado do Pará",
+        "url": "https://www.alice.cnptia.embrapa.br/alice/bitstream/doc/1172228/1/Intoxicacao-cronica-cobre-ovinos-1999.pdf"
+      },
+      {
+        "titulo": "Lemos et al.: Alterações clínicas, patológicos e laboratoriais na intoxicação crônica por cobre em ovinos (Ciência Rural, 1997)",
+        "url": "https://www.alice.cnptia.embrapa.br/alice/handle/doc/1187743"
+      }
+    ],
+    "foto": {
+      "arquivo": "/assets/blog/sal-mineral-para-ovinos-cobre.jpg",
+      "autor": "Straktur",
+      "licenca": "Public domain",
+      "origem": "https://commons.wikimedia.org/wiki/File:Sheep_on_Pasture_in_Voigtland,_Germany.jpg"
+    }
   }
 ]
