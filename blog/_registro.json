@@ -290,5 +290,29 @@
       "licenca": "Public domain",
       "origem": "https://commons.wikimedia.org/wiki/File:Sheep_on_Pasture_in_Voigtland,_Germany.jpg"
     }
+  },
+  {
+    "slug": "peso-e-idade-da-borrega-primeira-cobertura",
+    "data": "2026-11-08",
+    "tipo": "guia",
+    "titulo": "Peso e idade da borrega para a primeira cobertura",
+    "descricao": "Com quantos quilos e meses a borrega pode ser coberta? Veja as referências da Embrapa por raça e o que a pesquisa diz sobre peso e idade.",
+    "palavraChave": "peso da borrega para primeira cobertura",
+    "fontes": [
+      {
+        "titulo": "Selaive-Villarroel (Embrapa): Manejo reprodutivo dos ovinos (Simpósio Paranaense, 1986)",
+        "url": "https://www.alice.cnptia.embrapa.br/alice/bitstream/doc/1188652/1/Selaive-Villaroel.pdf"
+      },
+      {
+        "titulo": "Embrapa Teresina: Anais do V Seminário de Pesquisa Agropecuária do Piauí (1988), puberdade em borregas Santa Inês",
+        "url": "https://www.alice.cnptia.embrapa.br/alice/bitstream/doc/51862/1/Semip220222.pdf"
+      }
+    ],
+    "foto": {
+      "arquivo": "/assets/blog/peso-e-idade-da-borrega-primeira-cobertura.jpg",
+      "autor": "Black Angus Girl at English Wikipedia",
+      "licenca": "Public domain",
+      "origem": "https://commons.wikimedia.org/wiki/File:Romney_Ewe_and_Lamb.jpg"
+    }
   }
 ]
