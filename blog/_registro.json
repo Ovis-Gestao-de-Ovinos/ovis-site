@@ -314,5 +314,29 @@
       "licenca": "Public domain",
       "origem": "https://commons.wikimedia.org/wiki/File:Romney_Ewe_and_Lamb.jpg"
     }
+  },
+  {
+    "slug": "mastite-em-ovelhas-sinais-prevencao",
+    "data": "2026-11-10",
+    "tipo": "guia",
+    "titulo": "Mastite em ovelhas: sinais, riscos e como prevenir",
+    "descricao": "Veja como reconhecer a mastite no úbere da ovelha, quando o risco é maior e como prevenir, segundo a Embrapa Pecuária Sudeste.",
+    "palavraChave": "mastite em ovelhas",
+    "fontes": [
+      {
+        "titulo": "Embrapa Pecuária Sudeste: Mastite ovina: desafio para a ovinocultura de corte (Circular Técnica 74)",
+        "url": "https://www.infoteca.cnptia.embrapa.br/infoteca/bitstream/doc/1058248/1/Circula74.pdf"
+      },
+      {
+        "titulo": "Página Campeira / Embrapa: Mastite afeta produtividade em propriedades de ovinos de corte",
+        "url": "https://tecnologias1.cppse.embrapa.br/gecampe-file/clipping/7423_2020-09-10%20-%20Mastite%20afeta%20produtividade%20em%20propriedades%20de%20ovinos%20de%20corte.pdf"
+      }
+    ],
+    "foto": {
+      "arquivo": "/assets/blog/mastite-em-ovelhas-sinais-prevencao.jpg",
+      "autor": "Brooke from Oakland, CA, USA",
+      "licenca": "CC BY 2.0",
+      "origem": "https://commons.wikimedia.org/wiki/File:Jacob_ewe_nursing_a_lamb.jpg"
+    }
   }
 ]
