@@ -238,5 +238,129 @@
       "licenca": "CC BY-SA 2.0",
       "origem": "https://commons.wikimedia.org/wiki/File:Ewes_and_ram_in_pasture_-_geograph.org.uk_-_3782950.jpg"
     }
+  },
+  {
+    "slug": "terminacao-de-cordeiros-confinamento-ou-pasto",
+    "data": "2026-11-05",
+    "tipo": "guia",
+    "titulo": "Terminação de cordeiros: confinamento ou pasto, qual compensa?",
+    "descricao": "Veja como terminar cordeiros para o abate: peso e prazo no confinamento, o que muda na verminose e quando cada sistema compensa.",
+    "palavraChave": "terminação de cordeiros",
+    "fontes": [
+      {
+        "titulo": "Embrapa: Terminação de cordeiros em confinamento: avaliação dos impactos econômicos, sociais e ambientais",
+        "url": "https://www.alice.cnptia.embrapa.br/alice/bitstream/doc/865712/1/CNPC2010Terminacao.pdf"
+      },
+      {
+        "titulo": "UFPR/Revista O Berro nº 71: Terminação de cordeiros a pasto e em confinamento",
+        "url": "https://www.infoteca.cnptia.embrapa.br/infoteca/bitstream/doc/154440/1/Terminacao-de-cordeiros-a-pasto-e-em-confinamento.pdf"
+      }
+    ],
+    "foto": {
+      "arquivo": "/assets/blog/terminacao-de-cordeiros-confinamento-ou-pasto.jpg",
+      "autor": "Unuaiga",
+      "licenca": "CC BY-SA 4.0",
+      "origem": "https://commons.wikimedia.org/wiki/File:Moutons_dans_leur_%C3%A9table_06.jpg"
+    }
+  },
+  {
+    "slug": "enterotoxemia-ovinos-como-prevenir",
+    "data": "2026-11-06",
+    "tipo": "guia",
+    "titulo": "Enterotoxemia em ovinos: sinais, causas e como prevenir",
+    "descricao": "Veja os sinais da enterotoxemia, o que favorece a doença e como a vacina e o manejo ajudam a proteger cordeiros e ovelhas do seu rebanho.",
+    "palavraChave": "enterotoxemia em ovinos",
+    "fontes": [
+      {
+        "titulo": "Embrapa Semiárido: Principais clostridioses dos ovinos e caprinos: sinais clínicos e medidas preventivas (Comunicado Técnico 144)",
+        "url": "https://www.infoteca.cnptia.embrapa.br/infoteca/bitstream/doc/883794/1/ComunicadoTecnico144.pdf"
+      },
+      {
+        "titulo": "Embrapa Caprinos e Ovinos: Manejo eficaz na vacinação de ovinos e caprinos",
+        "url": "https://www.infoteca.cnptia.embrapa.br/infoteca/bitstream/doc/1124927/1/CNPC-2020-Manejo.pdf"
+      }
+    ],
+    "foto": {
+      "arquivo": "/assets/blog/enterotoxemia-ovinos-como-prevenir.jpg",
+      "autor": "Brooke from Oakland, CA, USA",
+      "licenca": "CC BY 2.0",
+      "origem": "https://commons.wikimedia.org/wiki/File:Jacob_ewe_nursing_a_lamb.jpg"
+    }
+  },
+  {
+    "slug": "sal-mineral-para-ovinos-cobre",
+    "data": "2026-11-07",
+    "tipo": "guia",
+    "titulo": "Sal mineral para ovinos: por que o sal de bovino pode matar",
+    "descricao": "Alguns sais para bovinos têm cobre demais para ovelhas. Veja como a intoxicação acontece, dois casos reais no Brasil e como proteger o rebanho.",
+    "palavraChave": "sal mineral para ovinos",
+    "fontes": [
+      {
+        "titulo": "Embrapa Gado de Corte: Intoxicação crônica por cobre em ovinos (Comunicado Técnico 14, 1982)",
+        "url": "https://www.infoteca.cnptia.embrapa.br/infoteca/bitstream/doc/321838/1/COT14.pdf"
+      },
+      {
+        "titulo": "Barbosa et al.: Intoxicação crônica por cobre em ovinos no Estado do Pará",
+        "url": "https://www.alice.cnptia.embrapa.br/alice/bitstream/doc/1172228/1/Intoxicacao-cronica-cobre-ovinos-1999.pdf"
+      },
+      {
+        "titulo": "Lemos et al.: Alterações clínicas, patológicos e laboratoriais na intoxicação crônica por cobre em ovinos (Ciência Rural, 1997)",
+        "url": "https://www.alice.cnptia.embrapa.br/alice/handle/doc/1187743"
+      }
+    ],
+    "foto": {
+      "arquivo": "/assets/blog/sal-mineral-para-ovinos-cobre.jpg",
+      "autor": "Straktur",
+      "licenca": "Public domain",
+      "origem": "https://commons.wikimedia.org/wiki/File:Sheep_on_Pasture_in_Voigtland,_Germany.jpg"
+    }
+  },
+  {
+    "slug": "peso-e-idade-da-borrega-primeira-cobertura",
+    "data": "2026-11-08",
+    "tipo": "guia",
+    "titulo": "Peso e idade da borrega para a primeira cobertura",
+    "descricao": "Com quantos quilos e meses a borrega pode ser coberta? Veja as referências da Embrapa por raça e o que a pesquisa diz sobre peso e idade.",
+    "palavraChave": "peso da borrega para primeira cobertura",
+    "fontes": [
+      {
+        "titulo": "Selaive-Villarroel (Embrapa): Manejo reprodutivo dos ovinos (Simpósio Paranaense, 1986)",
+        "url": "https://www.alice.cnptia.embrapa.br/alice/bitstream/doc/1188652/1/Selaive-Villaroel.pdf"
+      },
+      {
+        "titulo": "Embrapa Teresina: Anais do V Seminário de Pesquisa Agropecuária do Piauí (1988), puberdade em borregas Santa Inês",
+        "url": "https://www.alice.cnptia.embrapa.br/alice/bitstream/doc/51862/1/Semip220222.pdf"
+      }
+    ],
+    "foto": {
+      "arquivo": "/assets/blog/peso-e-idade-da-borrega-primeira-cobertura.jpg",
+      "autor": "Black Angus Girl at English Wikipedia",
+      "licenca": "Public domain",
+      "origem": "https://commons.wikimedia.org/wiki/File:Romney_Ewe_and_Lamb.jpg"
+    }
+  },
+  {
+    "slug": "mastite-em-ovelhas-sinais-prevencao",
+    "data": "2026-11-10",
+    "tipo": "guia",
+    "titulo": "Mastite em ovelhas: sinais, riscos e como prevenir",
+    "descricao": "Veja como reconhecer a mastite no úbere da ovelha, quando o risco é maior e como prevenir, segundo a Embrapa Pecuária Sudeste.",
+    "palavraChave": "mastite em ovelhas",
+    "fontes": [
+      {
+        "titulo": "Embrapa Pecuária Sudeste: Mastite ovina: desafio para a ovinocultura de corte (Circular Técnica 74)",
+        "url": "https://www.infoteca.cnptia.embrapa.br/infoteca/bitstream/doc/1058248/1/Circula74.pdf"
+      },
+      {
+        "titulo": "Página Campeira / Embrapa: Mastite afeta produtividade em propriedades de ovinos de corte",
+        "url": "https://tecnologias1.cppse.embrapa.br/gecampe-file/clipping/7423_2020-09-10%20-%20Mastite%20afeta%20produtividade%20em%20propriedades%20de%20ovinos%20de%20corte.pdf"
+      }
+    ],
+    "foto": {
+      "arquivo": "/assets/blog/mastite-em-ovelhas-sinais-prevencao.jpg",
+      "autor": "Brooke from Oakland, CA, USA",
+      "licenca": "CC BY 2.0",
+      "origem": "https://commons.wikimedia.org/wiki/File:Jacob_ewe_nursing_a_lamb.jpg"
+    }
   }
 ]
