@@ -216,6 +216,30 @@
     }
   },
   {
+    "slug": "estacao-de-monta-ovinos-quanto-tempo",
+    "data": "2026-11-04",
+    "tipo": "guia",
+    "titulo": "Estação de monta de ovinos: quantos dias deve durar?",
+    "descricao": "Veja quantos dias dura a estação de monta de ovinos, por que são três cios e como o efeito macho pode encurtar o prazo, segundo a Embrapa.",
+    "palavraChave": "estação de monta ovinos",
+    "fontes": [
+      {
+        "titulo": "Embrapa Semiárido: Utilização do Efeito Macho para Induzir e Sincronizar os Estros (Cios) de Fêmeas Ovinas (Circular Técnica 99, 2012)",
+        "url": "https://www.infoteca.cnptia.embrapa.br/infoteca/bitstream/doc/992023/1/2CTE99.pdf"
+      },
+      {
+        "titulo": "Embrapa Semiárido: Período de serviço e duração da gestação de ovelhas mestiças Santa Inês-Bergamácia em Dormentes, PE",
+        "url": "https://www.alice.cnptia.embrapa.br/alice/bitstream/doc/577607/1/OPB2618.pdf"
+      }
+    ],
+    "foto": {
+      "arquivo": "/assets/blog/estacao-de-monta-ovinos-quanto-tempo.jpg",
+      "autor": "Russel Wills",
+      "licenca": "CC BY-SA 2.0",
+      "origem": "https://commons.wikimedia.org/wiki/File:Ewes_and_ram_in_pasture_-_geograph.org.uk_-_3782950.jpg"
+    }
+  },
+  {
     "slug": "terminacao-de-cordeiros-confinamento-ou-pasto",
     "data": "2026-11-05",
     "tipo": "guia",
