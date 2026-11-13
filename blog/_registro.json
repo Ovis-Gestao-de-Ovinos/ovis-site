@@ -362,5 +362,29 @@
       "licenca": "CC BY 2.0",
       "origem": "https://commons.wikimedia.org/wiki/File:Jacob_ewe_nursing_a_lamb.jpg"
     }
+  },
+  {
+    "slug": "linfadenite-caseosa-mal-do-caroco-ovinos",
+    "data": "2026-11-13",
+    "tipo": "guia",
+    "titulo": "Linfadenite caseosa (mal do caroço) em ovinos: como prevenir",
+    "descricao": "Veja o que é o mal do caroço, como a linfadenite caseosa se espalha e o que a Embrapa recomenda para evitar a doença no rebanho.",
+    "palavraChave": "linfadenite caseosa ovinos",
+    "fontes": [
+      {
+        "titulo": "Embrapa Caprinos e Ovinos: Boletim Técnico Linfadenite Caseosa (Conhecendo para prevenir)",
+        "url": "https://www.infoteca.cnptia.embrapa.br/infoteca/bitstream/doc/1136460/1/CNPC-2021-Art-78.pdf"
+      },
+      {
+        "titulo": "Embrapa Caprinos e Ovinos: Controle das doenças infecciosas em caprinos e ovinos no Semiárido brasileiro",
+        "url": "https://www.infoteca.cnptia.embrapa.br/infoteca/bitstream/doc/1148905/1/CNPC-2023-Controle-das-doencas.pdf"
+      }
+    ],
+    "foto": {
+      "arquivo": "/assets/blog/linfadenite-caseosa-mal-do-caroco-ovinos.jpg",
+      "autor": "Collins, Tudor Washington, 1898-1970, photographer",
+      "licenca": "CC BY 4.0",
+      "origem": "https://commons.wikimedia.org/wiki/File:Group_of_sheep_by_fence_(AM_81125-1).jpg"
+    }
   }
 ]
