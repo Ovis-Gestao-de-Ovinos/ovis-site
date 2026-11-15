@@ -1,5 +1,5 @@
 // Formulário de contato: o lead vai para a planilha da equipe e segue para o WhatsApp da Ovis.
-export const OVIS_WHATSAPP = '5551984931844';
+export const OVIS_WHATSAPP = '5534991968755';
 
 // Só dígitos com DDD, sem o 0 de longa distância nem o 55 do país; null se não sobrar um telefone brasileiro.
 export function normalizePhone(raw) {
