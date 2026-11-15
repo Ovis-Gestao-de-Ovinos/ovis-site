@@ -122,7 +122,7 @@ test('contratação passa por formulário, planilha e WhatsApp', () => {
 test('canais de atendimento para dúvidas e cancelamento', () => {
   const thanks = readFileSync(new URL('../obrigado.html', import.meta.url), 'utf8');
   for (const html of [page, thanks]) {
-    assert.match(html, /href="https:\/\/wa\.me\/5551984931844"/);
+    assert.match(html, /href="https:\/\/wa\.me\/5534991968755"/);
     assert.match(html, /href="mailto:ovisfinanceiro@gmail\.com"/);
   }
   assert.match(page, /Como cancelo/);

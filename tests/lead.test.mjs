@@ -14,7 +14,7 @@ test('rebanho aceita número com ou sem ponto de milhar', () => {
 });
 
 test('WhatsApp da Ovis', () => {
-  assert.equal(OVIS_WHATSAPP, '5551984931844');
+  assert.equal(OVIS_WHATSAPP, '5534991968755');
 });
 
 test('telefone aceita máscara, +55 e espaços', () => {
@@ -47,7 +47,7 @@ test('mensagem do WhatsApp por plano e período', () => {
   assert.match(leadMessage({ ...ok, plano: 'Pro', periodo: 'anual' }), /quero conhecer o plano Pro \(anual\)\./);
   assert.match(leadMessage({ ...ok, plano: 'Lista', periodo: '' }), /quero entrar na lista de espera do lançamento do app\.$/);
   assert.match(leadMessage({ ...ok, nome: '  João ', fazenda: ' Boa Vista  ' }), /^Oi! Sou João, da fazenda Boa Vista\./);
-  assert.ok(whatsappUrl(ok).startsWith('https://wa.me/5551984931844?text=Oi!%20Sou%20Jo%C3%A3o'));
+  assert.ok(whatsappUrl(ok).startsWith('https://wa.me/5534991968755?text=Oi!%20Sou%20Jo%C3%A3o'));
 });
 
 test('saveLead pula sem endpoint, falha sem rejeitar e respeita o tempo-limite', async () => {
