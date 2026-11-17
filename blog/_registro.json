@@ -386,5 +386,29 @@
       "licenca": "CC BY 4.0",
       "origem": "https://commons.wikimedia.org/wiki/File:Group_of_sheep_by_fence_(AM_81125-1).jpg"
     }
+  },
+  {
+    "slug": "cruzamento-dorper-santa-ines-cordeiros",
+    "data": "2026-11-17",
+    "tipo": "guia",
+    "titulo": "Cruzamento Dorper e Santa Inês: o que a Embrapa mostra",
+    "descricao": "Veja o que estudos da Embrapa mediram em cordeiros Dorper e Santa Inês: ganho de peso, desmame e carcaça, na caatinga e no Sudeste.",
+    "palavraChave": "cruzamento Dorper Santa Inês",
+    "fontes": [
+      {
+        "titulo": "Embrapa Caprinos: Desempenho e características da carcaça de cordeiros de três grupos genéticos terminados em pastagem nativa",
+        "url": "https://www.alice.cnptia.embrapa.br/alice/bitstream/doc/533896/1/AACDesempenhoecaracteristicas.pdf"
+      },
+      {
+        "titulo": "Embrapa Pecuária Sudeste: Desempenho ponderal de ovinos cruzados, criados em ambiente tropical (XIII SBMA, 2019)",
+        "url": "https://www.alice.cnptia.embrapa.br/alice/bitstream/doc/1110265/1/SBMADesempenhoponderalovinoscruzados.pdf"
+      }
+    ],
+    "foto": {
+      "arquivo": "/assets/blog/cruzamento-dorper-santa-ines-cordeiros.jpg",
+      "autor": "Rodrigo Padula",
+      "licenca": "CC BY-SA 4.0",
+      "origem": "https://commons.wikimedia.org/wiki/File:Ovelha_Dorper_-_S%C3%ADtio_Caramon%C3%A3.jpg"
+    }
   }
 ]
