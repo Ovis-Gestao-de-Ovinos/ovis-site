@@ -410,5 +410,29 @@
       "licenca": "CC BY-SA 4.0",
       "origem": "https://commons.wikimedia.org/wiki/File:Ovelha_Dorper_-_S%C3%ADtio_Caramon%C3%A3.jpg"
     }
+  },
+  {
+    "slug": "agua-para-ovinos-quanto-uma-ovelha-bebe",
+    "data": "2026-11-20",
+    "tipo": "guia",
+    "titulo": "Água para ovinos: quanto uma ovelha bebe por dia?",
+    "descricao": "Veja quanta água ovelhas e cordeiros precisam em cada fase, como o calor muda o consumo e quais cuidados ter com a qualidade da água.",
+    "palavraChave": "quanto uma ovelha bebe de água por dia",
+    "fontes": [
+      {
+        "titulo": "Embrapa Semiárido / Anais do V Ecoarido: Consumo de água em condições de pastejo: importância e métodos de estimativa",
+        "url": "https://www.alice.cnptia.embrapa.br/alice/bitstream/doc/1140560/1/Consumo-de-agua-em-condicoes-de-pastejo-2021.pdf"
+      },
+      {
+        "titulo": "Revista Brasileira de Zootecnia: A água e a produção de pequenos ruminantes (Araújo et al., 2010)",
+        "url": "https://www.alice.cnptia.embrapa.br/alice/bitstream/doc/868077/1/Gherma2010.pdf"
+      }
+    ],
+    "foto": {
+      "arquivo": "/assets/blog/agua-para-ovinos-quanto-uma-ovelha-bebe.jpg",
+      "autor": "Snownjeri",
+      "licenca": "CC BY-SA 3.0",
+      "origem": "https://commons.wikimedia.org/wiki/File:Sheeps_drink_from_Lumbardh_lake.jpg"
+    }
   }
 ]
