@@ -123,8 +123,17 @@ Testes: node --test tests/*.test.mjs → <resultado>
 Se o push for recusado por permissão, vá ao passo 8 dizendo isso no motivo.
 
 Leia `modo` em `blog/_rotina.json`:
-- `automatico` → mescle o PR com a ferramenta do GitHub (método squash) e apague a branch.
+- `automatico` → mescle o PR com a ferramenta do GitHub (método squash) e apague a branch. Se o merge der erro, siga "Se o merge falhar" abaixo antes de ir ao passo 8.
 - `aprovacao` → pare aqui; o Roman revisa e mescla.
+
+### Se o merge falhar
+
+O GitHub às vezes responde 502, 503 ou 405 "Merge already in progress" mesmo quando o merge está andando. Não desista na primeira:
+
+1. Espere 2 minutos e consulte o PR. Se o estado for `merged`, o post foi publicado: apague a branch e encerre com sucesso.
+2. Se o PR continuar aberto e mergeável, tente o merge de novo. Faça até 3 tentativas no total, com 2 minutos de espera entre elas.
+3. Se o PR estiver em conflito com `main`, atualize a branch com `git fetch origin && git merge origin/main` (nunca rebase nem push forçado). Para resolver, mantenha todos os posts de `main` e o seu em `blog/_registro.json`, rode `node scripts/blog-build.mjs` e `node --test tests/*.test.mjs`, faça o commit, dê `git push` e volte ao item 2.
+4. Se ainda não mesclar depois de 3 tentativas, vá ao passo 8 e escreva no motivo os erros que o GitHub devolveu.
 
 ## 8. Falha
 
