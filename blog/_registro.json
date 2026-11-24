@@ -434,5 +434,29 @@
       "licenca": "CC BY-SA 3.0",
       "origem": "https://commons.wikimedia.org/wiki/File:Sheeps_drink_from_Lumbardh_lake.jpg"
     }
+  },
+  {
+    "slug": "aprisco-para-ovinos-area-por-animal",
+    "data": "2026-11-24",
+    "tipo": "guia",
+    "titulo": "Aprisco para ovinos: quantos m² por animal?",
+    "descricao": "Veja as medidas da Embrapa para aprisco, curral, pedilúvio e cochos: quantos metros quadrados cada ovelha, cordeiro e carneiro precisa.",
+    "palavraChave": "aprisco para ovinos tamanho",
+    "fontes": [
+      {
+        "titulo": "Embrapa: Recomendações técnicas para criação de ovinos deslanados (Circular Técnica 17, 1997)",
+        "url": "https://www.infoteca.cnptia.embrapa.br/infoteca/bitstream/doc/51861/1/Recomendacoes-Tecnicas-Criacao-Ovinos-Cir-17-1997.pdf"
+      },
+      {
+        "titulo": "Embrapa: Aspectos relevantes sobre a produção de ovinos (Rodrigues e Torres)",
+        "url": "https://www.alice.cnptia.embrapa.br/alice/bitstream/doc/595429/1/Aspectos-relevantes-sobre-a-producao-de-ovinos.pdf"
+      }
+    ],
+    "foto": {
+      "arquivo": "/assets/blog/aprisco-para-ovinos-area-por-animal.jpg",
+      "autor": "Peter Barr",
+      "licenca": "CC BY-SA 2.0",
+      "origem": "https://commons.wikimedia.org/wiki/File:Ewe_and_lambs_in_shelter_-_geograph.org.uk_-_2947012.jpg"
+    }
   }
 ]
